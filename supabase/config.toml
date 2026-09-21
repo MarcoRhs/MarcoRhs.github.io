@@ -1,0 +1,7 @@
+# Only the settings this repo depends on. Everything else uses Supabase CLI defaults.
+project_id = "marcorhs-ask-cv"
+
+[functions.ask-cv]
+# The page is static and sends no Authorization header. Access is controlled by
+# per-visitor and global rate limits inside the function, not by a JWT.
+verify_jwt = false

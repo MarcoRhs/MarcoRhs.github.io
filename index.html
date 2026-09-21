@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://ulkqedfxgogayealzqpv.supabase.co; img-src 'self'; font-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marco Rohns — AI Engineer. Ask my CV</title>
+<meta name="description" content="Ask questions about Marco Rohns' work and experience. Answers come only from his CV.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Marco Rohns — AI Engineer. Ask my CV">
+<meta property="og:description" content="Ask questions about Marco's work. Answers come only from his CV.">
+<meta property="og:url" content="https://marcorhs.github.io/">
+<meta property="og:image" content="https://marcorhs.github.io/photo.jpg">
+<link rel="canonical" href="https://marcorhs.github.io/">
+<link rel="alternate" type="text/markdown" href="resume.md" title="CV as Markdown">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Marco Rohns","jobTitle":"AI Engineer & AI Product Builder","address":{"@type":"PostalAddress","addressLocality":"Uplengen","addressCountry":"DE"},"email":"mailto:marco.rohns12@gmail.com","sameAs":["https://www.linkedin.com/in/marco-rohns","https://manemap.app"],"knowsLanguage":["de","es","en"],"knowsAbout":["Retrieval-Augmented Generation","Large Language Models","Kotlin","Compose Multiplatform","Supabase","PostgreSQL","AI automation"],"worksFor":{"@type":"Organization","name":"The Rohns UG (ManeMap)","url":"https://manemap.app"}}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <main>
+    <div class="who">
+      <img src="photo.jpg" width="64" height="64" alt="Portrait of Marco Rohns">
+      <div><strong>Marco Rohns</strong><span>AI Engineer and AI Product Builder, Germany</span></div>
+    </div>
+    <h1>Ask anything about my work.</h1>
+    <p class="lede">An assistant answers from my CV and nothing else. Every answer names the part of the CV it comes from, and if something isn't in there, it says so instead of guessing.</p>
+
+    <div id="askzone">
+      <div class="askbox">
+        <label for="q" class="hint hint-label">Your question — English, Deutsch or Español</label>
+        <textarea id="q" rows="2" maxlength="600" placeholder="What has Marco built with AI?"></textarea>
+        <div class="askrow">
+          <span class="hint" id="costnote">Press Enter to ask. Up to 15 questions a day.</span>
+          <span><button class="primary" id="askBtn">Ask</button><button class="ghost stop" id="stopBtn" hidden>Stop</button></span>
+        </div>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <div class="unavailable" id="unavailable" hidden>
+      The assistant is not reachable right now. The key facts are in the CV summary, and Marco answers directly at <a href="mailto:marco.rohns12@gmail.com">marco.rohns12@gmail.com</a>.
+    </div>
+
+    <div class="thread" id="thread" aria-live="polite"></div>
+  </main>
+
+  <aside aria-label="CV summary">
+    <h2>Marco Rohns</h2>
+    <p class="role">AI Engineer and AI Product Builder. Remote, freelance and project-based.</p>
+
+    <h3>Now</h3>
+    <div class="job"><b>Founder and AI Engineer, ManeMap (The Rohns UG)</b><small>08.2025 to present</small>
+      <p>AI-powered horse care app, live on the App Store and Google Play since May 2026 with paying subscribers. RAG assistant, three-tier health safety gate, Supabase backend, native Kotlin / Compose Multiplatform app.</p></div>
+
+    <h3>Before</h3>
+    <div class="job"><b>Senior Customer Success Manager, Ryte (acquired by Semrush)</b><small>08.2022 to 09.2025</small><p>Promoted to Senior within 12 months. Enterprise accounts, AI feature adoption.</p></div>
+    <div class="job"><b>Customer Adoption Manager, e-bot7 (acquired by LivePerson)</b><small>02.2021 to 07.2022</small><p>Rolled out AI chatbots for enterprise customer service teams.</p></div>
+    <div class="job"><b>Consultant, eXperts consulting center</b><small>03.2020 to 01.2021</small></div>
+    <div class="job"><b>Project Manager, Move-Ment.net</b><small>09.2011 to 02.2020</small></div>
+
+    <h3>Stack</h3>
+    <div class="tags"><span>RAG</span><span>pgvector</span><span>Gemini</span><span>Claude API</span><span>Kotlin</span><span>Compose Multiplatform</span><span>Supabase</span><span>PostgreSQL</span><span>TypeScript</span><span>Claude Code</span><span>MCP</span></div>
+
+    <h3>Languages</h3>
+    <p class="langs">German and Spanish (native), English (professional)</p>
+
+    <div class="contact">
+      <a href="mailto:marco.rohns12@gmail.com">marco.rohns12@gmail.com</a>
+      <a href="https://www.linkedin.com/in/marco-rohns" target="_blank" rel="noopener">LinkedIn profile</a>
+      <a href="https://manemap.app" target="_blank" rel="noopener">manemap.app</a>
+      <a href="Marco_Rohns_CV.pdf" download>Download CV (PDF)</a>
+      <a href="resume.md">Plain-text CV for AI agents (Markdown)</a>
+    </div>
+  </aside>
+
+  <footer>Answers are generated by Google Gemini from Marco's CV and can be incomplete. Confirm anything that matters with Marco directly. Questions and answers are stored for 90 days without any visitor identifier. IP addresses are used only as a salted hash to limit requests and deleted after 3 days. <a href="https://manemap.app/impressum" target="_blank" rel="noopener">Impressum</a> · <a href="https://manemap.app/datenschutz" target="_blank" rel="noopener">Datenschutz</a></footer>
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
