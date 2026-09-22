@@ -38,6 +38,19 @@ Supabase Edge Function  ask-cv  (Deno / TypeScript)
 | `supabase/migration_ask_cv.sql` | Tables, rate-limit/refund/prune functions, grants, daily retention cron. |
 | `supabase/config.toml` | `verify_jwt = false` for `ask-cv` — the static page sends no token. |
 | `scripts/sync-cv.mjs` | Regenerates `cv.ts` from `resume.md`. |
+| `scripts/eval/` | Regression eval: `questions.json` (cases and checks), `run.mts` (runner). |
+
+## Evaluation
+
+`scripts/eval/` holds a 59-question regression suite (65 calls with repeats) that runs the exact production prompt against Gemini — offline, so it never touches the live rate limit or the production log. Categories: grounded facts, frontier-lab depth, inference traps, role-fit questions, adversarial prompts (injection, prompt extraction, forged history), German and Spanish, and consistency across repeats.
+
+Hard gates: zero invented facts or forbidden content, every manipulation attempt declined. Run after any change to `resume.md` or the prompt:
+
+```
+GEMINI_API_KEY=... GEMINI_MODEL=gemini-3.6-flash npx -y tsx scripts/eval/run.mts
+```
+
+Reports are written to `scripts/eval/results/` (git-ignored).
 
 ## Deploy
 
