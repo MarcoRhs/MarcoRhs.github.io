@@ -46,7 +46,7 @@ Supabase Edge Function  ask-cv  (Deno / TypeScript)
 
 ## Evaluation
 
-`scripts/eval/` holds 30 questions covering CV facts, missing information, role fit, prompt injection, forged history, German and Spanish, and recruiter questions. Offline mode uses the current local prompt and a specified Gemini model without touching the public rate limit or production log. The live mode probes the deployed function, including its input and output checks, and uses the public daily allowance. The model is stochastic: regex checks are a regression screen, not a factual accuracy guarantee. Review answer text in the saved report, especially for new CV facts or prompt changes.
+`scripts/eval/` holds 31 questions covering CV facts, missing information, role fit, prompt injection, forged history, German and Spanish, and recruiter questions. Offline mode uses the current local prompt and a specified Gemini model without touching the public rate limit or production log. The live mode probes the deployed function, including its input and output checks, and uses the public daily allowance. The model is stochastic: regex checks are a regression screen, not a factual accuracy guarantee. Review answer text in the saved report, especially for new CV facts or prompt changes.
 
 Run after a CV or prompt change:
 

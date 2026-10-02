@@ -32,14 +32,42 @@ SUGGESTIONS.forEach(s => {
   $("chips").append(b);
 });
 
+function appendInline(el, text){
+  const bold = /\*\*([^*\n]+)\*\*/g;
+  let end = 0;
+  for (const match of text.matchAll(bold)) {
+    el.append(document.createTextNode(text.slice(end, match.index)));
+    const strong = document.createElement("strong");
+    strong.textContent = match[1];
+    el.append(strong);
+    end = match.index + match[0].length;
+  }
+  el.append(document.createTextNode(text.slice(end)));
+}
+
 function renderAnswer(el, text){
-  el.textContent = "";
-  const lines = text.trim().split("\n");
-  let src = null;
-  if (lines.length && /^source:/i.test(lines[lines.length-1].trim())) src = lines.pop().trim();
-  lines.join("\n").trim().split(/\n\s*\n/).forEach(par => {
-    const p = document.createElement("p"); p.textContent = par.trim(); el.append(p);
-  });
+  el.replaceChildren();
+  const lines = text.trim().split(/\r?\n/);
+  const src = /^source:/i.test(lines[lines.length - 1]?.trim() || "") ? lines.pop().trim() : null;
+  // Keep model line breaks. A single text node collapses them into one paragraph in HTML.
+  const body = lines.join("\n").replace(/([^\n])\s+-\s+(?=\*\*[^*\n]+:\*\*)/g, "$1\n- ");
+  let list = null;
+  for (const raw of body.split("\n")) {
+    const line = raw.trim();
+    if (!line) { list = null; continue; }
+    const bullet = line.match(/^[-*•]\s+(.+)$/);
+    if (bullet) {
+      if (!list) { list = document.createElement("ul"); el.append(list); }
+      const li = document.createElement("li");
+      appendInline(li, bullet[1]);
+      list.append(li);
+    } else {
+      list = null;
+      const p = document.createElement("p");
+      appendInline(p, line);
+      el.append(p);
+    }
+  }
   if (src){ const s = document.createElement("span"); s.className = "src"; s.textContent = src; el.append(s); }
 }
 

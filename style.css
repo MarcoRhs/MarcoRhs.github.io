@@ -170,7 +170,12 @@ button { cursor: pointer; font: inherit; }
 .q { font-size: 17px; font-weight: 600; }
 .a { margin-top: 7px; padding: 16px 19px; border-radius: 18px; background: var(--subtle); }
 .a p { margin: 0 0 10px; }
-.a p:last-child { margin: 0; }
+.a p:last-of-type { margin-bottom: 0; }
+.a ul { margin: 10px 0 0; padding-left: 20px; }
+.a li { padding-left: 2px; margin-bottom: 8px; }
+.a li:last-child { margin-bottom: 0; }
+.a li::marker { color: var(--muted); }
+.a strong { font-weight: 600; }
 .src { display: inline-block; margin-top: 12px; color: var(--blue); font-size: 13px; font-weight: 600; }
 .status { color: var(--muted); font-style: italic; }
 .err { color: var(--warn); }

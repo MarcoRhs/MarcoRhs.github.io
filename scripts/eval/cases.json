@@ -1,5 +1,6 @@
 [
   {"id":"build","category":"facts","question":"What has Marco built with AI?","expectSource":"Experience.*ManeMap","mustMention":"ManeMap"},
+  {"id":"tech_stack","category":"facts","question":"Which tech stack does he use?","expectSource":"(Experience.*ManeMap|Skills)","mustMention":"(Kotlin|Supabase|Gemini)"},
   {"id":"rag","category":"facts","question":"How does the RAG assistant in ManeMap use context?","expectSource":"Experience.*ManeMap","mustMention":"(horse|weather|training)"},
   {"id":"safety","category":"facts","question":"How does ManeMap separate emergency health questions from routine questions?","expectSource":"Experience.*ManeMap","mustMention":"(emergency|three-tier)"},
   {"id":"evaluation","category":"facts","question":"What evaluation or regression testing has Marco actually done?","expectSource":"Experience.*ManeMap","mustMention":"regression"},
