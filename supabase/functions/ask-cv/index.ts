@@ -14,19 +14,18 @@
  */
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
-import { buildUserTurn, SYSTEM_PROMPT } from "./prompt.ts";
+import { buildUserTurn, hasValidSourceLine, SYSTEM_PROMPT } from "./prompt.ts";
+import { parseBody, type Question } from "./request.ts";
 
 const IP_LIMIT = 15;
 const GLOBAL_LIMIT = 1000; // runaway-cost backstop, set well above organic traffic
-const MAX_QUESTION_CHARS = 600;
-const MAX_HISTORY = 4;
 const MAX_BODY_BYTES = 8_000;
 const GEMINI_TIMEOUT_MS = 20_000;
 const DEFAULT_ORIGIN = "https://marcorhs.github.io";
 
 type ErrorCode =
   | "method_not_allowed" | "origin_not_allowed" | "bad_request" | "too_long" | "rate_limited"
-  | "not_configured" | "unavailable" | "upstream_error" | "refused" | "empty";
+  | "not_configured" | "unavailable" | "upstream_error" | "refused" | "empty" | "invalid_answer";
 type Payload = { text: string } | { error: ErrorCode };
 
 const env = (name: string) => Deno.env.get(name)?.trim() ?? "";
@@ -76,23 +75,6 @@ async function sha256Hex(input: string): Promise<string> {
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-type Question = { question: string; history: string[] };
-
-function parseBody(raw: string): Question | ErrorCode {
-  let body: unknown;
-  try { body = JSON.parse(raw); } catch { return "bad_request"; }
-  if (typeof body !== "object" || body === null) return "bad_request";
-  const { question, history } = body as Record<string, unknown>;
-  if (typeof question !== "string" || !question.trim()) return "bad_request";
-  const q = question.trim();
-  if (q.length > MAX_QUESTION_CHARS) return "too_long";
-  const h = Array.isArray(history)
-    ? history.filter((x): x is string => typeof x === "string")
-        .map((x) => x.trim().slice(0, MAX_QUESTION_CHARS)).filter(Boolean).slice(-MAX_HISTORY)
-    : [];
-  return { question: q, history: h };
-}
-
 type GeminiResponse = {
   candidates?: { content?: { parts?: { text?: string }[] }; finishReason?: string }[];
   promptFeedback?: { blockReason?: string };
@@ -128,9 +110,17 @@ async function askGemini(q: Question): Promise<Payload> {
   if (data.promptFeedback?.blockReason) return { error: "refused" };
   const candidate = data.candidates?.[0];
   const text = (candidate?.content?.parts ?? []).map((part) => part.text ?? "").join("").trim();
-  if (text) return { text };
-  console.warn("ask-cv: empty answer, finishReason:", candidate?.finishReason);
-  return { error: candidate?.finishReason === "SAFETY" ? "refused" : "empty" };
+  if (candidate?.finishReason === "SAFETY") return { error: "refused" };
+  if (candidate?.finishReason !== "STOP") {
+    console.warn("ask-cv: incomplete answer, finishReason:", candidate?.finishReason);
+    return { error: "invalid_answer" };
+  }
+  if (!text) return { error: "empty" };
+  if (!hasValidSourceLine(text)) {
+    console.warn("ask-cv: answer missing a valid CV source line");
+    return { error: "invalid_answer" };
+  }
+  return { text };
 }
 
 async function handle(req: Request, origin: string | null): Promise<Response> {

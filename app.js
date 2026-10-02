@@ -3,7 +3,7 @@ const SUGGESTIONS = [
   "What has Marco built with AI?",
   "How does the health safety gate in ManeMap work?",
   "Which tech stack does he use?",
-  "What did he do at e-bot7?",
+  "How has Marco driven enterprise AI adoption?",
   "Is he available, and how does he work?"
 ];
 const COPY = {
@@ -15,6 +15,7 @@ const COPY = {
   not_configured: "The assistant is being set up. Email Marco directly in the meantime.",
   upstream_error: "The answer service didn't respond. Ask again in a minute.",
   empty: "No answer came back. Rephrase the question and ask again.",
+  invalid_answer: "The answer was incomplete. Please ask again.",
   timeout: "The answer took too long. Ask again.",
   network: "The assistant can't be reached. Check your connection and ask again.",
   default: "The answer didn't come through. Ask again."

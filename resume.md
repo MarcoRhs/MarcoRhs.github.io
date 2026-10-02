@@ -1,14 +1,14 @@
 # Marco Rohns
 
-**AI Engineer & AI Product Builder**
+**AI Engineer & Enterprise Customer Success**
 
 Uplengen, Germany · marco.rohns12@gmail.com
-linkedin.com/in/marco-rohns · manemap.app
-Remote · Freelance and project-based · German, English, Spanish
+linkedin.com/in/marco-rohns · marcorhs.github.io · manemap.app
+Remote-first · Open to full-time roles and selected projects · On-site visits up to twice monthly
 
 ## Summary
 
-AI engineer and product builder with 10+ years in SaaS, customer success and project delivery. Founder of ManeMap, an AI-powered care app for horse owners that I designed and built end to end — live on the App Store and Google Play since May 2026 with paying subscribers. I combine enterprise delivery — stakeholders, rollouts and AI adoption at Ryte (acquired by Semrush) and e-bot7 (acquired by LivePerson) — with hands-on build: LLM integration, RAG, backend and mobile. Available for freelance AI engineering and automation projects, remote, in German, English and Spanish.
+AI engineer and product builder with more than a decade in client-facing project delivery, including 4.5 years in enterprise customer success and AI adoption at Ryte (acquired by Semrush) and e-bot7 (acquired by LivePerson). Founder of ManeMap, an AI-powered care app for horse owners that I designed and built end to end — live on the App Store and Google Play since May 2026 with paying subscribers. I combine enterprise account ownership, technical rollouts and customer enablement with hands-on work in LLM integration, RAG, backend and mobile development. Open to remote-first full-time roles and selected freelance projects, with planned on-site visits up to twice per month.
 
 ## Experience
 
@@ -34,6 +34,8 @@ Tools: Ryte Website User Experience & SEO platform · Jira · Confluence
 - Promoted from Customer Success Manager to Senior Customer Success Manager within 12 months (09.2023) based on portfolio performance.
 - Retained and renewed a €10k/month enterprise account that began adversarially — the client sought early exit with legal involvement weeks after signing — turning it around to a full renewal before the contract term ended.
 - Drove renewal and expansion across enterprise accounts, owning the full lifecycle from onboarding and success planning through QBRs.
+- Supported enterprise accounts across DACH and international markets, working with both consumption-based and seat-based usage models to identify adoption and expansion opportunities.
+- Helped build an automated onboarding system and monitored product usage to make adoption work across a large account portfolio.
 - Led coordination between Product, Engineering and Sales to resolve technical blockers and feed client needs into the roadmap.
 - Drove adoption of new AI-powered SEO features in client workflows and built customer success playbooks with defined KPIs.
 
@@ -79,4 +81,4 @@ Tools: conversational AI platform · enterprise chatbot deployments
 
 ## Languages
 
-German (native) · Spanish (native) · English (fluent)
+German (native) · Spanish (native) · English (professional working proficiency)
