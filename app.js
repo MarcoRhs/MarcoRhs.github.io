@@ -50,19 +50,33 @@ function renderAnswer(el, text){
   const lines = text.trim().split(/\r?\n/);
   const src = /^source:/i.test(lines[lines.length - 1]?.trim() || "") ? lines.pop().trim() : null;
   // Keep model line breaks. A single text node collapses them into one paragraph in HTML.
-  const body = lines.join("\n").replace(/([^\n])\s+-\s+(?=\*\*[^*\n]+:\*\*)/g, "$1\n- ");
-  let list = null;
-  for (const raw of body.split("\n")) {
+  const body = lines.join("\n").replace(/([^\n])\s+-\s+(?=(?:\*\*)?[^:\n]{2,40}:(?:\*\*)?\s)/g, "$1\n- ");
+  const entries = body.split("\n").map(raw => {
     const line = raw.trim();
-    if (!line) { list = null; continue; }
     const bullet = line.match(/^[-*•]\s+(.+)$/);
-    if (bullet) {
+    const content = bullet ? bullet[1] : line;
+    const category = content.replace(/\*\*/g, "").match(/^([^:.!?]{2,40}):\s+(.+)$/);
+    return {line, bullet, category};
+  });
+  const hasCategories = entries.filter(entry => entry.category).length >= 2;
+  let list = null, details = null;
+  for (const {line, bullet, category} of entries) {
+    if (!line) { list = null; details = null; continue; }
+    if (hasCategories && category) {
+      if (!details) { details = document.createElement("dl"); details.className = "answer-details"; el.append(details); }
+      const row = document.createElement("div");
+      const label = document.createElement("dt"); label.textContent = category[1];
+      const value = document.createElement("dd"); value.textContent = category[2];
+      row.append(label, value); details.append(row);
+      list = null;
+    } else if (bullet) {
+      details = null;
       if (!list) { list = document.createElement("ul"); el.append(list); }
       const li = document.createElement("li");
       appendInline(li, bullet[1]);
       list.append(li);
     } else {
-      list = null;
+      list = null; details = null;
       const p = document.createElement("p");
       appendInline(p, line);
       el.append(p);

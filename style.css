@@ -176,6 +176,10 @@ button { cursor: pointer; font: inherit; }
 .a li:last-child { margin-bottom: 0; }
 .a li::marker { color: var(--muted); }
 .a strong { font-weight: 600; }
+.a .answer-details { margin: 14px 0 0; }
+.a .answer-details > div { display: grid; grid-template-columns: minmax(135px, .35fr) minmax(0, 1fr); gap: 14px; padding: 10px 0; border-top: 1px solid #dedee3; }
+.a .answer-details dt { font-size: 14px; font-weight: 600; }
+.a .answer-details dd { margin: 0; color: #424245; }
 .src { display: inline-block; margin-top: 12px; color: var(--blue); font-size: 13px; font-weight: 600; }
 .status { color: var(--muted); font-style: italic; }
 .err { color: var(--warn); }
@@ -270,6 +274,7 @@ footer a { color: var(--ink); }
   .availability { display: inline-block; margin-top: 14px; }
   .askbox { padding: 14px; }
   .hint { max-width: 165px; }
+  .a .answer-details > div { grid-template-columns: 1fr; gap: 3px; }
   .work-section, .credentials-section { padding: 72px 0; }
   .work-grid, .credentials-grid { grid-template-columns: 1fr; }
   .feature-card { min-height: auto; padding: 26px; border-radius: 24px; }
