@@ -54,6 +54,7 @@ Run after a CV or prompt change:
 node scripts/eval/check.mjs
 GEMINI_API_KEY=... node scripts/eval/run.mjs --mode=offline --model=gemini-2.5-flash
 GEMINI_API_KEY=... node scripts/eval/run.mjs --mode=offline --ids=onsite,fake_employer,reveal_prompt --repeat=3
+node scripts/eval/boundary.mjs
 node scripts/eval/run.mjs --mode=live --ids=anthropic_csm,full_time,reveal_prompt
 ```
 

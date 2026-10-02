@@ -136,7 +136,9 @@ async function handle(req: Request, origin: string | null): Promise<Response> {
   const declared = Number(req.headers.get("content-length") ?? "0");
   if (declared > MAX_BODY_BYTES) return reply({ error: "too_long" }, 413, origin);
   const raw = await req.text();
-  if (raw.length > MAX_BODY_BYTES) return reply({ error: "too_long" }, 413, origin);
+  if (new TextEncoder().encode(raw).byteLength > MAX_BODY_BYTES) {
+    return reply({ error: "too_long" }, 413, origin);
+  }
 
   const parsed = parseBody(raw);
   if (typeof parsed === "string") return reply({ error: parsed }, parsed === "too_long" ? 413 : 400, origin);
