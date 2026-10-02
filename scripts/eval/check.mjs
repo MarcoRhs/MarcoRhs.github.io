@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { parseBody } from '../../supabase/functions/ask-cv/request.ts';
-import { buildUserTurn, hasValidSourceLine } from '../../supabase/functions/ask-cv/prompt.ts';
+import { buildUserTurn, hasValidSourceLine, normalizeSourceLine } from '../../supabase/functions/ask-cv/prompt.ts';
 
 assert.equal(parseBody('{'), 'bad_request');
 assert.equal(parseBody(JSON.stringify({ question: '   ' })), 'bad_request');
@@ -22,5 +22,7 @@ assert.equal(hasValidSourceLine('Unsupported.\nSource: Experience — Anthropic'
 assert.equal(hasValidSourceLine('No source here.'), false);
 assert.equal(hasValidSourceLine('Source: Skills'), false);
 assert.equal(hasValidSourceLine('Supported.\nSource: Skills; Skills'), false);
+assert.equal(normalizeSourceLine('Supported.\nSource: Skills.'), 'Supported.\nSource: Skills');
+assert.equal(hasValidSourceLine('Supported.\nSource: Skills.'), true);
 
 console.log('Request and answer checks passed');

@@ -60,7 +60,7 @@ Tools: conversational AI platform · enterprise chatbot deployments
 
 ## Skills
 
-- **AI & LLM:** RAG architecture, vector search (pgvector), embeddings, prompt engineering, LLM safety gating, LLM evaluation and regression testing, prompt-injection defence, Gemini, Claude / Anthropic API, OpenAI API, AI agents, agentic development (Claude Code, MCP)
+- **AI & LLM:** RAG architecture, vector search (pgvector), embeddings, prompt engineering, LLM safety gating, LLM evaluation and regression testing, prompt-injection defence, Gemini, Claude / Anthropic API, OpenAI API, AI agents, Claude Code for AI-assisted development, MCP tool integrations
 - **Engineering:** Kotlin, Compose Multiplatform, Supabase, PostgreSQL, Row Level Security, Edge Functions (Deno / TypeScript), REST APIs, RevenueCat, App Store and Google Play releases
 - **Automation:** business process automation, Make.com, Zapier, API integrations
 - **Delivery:** AI adoption and rollouts, enterprise customer success, stakeholder management, project management, Jira, Confluence, monday.com

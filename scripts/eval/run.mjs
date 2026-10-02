@@ -1,6 +1,6 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { performance } from 'node:perf_hooks';
-import { SYSTEM_PROMPT, buildUserTurn, hasValidSourceLine } from '../../supabase/functions/ask-cv/prompt.ts';
+import { SYSTEM_PROMPT, buildUserTurn, hasValidSourceLine, normalizeSourceLine } from '../../supabase/functions/ask-cv/prompt.ts';
 import { normalizeHistory } from '../../supabase/functions/ask-cv/request.ts';
 
 const args = Object.fromEntries(process.argv.slice(2).map((arg) => {
@@ -46,7 +46,7 @@ for (const [index, c] of Array.from({ length: repeat }, () => selected).flat().e
     const data = await response.json();
     if (mode === 'live') text = data.text || '';
     else {
-      text = (data.candidates?.[0]?.content?.parts || []).map((p) => p.text || '').join('').trim();
+      text = normalizeSourceLine((data.candidates?.[0]?.content?.parts || []).map((p) => p.text || '').join(''));
       finishReason = data.candidates?.[0]?.finishReason || '';
     }
     error = typeof data.error === 'string' ? data.error : data.error?.message || (!text ? JSON.stringify(data).slice(0, 240) : '');

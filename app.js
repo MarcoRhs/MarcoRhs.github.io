@@ -45,12 +45,29 @@ function appendInline(el, text){
   el.append(document.createTextNode(text.slice(end)));
 }
 
+function joinCategoryPairs(body){
+  const lines = body.split("\n");
+  const isPair = i => {
+    const label = lines[i]?.trim() || "";
+    const value = lines[i + 1]?.trim() || "";
+    return /^[A-Za-zÀ-ÿ0-9][A-Za-zÀ-ÿ0-9 &/+\-]{2,40}$/.test(label)
+      && value.length > label.length + 8 && !/^[-*•]/.test(value);
+  };
+  if (lines.filter((_, i) => isPair(i)).length < 2) return body;
+  const joined = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (isPair(i)) { joined.push(`${lines[i].trim()}: ${lines[i + 1].trim()}`); i++; }
+    else joined.push(lines[i]);
+  }
+  return joined.join("\n");
+}
+
 function renderAnswer(el, text){
   el.replaceChildren();
   const lines = text.trim().split(/\r?\n/);
   const src = /^source:/i.test(lines[lines.length - 1]?.trim() || "") ? lines.pop().trim() : null;
   // Keep model line breaks. A single text node collapses them into one paragraph in HTML.
-  const body = lines.join("\n").replace(/([^\n])\s+-\s+(?=(?:\*\*)?[^:\n]{2,40}:(?:\*\*)?\s)/g, "$1\n- ");
+  const body = joinCategoryPairs(lines.join("\n")).replace(/([^\n])\s+-\s+(?=(?:\*\*)?[^:\n]{2,40}:(?:\*\*)?\s)/g, "$1\n- ");
   const entries = body.split("\n").map(raw => {
     const line = raw.trim();
     const bullet = line.match(/^[-*•]\s+(.+)$/);

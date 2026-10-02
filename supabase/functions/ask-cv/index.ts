@@ -14,7 +14,7 @@
  */
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
-import { buildUserTurn, hasValidSourceLine, SYSTEM_PROMPT } from "./prompt.ts";
+import { buildUserTurn, hasValidSourceLine, normalizeSourceLine, SYSTEM_PROMPT } from "./prompt.ts";
 import { parseBody, type Question } from "./request.ts";
 
 const IP_LIMIT = 15;
@@ -109,7 +109,7 @@ async function askGemini(q: Question): Promise<Payload> {
   }
   if (data.promptFeedback?.blockReason) return { error: "refused" };
   const candidate = data.candidates?.[0];
-  const text = (candidate?.content?.parts ?? []).map((part) => part.text ?? "").join("").trim();
+  const text = normalizeSourceLine((candidate?.content?.parts ?? []).map((part) => part.text ?? "").join(""));
   if (candidate?.finishReason === "SAFETY") return { error: "refused" };
   if (candidate?.finishReason !== "STOP") {
     console.warn("ask-cv: incomplete answer, finishReason:", candidate?.finishReason);
