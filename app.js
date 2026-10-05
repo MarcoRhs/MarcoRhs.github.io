@@ -141,3 +141,21 @@ async function ask(){
 askBtn.onclick = ask;
 stopBtn.onclick = () => ctl && ctl.abort();
 q.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); ask(); } });
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!reduceMotion && "IntersectionObserver" in window) {
+  const revealItems = [...document.querySelectorAll(".reveal")];
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
+    });
+  }, {rootMargin: "0px 0px -8%", threshold: .08});
+
+  revealItems.forEach(item => {
+    item.classList.add("reveal-ready");
+    if (item.getBoundingClientRect().top < window.innerHeight * .94) item.classList.add("is-visible");
+    else revealObserver.observe(item);
+  });
+}
