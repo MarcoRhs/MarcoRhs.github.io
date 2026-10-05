@@ -18,7 +18,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Marco Rohns","jobTitle":"AI Engineer, Product Builder & Enterprise Adoption","address":{"@type":"PostalAddress","addressLocality":"Uplengen","addressCountry":"DE"},"email":"mailto:marco.rohns12@gmail.com","sameAs":["https://www.linkedin.com/in/marco-rohns","https://manemap.app"],"knowsLanguage":["de","es","en"],"knowsAbout":["Retrieval-Augmented Generation","Large Language Models","Kotlin","Compose Multiplatform","Supabase","PostgreSQL","Enterprise Customer Success","AI adoption"],"worksFor":{"@type":"Organization","name":"The Rohns UG (ManeMap)","url":"https://manemap.app"}}
 </script>
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -29,11 +29,17 @@
       <span>Marco Rohns</span>
     </a>
     <nav aria-label="Primary navigation">
-      <a class="nav-link" href="#value">Value</a>
-      <a class="nav-link" href="#work">Work</a>
-      <a class="nav-link" href="#approach">Approach</a>
-      <a class="nav-link" href="#askzone">Ask my CV</a>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="#value">Value</a>
+        <a class="nav-link" href="#work">Work</a>
+        <a class="nav-link" href="#approach">Approach</a>
+        <a class="nav-link" href="architecture.html">Architecture</a>
+        <a class="nav-link" href="#askzone">Ask my CV</a>
+      </div>
       <a class="nav-cta" href="Marco_Rohns_CV.pdf" download>Download CV</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
 
@@ -127,10 +133,13 @@
           </div>
           <ul class="case-list">
             <li>RAG assistant using a curated bilingual knowledge base, horse context, weather and training history.</li>
-            <li>Three-tier safety gate that separates emergencies, caution cases and standard guidance.</li>
+            <li>Layered health-safety controls before and after generation, including emergency classification and output sanitisation.</li>
             <li>Kotlin / Compose Multiplatform app with Supabase, PostgreSQL, Edge Functions and pgvector.</li>
           </ul>
-          <a class="case-link" href="https://manemap.app" target="_blank" rel="noopener">Visit ManeMap <span aria-hidden="true">↗</span></a>
+          <div class="case-cta-row">
+            <a class="case-link" href="architecture.html">See the architecture <span aria-hidden="true">→</span></a>
+            <a class="case-link" href="https://manemap.app" target="_blank" rel="noopener">Visit ManeMap <span aria-hidden="true">↗</span></a>
+          </div>
         </article>
 
         <article class="case-card adoption-case reveal">
@@ -151,13 +160,30 @@
           </div>
         </article>
       </div>
+
+      <div class="product-evidence reveal" aria-labelledby="product-evidence-title">
+        <div class="product-evidence-copy">
+          <p class="card-kicker">Live product evidence</p>
+          <h3 id="product-evidence-title">The product behind the architecture.</h3>
+          <p>ManeMap turns horse, weather, care and training context into daily guidance and a focused conversation with Milo. The same shared Kotlin codebase ships to both stores.</p>
+          <div class="store-links" aria-label="ManeMap store listings">
+            <a href="https://apps.apple.com/de/app/manemap/id6758726376" target="_blank" rel="noopener">App Store <span aria-hidden="true">↗</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.manemap.app" target="_blank" rel="noopener">Google Play <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="ownership-note"><strong>What I own:</strong> product direction, architecture, data model, safety controls, evaluation and releases. Claude Code and MCP integrations accelerate implementation, QA and store work.</p>
+        </div>
+        <div class="product-shots" aria-label="ManeMap application screens">
+          <img src="assets/manemap-home.webp" width="760" height="1569" loading="lazy" alt="ManeMap home screen showing a horse profile and Milo's daily care tip">
+          <img src="assets/manemap-milo.webp" width="760" height="1569" loading="lazy" alt="ManeMap Milo assistant screen with suggested horse-care questions">
+        </div>
+      </div>
     </section>
 
     <section class="approach-section" id="approach" aria-labelledby="approach-title">
       <div class="section-heading reveal">
         <p class="eyebrow">How I work</p>
         <h2 id="approach-title">A clear path from use case to adoption.</h2>
-        <p>The implementation changes. The discipline does not.</p>
+        <p>I define the user decision and risk, ship a complete path, test its failure modes, and leave teams able to run it.</p>
       </div>
       <ol class="process-flow reveal-stagger">
         <li class="reveal"><span>01</span><div><h3>Frame</h3><p>Clarify the user, the decision, the desired outcome and the real risk.</p></div></li>
@@ -193,18 +219,18 @@
         </div>
         <div class="chips" id="chips" aria-label="Suggested questions"></div>
         <p class="panel-note">If the CV does not support a claim, the assistant says so.</p>
+        <div class="thread" id="thread" aria-live="polite"></div>
       </div>
     </section>
 
     <div class="unavailable" id="unavailable" hidden>
       The assistant is not reachable right now. Marco answers directly at <a href="mailto:marco.rohns12@gmail.com">marco.rohns12@gmail.com</a>.
     </div>
-    <div class="thread" id="thread" aria-live="polite"></div>
-
     <section class="credentials-section" id="credentials" aria-labelledby="credentials-title">
       <div class="section-heading reveal">
         <p class="eyebrow">Technical range</p>
-        <h2 id="credentials-title">Depth where it matters.<br>Range where it helps.</h2>
+        <h2 id="credentials-title">The work I can own.</h2>
+        <p>Engineering the system, making its limits visible, and helping people put it into practice.</p>
       </div>
       <div class="credentials-grid reveal-stagger">
         <article class="credential-card reveal">
@@ -222,6 +248,11 @@
           <h3>From rollout to renewal.</h3>
           <p>AI adoption, enterprise customer success, onboarding, QBRs, stakeholder management, enablement and project delivery.</p>
         </article>
+      </div>
+      <div class="role-fit reveal" aria-label="Best fit roles">
+        <span>Best fit</span>
+        <div><b>AI Engineer</b><b>AI Product Engineer</b><b>AI Solutions &amp; Adoption</b></div>
+        <p>Roles where I can ship grounded AI products, harden the user-facing system and help teams adopt it in real workflows.</p>
       </div>
       <div class="fit-panel reveal">
         <div><span>Working fit</span><b>Remote-first · Uplengen, Germany · Planned on-site visits up to twice monthly</b></div>
@@ -246,10 +277,10 @@
 
   <footer>
     <p>Answers are generated by Google Gemini from Marco's CV and can be incomplete. Questions and answers are retained for 90 days without a visitor identifier; IP addresses are used only as a salted hash for request limits and deleted after 3 days.</p>
-    <div><a href="mailto:marco.rohns12@gmail.com">marco.rohns12@gmail.com</a><a href="https://manemap.app/impressum" target="_blank" rel="noopener">Impressum</a><a href="https://manemap.app/datenschutz" target="_blank" rel="noopener">Datenschutz</a></div>
+    <div><a href="mailto:marco.rohns12@gmail.com">marco.rohns12@gmail.com</a><a href="https://www.manemap.app/en/legal/legal-notice" target="_blank" rel="noopener">Legal notice</a><a href="https://www.manemap.app/en/legal/privacy" target="_blank" rel="noopener">Privacy</a></div>
   </footer>
 </div>
 
-<script src="app.js?v=5" defer></script>
+<script src="app.js?v=6" defer></script>
 </body>
 </html>

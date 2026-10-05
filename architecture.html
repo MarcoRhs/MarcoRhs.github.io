@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; font-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ManeMap &amp; Milo Architecture — Marco Rohns</title>
+<meta name="description" content="A technical walkthrough of ManeMap and Milo: retrieval, context assembly, health-safety controls, model generation, output sanitisation and the decisions behind the stack.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ManeMap & Milo Architecture — Marco Rohns">
+<meta property="og:description" content="How the live AI horse-care product handles retrieval, context, safety, generation and evaluation.">
+<meta property="og:url" content="https://marcorhs.github.io/architecture.html">
+<meta property="og:image" content="https://marcorhs.github.io/assets/manemap-milo.webp">
+<link rel="icon" href="photo.jpg" type="image/jpeg">
+<link rel="canonical" href="https://marcorhs.github.io/architecture.html">
+<link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page-shell">
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Marco Rohns — home">
+      <img src="photo.jpg" width="40" height="40" alt="Portrait of Marco Rohns">
+      <span>Marco Rohns</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="./#value">Value</a>
+        <a class="nav-link" href="./#work">Work</a>
+        <a class="nav-link" href="./#approach">Approach</a>
+        <a class="nav-link" href="architecture.html" aria-current="page">Architecture</a>
+        <a class="nav-link" href="./#askzone">Ask my CV</a>
+      </div>
+      <a class="nav-cta" href="Marco_Rohns_CV.pdf" download>Download CV</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="arch-hero reveal" aria-labelledby="arch-title">
+      <p class="eyebrow">Technical deep dive</p>
+      <h1 id="arch-title">How ManeMap and Milo are actually built.</h1>
+      <p>ManeMap is a Kotlin / Compose Multiplatform app on iOS and Android with a Supabase backend. Milo combines retrieval, live horse context and layered safety controls before a response reaches the owner.</p>
+      <a class="arch-back" href="./">← Back to the portfolio</a>
+    </section>
+
+    <section class="proof-strip arch-proof reveal reveal-stagger" aria-label="Architecture highlights">
+      <div><strong>1 shared codebase</strong><span>Kotlin · iOS and Android</span></div>
+      <div><strong>768 dimensions</strong><span>Gemini embeddings in pgvector</span></div>
+      <div><strong>2 emergency paths</strong><span>Rules plus model classification</span></div>
+      <div><strong>Before each release</strong><span>Regression checks for critical behaviour</span></div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="request-path-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Request path</p>
+        <h2 id="request-path-title">From question to guarded answer.</h2>
+        <p>The safety decision starts before generation and continues after it. Retrieval is one part of the system, rather than the entire system.</p>
+      </div>
+      <ol class="arch-stage-grid reveal-stagger">
+        <li class="arch-stage reveal">
+          <span>01 · CLASSIFY</span>
+          <h3>Assess the risk first.</h3>
+          <p>Explicit emergency patterns catch known high-risk language. A second, lightweight model classifier checks symptom descriptions that do not use clinical terms.</p>
+        </li>
+        <li class="arch-stage reveal">
+          <span>02 · RETRIEVE</span>
+          <h3>Find relevant evidence.</h3>
+          <p>The question becomes a 768-dimension embedding and is matched with pgvector against the bilingual veterinary knowledge base.</p>
+        </li>
+        <li class="arch-stage reveal">
+          <span>03 · ASSEMBLE</span>
+          <h3>Add the horse context.</h3>
+          <p>Retrieved passages are combined with the active horse profile, medical and care data, recent training and current weather when available.</p>
+        </li>
+        <li class="arch-stage reveal">
+          <span>04 · GENERATE</span>
+          <h3>Answer inside constraints.</h3>
+          <p>Gemini receives the assembled context and response rules, including the ban on diagnosis, medication instructions and invented personal data.</p>
+        </li>
+        <li class="arch-stage reveal">
+          <span>05 · SANITISE</span>
+          <h3>Check the output.</h3>
+          <p>The server removes leaked internal labels and unsafe medication detail, adds a safe vet redirect when needed, then returns the cleaned response.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="architecture-section architecture-section-dark" aria-labelledby="decisions-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Architecture decisions</p>
+        <h2 id="decisions-title">Why this stack fits the product.</h2>
+        <p>Each choice reduces operational complexity or gives me tighter control over a user-facing risk.</p>
+      </div>
+      <div class="decision-grid reveal-stagger">
+        <article class="decision-card reveal">
+          <span>Client</span>
+          <h3>Kotlin / Compose Multiplatform</h3>
+          <p>A shared codebase ships to both stores while keeping the app under direct product and engineering ownership. It replaced the first React Native version managed with an external team.</p>
+        </article>
+        <article class="decision-card reveal">
+          <span>Data and retrieval</span>
+          <h3>Supabase + pgvector</h3>
+          <p>PostgreSQL, authentication, row-level access rules, serverless orchestration and vector retrieval stay in one backend stack, avoiding another service to operate.</p>
+        </article>
+        <article class="decision-card reveal">
+          <span>Model layer</span>
+          <h3>Gemini with explicit controls</h3>
+          <p>The model handles multilingual generation and classification. Deterministic checks, constrained context and regression tests carry the product requirements around it.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="safety-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Safety design</p>
+        <h2 id="safety-title">Controls at three points.</h2>
+        <p>Health guidance can fail through missed urgency, unsafe wording or leaked internal detail. The pipeline addresses each failure at a different stage.</p>
+      </div>
+      <div class="safety-flow reveal-stagger">
+        <article class="safety-step reveal">
+          <span>Before generation</span>
+          <h3>Emergency detection</h3>
+          <p>Rules cover high-precision signals; the second classifier covers paraphrases and symptom descriptions. Educational questions are separated from active incidents.</p>
+        </article>
+        <div class="safety-arrow" aria-hidden="true">→</div>
+        <article class="safety-step reveal">
+          <span>During generation</span>
+          <h3>Response constraints</h3>
+          <p>The prompt sets the response mode and blocks definitive diagnoses, prescribed medication detail and unrelated financial context in health situations.</p>
+        </article>
+        <div class="safety-arrow" aria-hidden="true">→</div>
+        <article class="safety-step reveal">
+          <span>After generation</span>
+          <h3>Output sanitisation</h3>
+          <p>Server-side cleaning removes internal mode labels and named medication content before the app receives the response.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="verification-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Verification</p>
+        <h2 id="verification-title">What I test and observe.</h2>
+        <p>The public claims on this site come from systems and checks that exist in the working products.</p>
+      </div>
+      <div class="credentials-grid reveal-stagger">
+        <article class="credential-card reveal">
+          <p class="card-kicker">Regression suite</p>
+          <h3>Critical behaviour before release.</h3>
+          <p>Tests cover emergency detection, retrieval quality and context retention so prompt or model changes do not silently alter the highest-risk paths.</p>
+        </article>
+        <article class="credential-card reveal">
+          <p class="card-kicker">Observability</p>
+          <h3>Timing by pipeline stage.</h3>
+          <p>Embedding, retrieval and model stages emit timing data, which makes slow paths visible before optimisation work begins.</p>
+        </article>
+        <article class="credential-card reveal">
+          <p class="card-kicker">Public assistant</p>
+          <h3>A separate grounded system.</h3>
+          <p>AskCV has no tools or private data access. It validates input and output server-side, enforces source labels and is regression-tested for false claims and prompt injection.</p>
+        </article>
+      </div>
+
+      <div class="ownership-panel reveal">
+        <div>
+          <p class="eyebrow">Ownership</p>
+          <h2>What I build, and what tools accelerate.</h2>
+        </div>
+        <div>
+          <p>I own the product direction, architecture, data model, safety logic, evaluation strategy and release decisions for ManeMap. I also built the current mobile client and Supabase backend.</p>
+          <p>Claude Code and MCP integrations accelerate implementation, QA and store work. I remain responsible for the decisions, review and released behaviour.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section reveal" aria-labelledby="arch-contact-title">
+      <div>
+        <p class="eyebrow">Go deeper</p>
+        <h2 id="arch-contact-title">Have a technical question?</h2>
+        <p>Use AskCV for a sourced answer, inspect the live product, or ask me directly.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="button button-light" href="./#askzone">Ask my CV</a>
+        <a class="button button-outline" href="https://manemap.app" target="_blank" rel="noopener">Visit ManeMap ↗</a>
+        <a class="contact-cv" href="mailto:marco.rohns12@gmail.com?subject=ManeMap%20architecture">Email Marco →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>This page describes the current public architecture at a useful review level and intentionally excludes secrets, credentials and private user data.</p>
+    <div><a href="./">Portfolio</a><a href="https://www.manemap.app/en/legal/legal-notice" target="_blank" rel="noopener">Legal notice</a><a href="https://www.manemap.app/en/legal/privacy" target="_blank" rel="noopener">Privacy</a></div>
+  </footer>
+</div>
+
+<script src="arch.js?v=6" defer></script>
+</body>
+</html>

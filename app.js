@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js");
+
 const ENDPOINT = "https://ulkqedfxgogayealzqpv.supabase.co/functions/v1/ask-cv";
 const SUGGESTIONS = [
   "What has Marco built with AI?",
@@ -62,6 +64,15 @@ function joinCategoryPairs(body){
   return joined.join("\n");
 }
 
+function formatSourceLine(sourceLine){
+  const labels = sourceLine.replace(/^source:\s*/i, "").split("; ");
+  const hasGap = labels.includes("not in CV");
+  const evidence = labels.filter(label => label !== "not in CV");
+  if (!evidence.length) return "CV source: Not stated in the CV";
+  const prefix = hasGap ? "CV evidence (with a gap noted): " : "CV evidence: ";
+  return `${prefix}${evidence.join(" · ")}`;
+}
+
 function renderAnswer(el, text){
   el.replaceChildren();
   const lines = text.trim().split(/\r?\n/);
@@ -99,7 +110,7 @@ function renderAnswer(el, text){
       el.append(p);
     }
   }
-  if (src){ const s = document.createElement("span"); s.className = "src"; s.textContent = src; el.append(s); }
+  if (src){ const s = document.createElement("span"); s.className = "src"; s.textContent = formatSourceLine(src); el.append(s); }
 }
 
 async function ask(){
@@ -111,6 +122,7 @@ async function ask(){
   const ae = document.createElement("div"); ae.className = "a";
   const st = document.createElement("span"); st.className = "status"; st.textContent = "Thinking...";
   ae.append(st); item.append(qe, ae); thread.prepend(item);
+  item.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
   q.value = "";
   const history = asked.slice(-4);
   asked.push(text);
@@ -157,5 +169,28 @@ if (!reduceMotion && "IntersectionObserver" in window) {
     item.classList.add("reveal-ready");
     if (item.getBoundingClientRect().top < window.innerHeight * .94) item.classList.add("is-visible");
     else revealObserver.observe(item);
+  });
+}
+
+const navToggle = $("navToggle");
+const navLinks = $("nav-links");
+if (navToggle && navLinks) {
+  const setNav = (open) => {
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    navLinks.classList.toggle("is-open", open);
+  };
+  navToggle.addEventListener("click", () => setNav(navToggle.getAttribute("aria-expanded") !== "true"));
+  navLinks.addEventListener("click", (event) => {
+    if (event.target.closest(".nav-link")) setNav(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navLinks.classList.contains("is-open")) {
+      setNav(false);
+      navToggle.focus();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest("#nav-links") && !event.target.closest("#navToggle")) setNav(false);
   });
 }

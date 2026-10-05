@@ -136,7 +136,7 @@ def build():
             story.append(KeepTogether(block[:first_bullet + 1]))
             story.extend(block[first_bullet + 1:])
 
-    for key in ("Skills", "Certifications & Education", "Languages"):
+    for key in ("Technical architecture & decisions", "Skills", "Certifications & Education", "Languages"):
         items = [line[2:] if line.startswith("- ") else line
                  for line in sections[key] if line.strip()]
         paras = [Paragraph(("–&nbsp;&nbsp;" if key != "Languages" else "") + markup(item),

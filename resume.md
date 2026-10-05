@@ -19,7 +19,7 @@ Stack: Kotlin · Compose Multiplatform · Supabase (PostgreSQL, Row Level Securi
 
 - Built and shipped ManeMap solo — an AI-powered horse care app for first-time owners in the DACH market — to the App Store and Google Play (live since 05.2026), earning recurring revenue from paying subscribers on monthly and annual plans.
 - Architected Milo, a RAG-based AI assistant: vector search (pgvector, 768-dimension embeddings) over a curated bilingual DE/EN veterinary knowledge base, combined with horse profile, live weather and training history into daily care advice.
-- Built a three-tier health safety gate — emergency, caution, standard — that separates genuine emergencies such as colic or bleeding from educational questions before the model answers.
+- Built layered health-safety controls: deterministic emergency patterns and a second model classifier identify active incidents before generation; server-side output sanitisation removes unsafe medication detail and internal labels afterwards.
 - Wrote a regression test suite for the assistant covering emergency detection, retrieval quality and context retention, run before each release to catch safety-gate regressions.
 - Rebuilt the app natively in Kotlin / Compose Multiplatform, self-built since 04.2026, after managing an external React Native team for the first version.
 - Developed the Supabase backend: PostgreSQL data model, row-level security, serverless Edge Functions and content pipelines, with stage-level request timing instrumented across the pipeline.
@@ -57,6 +57,13 @@ Tools: conversational AI platform · enterprise chatbot deployments
 09.2011 – 02.2020 · project-based from 2018
 
 - Planned and delivered client and event projects across cross-functional teams; applied lean methods to streamline workflows.
+
+## Technical architecture & decisions
+
+- **Milo request path and safety:** classify health risk first, retrieve with pgvector, assemble horse and live context, generate with Gemini, then sanitise the output before delivery.
+- **Stack decisions:** kept data, authentication, Edge Functions and vector retrieval in Supabase; moved from the externally managed React Native version to one shared Kotlin / Compose Multiplatform codebase that I build and release directly.
+- **Verification:** regression tests cover emergency detection, retrieval quality and conversation context; stage-level timings expose embedding, retrieval and model latency.
+- **Ownership:** I own the product direction, architecture, data model, safety logic, evaluation strategy and release decisions. Claude Code and MCP integrations accelerate implementation, QA and store work.
 
 ## Skills
 
