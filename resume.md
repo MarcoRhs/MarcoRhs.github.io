@@ -4,11 +4,11 @@
 
 Uplengen, Germany · marco.rohns12@gmail.com
 linkedin.com/in/marco-rohns · marcorhs.github.io · manemap.app
-Remote-first · Open to full-time roles and selected projects · On-site visits up to twice monthly
+Open to full-time roles, projects and collaborations
 
 ## Summary
 
-AI engineer and product builder with more than a decade in client-facing project delivery, including 4.5 years in enterprise customer success and AI adoption at Ryte (acquired by Semrush) and e-bot7 (acquired by LivePerson). Founder of ManeMap, an AI-powered care app for horse owners that I designed and built end to end — live on the App Store and Google Play since May 2026 with paying subscribers. I combine enterprise account ownership, technical rollouts and customer enablement with hands-on work in LLM integration, RAG, backend and mobile development. Open to remote-first full-time roles and selected freelance projects, with planned on-site visits up to twice per month.
+AI engineer and product builder with more than a decade in client-facing project delivery, including 4.5 years in enterprise customer success and AI adoption at Ryte (acquired by Semrush) and e-bot7 (acquired by LivePerson). Founder of ManeMap, an AI-powered care app for horse owners that I designed and built end to end — live on the App Store and Google Play since May 2026 with paying subscribers. I combine enterprise account ownership, technical rollouts and customer enablement with hands-on work in LLM integration, RAG, backend and mobile development. Open to full-time roles, projects and collaborations across AI engineering, AI product and adoption.
 
 ## Experience
 
