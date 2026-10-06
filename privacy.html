@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; font-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy — Marco Rohns</title>
+<meta name="description" content="Privacy information for the professional portfolio of Marco Rohns and its AskCV assistant.">
+<link rel="icon" href="photo.jpg" type="image/jpeg">
+<link rel="canonical" href="https://marcorhs.github.io/privacy.html">
+<link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page-shell">
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Marco Rohns — home">
+      <img src="photo.jpg" width="40" height="40" alt="Portrait of Marco Rohns">
+      <span>Marco Rohns</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="./#work">Work</a>
+        <a class="nav-link" href="architecture.html">Architecture</a>
+        <a class="nav-link" href="./#askzone">Ask my CV</a>
+      </div>
+      <a class="nav-cta" href="Marco_Rohns_CV.pdf" download>Download CV</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="legal-hero reveal" aria-labelledby="privacy-title">
+      <p class="eyebrow">Portfolio privacy</p>
+      <h1 id="privacy-title">Clear about the data path.</h1>
+      <p>This page describes the data processing on marcorhs.github.io, including the AskCV assistant. It does not cover the separate ManeMap app or product website.</p>
+      <span class="legal-updated">Last updated: 6 October 2026</span>
+      <a class="arch-back" href="./">← Back to the portfolio</a>
+    </section>
+
+    <div class="legal-layout">
+      <nav class="legal-toc" aria-label="On this page">
+        <strong>On this page</strong>
+        <a href="#controller">Controller</a>
+        <a href="#hosting">Website hosting</a>
+        <a href="#askcv">AskCV</a>
+        <a href="#contact-data">Contact</a>
+        <a href="#cookies">Cookies</a>
+        <a href="#recipients">Recipients</a>
+        <a href="#rights">Your rights</a>
+      </nav>
+
+      <article class="legal-copy">
+        <section id="controller">
+          <h2>Controller</h2>
+          <div class="legal-card">
+            <address class="legal-address">
+              <strong>The Rohns UG (haftungsbeschränkt)</strong><br>
+              Bührener Straße 15B<br>
+              26670 Uplengen<br>
+              Germany
+            </address>
+            <p>Represented by Marco Rohns and Laura Rohns<br>
+            Email: <a href="mailto:marco.rohns12@gmail.com">marco.rohns12@gmail.com</a><br>
+            Phone: <a href="tel:+491774957900">+49 177 4957900</a></p>
+          </div>
+        </section>
+
+        <section id="hosting">
+          <h2>Website hosting</h2>
+          <p>This static website is hosted through GitHub Pages. When you load a page, GitHub processes technical request data required to deliver and secure the site. GitHub states that visitors’ IP addresses are logged and stored for security purposes.</p>
+          <p>The legal basis is Article 6(1)(f) GDPR. Our legitimate interest is providing a secure, reliable professional portfolio. GitHub processes its own operational data under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</p>
+        </section>
+
+        <section id="askcv">
+          <h2>AskCV assistant</h2>
+          <p>AskCV is optional. When you submit a question, the following data is processed:</p>
+          <ul>
+            <li>Your current question and up to four earlier questions from the same open page.</li>
+            <li>The generated answer and the public CV context needed to produce it.</li>
+            <li>Your IP address at the network edge and a salted SHA-256 hash created from it for request limits.</li>
+          </ul>
+          <h3>Processing path</h3>
+          <p>The browser sends the question to a Supabase Edge Function. The function sends the question, limited question history, fixed instructions and Marco’s public CV to the Google Gemini API. Gemini returns an answer; the function validates it before displaying it.</p>
+          <h3>Purposes and legal basis</h3>
+          <p>The data is used to answer professional questions, prevent automated abuse and excessive costs, check answer quality and improve reliability. The legal basis is Article 6(1)(f) GDPR. The legitimate interests are presenting professional experience interactively, protecting the public service and correcting unsupported answers.</p>
+          <h3>Retention</h3>
+          <dl class="legal-facts">
+            <div><dt>Questions and answers</dt><dd>Deleted after no more than 90 days. They are stored without a visitor account or visitor identifier.</dd></div>
+            <div><dt>Application IP hash</dt><dd>Deleted after no more than 3 days. The application database does not store the raw IP address.</dd></div>
+            <div><dt>Gemini processing</dt><dd>Google’s current Gemini API documentation states that prompts, context and outputs may be retained for up to 55 days for abuse monitoring.</dd></div>
+          </dl>
+          <div class="legal-note"><p>Do not include confidential, sensitive or third-party personal information in an AskCV question. You can browse the complete portfolio and download the CV without using AskCV.</p></div>
+          <h3>No automated decisions</h3>
+          <p>AskCV provides informational answers only. Its output is not used to make a legal or similarly significant decision about a visitor.</p>
+        </section>
+
+        <section id="contact-data">
+          <h2>Email contact</h2>
+          <p>If you contact Marco by email, the contact details and message content you provide are processed to answer your request. The legal basis is Article 6(1)(b) GDPR where the exchange concerns a possible contract or role, and Article 6(1)(f) GDPR for other professional enquiries.</p>
+          <p>Messages are deleted when the enquiry is complete unless contractual, commercial or statutory retention requirements apply. The Email Marco button opens Google’s Gmail composer in a new tab; Google’s own privacy information applies to that page.</p>
+        </section>
+
+        <section id="cookies">
+          <h2>Cookies and analytics</h2>
+          <p>This portfolio does not set cookies, use advertising trackers or run website analytics. It does not use browser local storage. External services are opened only when you choose a corresponding link, except for GitHub Pages hosting and the AskCV processing described above.</p>
+        </section>
+
+        <section id="recipients">
+          <h2>Recipients and international transfers</h2>
+          <ul>
+            <li><strong>GitHub</strong> — static website hosting and security.</li>
+            <li><strong>Supabase Pte. Ltd.</strong> — AskCV Edge Function, database and retention jobs.</li>
+            <li><strong>Google</strong> — Gemini API answer generation and Gmail only if you open the email composer.</li>
+          </ul>
+          <p>These providers or their subprocessors may process data outside the European Economic Area. According to their published terms, transfers use applicable safeguards such as adequacy decisions, the EU–US Data Privacy Framework or EU Standard Contractual Clauses. See the <a href="https://supabase.com/legal/customer-resources/data-processing-addendum" target="_blank" rel="noopener">Supabase DPA</a>, <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Gemini API terms</a> and <a href="https://ai.google.dev/gemini-api/docs/usage-policies" target="_blank" rel="noopener">Gemini abuse-monitoring information</a>.</p>
+        </section>
+
+        <section id="rights">
+          <h2>Your rights</h2>
+          <p>Subject to the legal requirements, you may request access, correction, deletion, restriction, data portability or object to processing based on legitimate interests. Contact <a href="mailto:marco.rohns12@gmail.com">marco.rohns12@gmail.com</a>. Because AskCV logs contain no visitor account or visitor identifier, identifying a particular entry may not be possible without information from you that reliably matches the stored text.</p>
+          <p>You may also lodge a complaint with a data protection authority. The authority responsible in Lower Saxony provides an <a href="https://www.lfd.niedersachsen.de/beschwerde" target="_blank" rel="noopener">online complaint form</a>.</p>
+          <p>The provision of data is voluntary. No statutory or contractual requirement obliges you to use AskCV or contact Marco.</p>
+        </section>
+
+        <section id="changes">
+          <h2>Changes</h2>
+          <p>This privacy information will be updated when the portfolio’s services or data processing change. The current version is identified by the date at the top of this page.</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>Privacy information for marcorhs.github.io and its AskCV assistant.</p>
+    <div><a href="./">Portfolio</a><a href="legal.html">Legal notice</a><a href="privacy.html" aria-current="page">Privacy</a></div>
+  </footer>
+</div>
+<script src="arch.js?v=8" defer></script>
+</body>
+</html>
