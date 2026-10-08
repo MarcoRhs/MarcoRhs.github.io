@@ -18,7 +18,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Marco Rohns","jobTitle":"AI Engineer, Product Builder & Enterprise Adoption","address":{"@type":"PostalAddress","addressLocality":"Uplengen","addressCountry":"DE"},"email":"mailto:marco.rohns12@gmail.com","sameAs":["https://www.linkedin.com/in/marco-rohns","https://manemap.app"],"knowsLanguage":["de","es","en"],"knowsAbout":["Retrieval-Augmented Generation","Large Language Models","Kotlin","Compose Multiplatform","Supabase","PostgreSQL","Enterprise Customer Success","AI adoption"],"worksFor":{"@type":"Organization","name":"The Rohns UG (ManeMap)","url":"https://manemap.app"}}
 </script>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -41,6 +41,7 @@
         <span></span><span></span><span></span>
       </button>
     </nav>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
   </header>
 
   <main id="main">
@@ -172,9 +173,15 @@
           </div>
           <p class="ownership-note"><strong>What I own:</strong> product direction, architecture, data model, safety controls, evaluation and releases. Claude Code and MCP integrations accelerate implementation, QA and store work.</p>
         </div>
-        <div class="product-shots" aria-label="ManeMap application screens">
-          <img src="assets/manemap-home.webp" width="760" height="1569" loading="lazy" alt="ManeMap home screen showing a horse profile and Milo's daily care tip">
-          <img src="assets/manemap-milo.webp" width="760" height="1569" loading="lazy" alt="ManeMap Milo assistant screen with suggested horse-care questions">
+        <div class="product-visual">
+          <div class="screen-selector" role="group" aria-label="Choose a ManeMap screen to emphasise">
+            <button type="button" data-screen-target="daily" aria-controls="product-shots" aria-pressed="true">Daily context</button>
+            <button type="button" data-screen-target="milo" aria-controls="product-shots" aria-pressed="false">Milo assistant</button>
+          </div>
+          <div class="product-shots" id="product-shots" data-active="daily" aria-label="ManeMap application screens">
+            <img data-screen="daily" src="assets/manemap-home.webp" width="760" height="1569" loading="lazy" alt="ManeMap home screen showing a horse profile and Milo's daily care tip">
+            <img data-screen="milo" src="assets/manemap-milo.webp" width="760" height="1569" loading="lazy" alt="ManeMap Milo assistant screen with suggested horse-care questions">
+          </div>
         </div>
       </div>
     </section>
@@ -217,6 +224,7 @@
             <span><button class="primary" id="askBtn">Ask</button><button class="ghost stop" id="stopBtn" hidden>Stop</button></span>
           </div>
         </div>
+        <p class="chips-label">Choose what you want to verify</p>
         <div class="chips" id="chips" aria-label="Suggested questions"></div>
         <p class="panel-note">If the CV does not support a claim, the assistant says so.</p>
         <p class="ask-privacy">AskCV sends your question to Supabase and Google Gemini. Questions and answers are retained for up to 90 days. <a href="privacy.html#askcv">Privacy details</a></p>
@@ -282,6 +290,6 @@
   </footer>
 </div>
 
-<script src="app.js?v=8" defer></script>
+<script src="app.js?v=9" defer></script>
 </body>
 </html>

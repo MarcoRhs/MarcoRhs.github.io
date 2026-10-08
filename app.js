@@ -2,11 +2,11 @@ document.documentElement.classList.add("js");
 
 const ENDPOINT = "https://ulkqedfxgogayealzqpv.supabase.co/functions/v1/ask-cv";
 const SUGGESTIONS = [
-  "What has Marco built with AI?",
-  "How does the health safety gate in ManeMap work?",
-  "Which tech stack does he use?",
-  "How has Marco driven enterprise AI adoption?",
-  "Is he available, and how does he work?"
+  {label: "AI engineering fit", question: "What evidence in Marco's CV supports his fit for an AI engineering role?"},
+  {label: "Production proof", question: "What production evidence shows that Marco can ship AI products end to end?"},
+  {label: "Technical stack", question: "Which technologies has Marco used across AI, backend and mobile product development?"},
+  {label: "Enterprise adoption", question: "How has Marco helped enterprise teams adopt AI products and improve customer outcomes?"},
+  {label: "Role fit", question: "Which roles best match Marco's experience, based on his CV?"}
 ];
 const COPY = {
   rate_limited: "The question limit for today is reached. Email Marco directly, or ask again tomorrow.",
@@ -25,14 +25,23 @@ const COPY = {
 const CLIENT_TIMEOUT_MS = 30000;
 const $ = (id) => document.getElementById(id);
 const q = $("q"), askBtn = $("askBtn"), stopBtn = $("stopBtn"), thread = $("thread");
-let asked = [], ctl = null, busy = false;
+let asked = [], ctl = null, busy = false, suggestionButtons = [];
 
 SUGGESTIONS.forEach(s => {
   const b = document.createElement("button");
-  b.className = "chip"; b.type = "button"; b.textContent = s;
-  b.onclick = () => { q.value = s; ask(); };
+  b.className = "chip"; b.type = "button"; b.textContent = s.label;
+  b.setAttribute("aria-label", `${s.label}: ${s.question}`);
+  b.onclick = () => ask(s.question);
+  suggestionButtons.push(b);
   $("chips").append(b);
 });
+
+function setBusy(nextBusy){
+  busy = nextBusy;
+  askBtn.disabled = nextBusy;
+  stopBtn.hidden = !nextBusy;
+  suggestionButtons.forEach(button => { button.disabled = nextBusy; });
+}
 
 function appendInline(el, text){
   const bold = /\*\*([^*\n]+)\*\*/g;
@@ -113,17 +122,18 @@ function renderAnswer(el, text){
   if (src){ const s = document.createElement("span"); s.className = "src"; s.textContent = formatSourceLine(src); el.append(s); }
 }
 
-async function ask(){
-  const text = q.value.trim();
+async function ask(question = q.value){
+  const fromInput = arguments.length === 0;
+  const text = question.trim();
   if (!text || busy) return;
-  busy = true; askBtn.disabled = true; stopBtn.hidden = false;
+  setBusy(true);
   const item = document.createElement("div");
   const qe = document.createElement("div"); qe.className = "q"; qe.textContent = text;
   const ae = document.createElement("div"); ae.className = "a";
   const st = document.createElement("span"); st.className = "status"; st.textContent = "Thinking...";
   ae.append(st); item.append(qe, ae); thread.prepend(item);
   item.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
-  q.value = "";
+  if (fromInput) q.value = "";
   const history = asked.slice(-4);
   asked.push(text);
   ctl = new AbortController();
@@ -147,10 +157,10 @@ async function ask(){
     }
   } finally {
     clearTimeout(timer);
-    busy = false; askBtn.disabled = false; stopBtn.hidden = true; ctl = null;
+    setBusy(false); ctl = null;
   }
 }
-askBtn.onclick = ask;
+askBtn.onclick = () => ask();
 stopBtn.onclick = () => ctl && ctl.abort();
 q.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); ask(); } });
 
@@ -171,6 +181,82 @@ if (!reduceMotion && "IntersectionObserver" in window) {
     else revealObserver.observe(item);
   });
 }
+
+const heroProfile = document.querySelector(".hero-profile");
+if (heroProfile && !reduceMotion) {
+  if ("IntersectionObserver" in window) {
+    const ambientObserver = new IntersectionObserver(([entry]) => {
+      heroProfile.classList.toggle("is-ambient", entry.isIntersecting);
+    }, {threshold: .08});
+    ambientObserver.observe(heroProfile);
+  } else {
+    heroProfile.classList.add("is-ambient");
+  }
+}
+
+const productShots = $("product-shots");
+const screenButtons = [...document.querySelectorAll("[data-screen-target]")];
+if (productShots && screenButtons.length) {
+  screenButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.screenTarget;
+      productShots.dataset.active = target;
+      screenButtons.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+    });
+  });
+}
+
+if (productShots && !reduceMotion) {
+  productShots.classList.add("shots-ready");
+  const revealShots = () => {
+    if (productShots.classList.contains("shots-visible")) return;
+    productShots.classList.add("shots-visible");
+    window.setTimeout(() => productShots.classList.add("shots-entered"), 850);
+  };
+  if ("IntersectionObserver" in window) {
+    const shotsObserver = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      revealShots();
+      shotsObserver.disconnect();
+    }, {rootMargin: "0px 0px -7%", threshold: .08});
+    shotsObserver.observe(productShots);
+  } else {
+    requestAnimationFrame(revealShots);
+  }
+}
+
+const progressFill = reduceMotion ? null : document.querySelector(".scroll-progress span");
+const sectionLinks = [...document.querySelectorAll('.nav-link[href^="#"]')]
+  .map(link => ({link, section: document.querySelector(link.getAttribute("href"))}))
+  .filter(item => item.section);
+let scrollFrame = 0;
+
+function updateScrollUI(){
+  scrollFrame = 0;
+  if (progressFill) {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+    progressFill.style.transform = `scaleX(${progress})`;
+  }
+  const marker = Math.min(180, window.innerHeight * .28);
+  let activeLink = null;
+  sectionLinks.forEach(({link, section}) => {
+    const bounds = section.getBoundingClientRect();
+    if (bounds.top <= marker && bounds.bottom > marker) activeLink = link;
+  });
+  sectionLinks.forEach(({link}) => {
+    if (link === activeLink) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+}
+
+function requestScrollUI(){
+  if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollUI);
+}
+
+window.addEventListener("scroll", requestScrollUI, {passive: true});
+window.addEventListener("resize", requestScrollUI, {passive: true});
+updateScrollUI();
 
 const navToggle = $("navToggle");
 const navLinks = $("nav-links");
