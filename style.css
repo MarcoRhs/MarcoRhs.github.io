@@ -287,16 +287,16 @@ a:focus-visible, button:focus-visible, textarea:focus-visible {
 .profile-metrics span { display: block; color: #a9a9af; font-size: 11px; line-height: 1.35; }
 
 .rotating-border {
-  --rotating-border-duration: 12s;
+  --rotating-border-duration: 10s;
   --rotating-border-delay: 0s;
-  --rotating-border-opacity: .9;
+  --rotating-border-opacity: .95;
   position: relative;
   isolation: isolate;
   overflow: hidden;
 }
-#manemap.rotating-border { --rotating-border-duration: 18s; --rotating-border-delay: -5s; --rotating-border-opacity: .62; }
-.ask-panel.rotating-border { --rotating-border-duration: 22s; --rotating-border-delay: -11s; --rotating-border-opacity: .42; }
-#contact.rotating-border { --rotating-border-duration: 26s; --rotating-border-delay: -18s; --rotating-border-opacity: .52; }
+#manemap.rotating-border { --rotating-border-duration: 14s; --rotating-border-delay: -3s; --rotating-border-opacity: .84; }
+.ask-panel.rotating-border { --rotating-border-duration: 14s; --rotating-border-delay: -7s; --rotating-border-opacity: .88; }
+#contact.rotating-border { --rotating-border-duration: 16s; --rotating-border-delay: -11s; --rotating-border-opacity: .82; }
 
 @supports ((-webkit-mask-image: linear-gradient(#000, #000)) and (-webkit-mask-composite: xor)) or ((mask-image: linear-gradient(#000, #000)) and (mask-composite: exclude)) {
   .rotating-border::after {
@@ -325,16 +325,18 @@ a:focus-visible, button:focus-visible, textarea:focus-visible {
     mask-composite: exclude;
   }
   .rotating-border.panel-border::after {
+    padding: 2px;
     background: conic-gradient(
       from var(--rotating-border-angle),
-      transparent 0deg 286deg,
-      rgba(168, 239, 209, .12) 291deg,
-      #a8efd1 300deg,
-      #1677ea 320deg,
-      #edf8ff 327deg 332deg,
-      rgba(237, 248, 255, .14) 338deg,
-      transparent 346deg 360deg
+      transparent 0deg 242deg,
+      rgba(22, 119, 234, 0) 248deg,
+      #1677ea 268deg,
+      #55b6ff 294deg,
+      #a8efd1 320deg,
+      rgba(168, 239, 209, .48) 338deg,
+      transparent 350deg 360deg
     );
+    filter: drop-shadow(0 0 3px rgba(22, 119, 234, .34));
   }
   .live-product-card.rotating-border:hover::after,
   .live-product-card.rotating-border:focus-visible::after { opacity: 1; }
@@ -1000,21 +1002,18 @@ footer a { color: var(--ink); }
   .product-shots { gap: 5px; }
 }
 
-@media (max-width: 760px) {
-  .live-product-card.rotating-border { --rotating-border-duration: 16s; --rotating-border-opacity: .9; }
-  #manemap.rotating-border { --rotating-border-opacity: .55; }
-  .ask-panel.rotating-border { --rotating-border-opacity: .38; }
-  #contact.rotating-border { --rotating-border-opacity: .46; }
-}
-
 @media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
   .hero-profile.is-ambient::before { animation: none; will-change: auto; }
-  .panel-border.is-glow-active::after {
-    animation-duration: 32s;
-    animation-timing-function: steps(120, end);
-  }
   .process-flow li.reveal-ready:not(:last-child)::after { transform: scaleY(0); transform-origin: top center; }
   .process-flow li.is-visible:not(:last-child)::after { transform: scaleY(1); }
+}
+
+@media (hover: none) and (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+  .panel-border.is-glow-active::after {
+    animation-duration: 24s;
+    animation-timing-function: steps(96, end);
+    filter: drop-shadow(0 0 2px rgba(22, 119, 234, .28));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
