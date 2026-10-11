@@ -194,6 +194,20 @@ if (heroProfile && !reduceMotion) {
   }
 }
 
+const rotatingBorders = [...document.querySelectorAll(".rotating-border")];
+if (rotatingBorders.length && !reduceMotion) {
+  if ("IntersectionObserver" in window) {
+    const glowObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle("is-glow-active", entry.isIntersecting);
+      });
+    }, {threshold: .04});
+    rotatingBorders.forEach(target => glowObserver.observe(target));
+  } else {
+    rotatingBorders.forEach(target => target.classList.add("is-glow-active"));
+  }
+}
+
 const productShots = $("product-shots");
 const screenButtons = [...document.querySelectorAll("[data-screen-target]")];
 if (productShots && screenButtons.length) {
