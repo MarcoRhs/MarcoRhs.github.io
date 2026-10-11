@@ -294,7 +294,7 @@ a:focus-visible, button:focus-visible, textarea:focus-visible {
   isolation: isolate;
   overflow: hidden;
 }
-#manemap.rotating-border { --rotating-border-duration: 14s; --rotating-border-delay: -3s; --rotating-border-opacity: .84; }
+#manemap.rotating-border { --rotating-border-duration: 8s; --rotating-border-delay: -3s; --rotating-border-opacity: 1; }
 .ask-panel.rotating-border { --rotating-border-duration: 14s; --rotating-border-delay: -7s; --rotating-border-opacity: .88; }
 #contact.rotating-border { --rotating-border-duration: 16s; --rotating-border-delay: -11s; --rotating-border-opacity: .82; }
 
@@ -337,6 +337,21 @@ a:focus-visible, button:focus-visible, textarea:focus-visible {
       transparent 350deg 360deg
     );
     filter: drop-shadow(0 0 3px rgba(22, 119, 234, .34));
+  }
+  #manemap.rotating-border.panel-border::after {
+    padding: 3px;
+    background: conic-gradient(
+      from var(--rotating-border-angle),
+      transparent 0deg 210deg,
+      rgba(22, 119, 234, 0) 218deg,
+      #1677ea 242deg,
+      #5bc0ff 272deg,
+      #fff 292deg,
+      #a8efd1 318deg,
+      rgba(168, 239, 209, .6) 344deg,
+      transparent 356deg 360deg
+    );
+    filter: drop-shadow(0 0 3px rgba(91, 192, 255, .42));
   }
   .live-product-card.rotating-border:hover::after,
   .live-product-card.rotating-border:focus-visible::after { opacity: 1; }
@@ -403,7 +418,7 @@ a:focus-visible, button:focus-visible, textarea:focus-visible {
   overflow: hidden;
   background: #151517;
   color: #fff;
-  box-shadow: 0 24px 60px rgba(29, 29, 31, .16);
+  box-shadow: 0 24px 60px rgba(29, 29, 31, .16), inset 0 0 0 1px rgba(232, 255, 247, .28);
 }
 .product-case::before {
   position: absolute;
@@ -599,12 +614,12 @@ textarea::placeholder { color: #86868b; }
 .contact-section .eyebrow { color: #8fc8ff; }
 .contact-section h2 { max-width: 790px; margin: 13px 0 18px; font-size: clamp(39px, 5vw, 64px); letter-spacing: -.052em; line-height: 1; }
 .contact-section p:last-child { max-width: 650px; margin: 0; color: #b7b7bc; font-size: 17px; }
-.contact-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 10px; }
+.contact-actions { display: grid; width: 100%; grid-template-columns: 1fr; gap: 10px; }
+.contact-actions .button { width: 100%; min-height: 46px; white-space: nowrap; }
 .button-light { background: #fff; color: var(--ink); }
 .button-light:hover { background: #f2f2f5; }
 .button-outline { border: 1px solid rgba(255, 255, 255, .28); color: #fff; }
 .button-outline:hover { background: rgba(255, 255, 255, .1); }
-.contact-cv { margin-right: auto; margin-left: auto; }
 
 footer {
   display: flex;
@@ -692,6 +707,8 @@ footer a { color: var(--ink); }
   .credential-card { min-height: auto; }
   .fit-panel { grid-template-columns: 1fr; }
   .contact-section { grid-template-columns: 1fr; align-items: start; }
+  .contact-actions { width: auto; grid-template-columns: repeat(3, max-content); justify-content: start; }
+  .contact-actions .button { width: auto; }
 }
 
 @media (max-width: 760px) {
@@ -739,6 +756,8 @@ footer a { color: var(--ink); }
   .fit-panel { border-radius: 21px; }
   .contact-section { gap: 38px; margin-right: -4px; margin-left: -4px; padding: 52px 25px; border-radius: 30px; }
   .contact-section h2 { font-size: 41px; }
+  .contact-actions { width: 100%; grid-template-columns: 1fr; }
+  .contact-actions .button { width: 100%; }
   footer { display: block; padding-top: 24px; }
   footer div { margin-top: 18px; white-space: normal; }
 }
