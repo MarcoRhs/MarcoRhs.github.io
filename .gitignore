@@ -1,2 +1,4 @@
 scripts/eval/results/
 supabase/.temp/
+.playwright-mcp/
+.DS_Store

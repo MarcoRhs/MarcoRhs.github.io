@@ -72,4 +72,4 @@ Reports are written to `scripts/eval/results/` (git-ignored).
 4. `supabase functions deploy ask-cv` (picks up `verify_jwt = false` from `config.toml`).
 5. After editing `resume.md`: `node scripts/sync-cv.mjs`, rebuild the PDF with `python3 scripts/build-cv.py` (ReportLab required), then redeploy the function and publish the static site.
 
-Fonts: Bricolage Grotesque and IBM Plex Sans, SIL Open Font License (see `fonts/`).
+Fonts: Bricolage Grotesque (600, 700) for headings and IBM Plex Sans (400, 500, 600) for everything else — self-hosted in `fonts/` under the SIL Open Font License, declared with `@font-face` in `style.css` and served under the `font-src 'self'` policy. The display and body faces are preloaded; the rest arrive with the stylesheet.

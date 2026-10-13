@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T00:00:00Z",
+  "title": "Design System: Marco Rohns — Portfolio & Grounded CV",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "System Blue",
+        "canonical": "#0071e3",
+        "note": "The only interactive and navigational voice on light surfaces. Identical to the macOS system blue.",
+        "tonalRamp": ["oklch(18% 0.08 254)", "oklch(27% 0.12 254)", "oklch(36% 0.16 254)", "oklch(45% 0.19 254)", "oklch(55% 0.21 254)", "oklch(68% 0.16 254)", "oklch(82% 0.09 254)", "oklch(95% 0.03 254)"]
+      },
+      "blue-soft": {
+        "role": "primary",
+        "displayName": "System Blue Soft",
+        "canonical": "#eaf4ff",
+        "note": "The accent's only tint. Focus halo, role-fit pills, fit-panel cells.",
+        "tonalRamp": ["oklch(20% 0.04 254)", "oklch(31% 0.05 254)", "oklch(43% 0.05 254)", "oklch(55% 0.05 254)", "oklch(67% 0.04 254)", "oklch(79% 0.03 254)", "oklch(89% 0.02 254)", "oklch(96% 0.01 254)"]
+      },
+      "blue-on-slab": {
+        "role": "primary",
+        "displayName": "System Blue on Slab",
+        "canonical": "#8fc8ff",
+        "note": "The accent lifted for dark surfaces, where #0071e3 fails contrast. Eyebrows and numerals inside dark panels.",
+        "tonalRamp": ["oklch(22% 0.07 250)", "oklch(33% 0.10 250)", "oklch(44% 0.12 250)", "oklch(56% 0.13 250)", "oklch(68% 0.12 250)", "oklch(80% 0.09 250)", "oklch(89% 0.06 250)", "oklch(96% 0.02 250)"]
+      },
+      "mint": {
+        "role": "secondary",
+        "displayName": "Evidence Mint",
+        "canonical": "#a8efd1",
+        "note": "Liveness and verification, on dark surfaces only. Never on a light field.",
+        "tonalRamp": ["oklch(22% 0.05 162)", "oklch(33% 0.07 162)", "oklch(45% 0.09 162)", "oklch(57% 0.10 162)", "oklch(69% 0.10 162)", "oklch(80% 0.09 162)", "oklch(90% 0.07 162)", "oklch(96% 0.03 162)"]
+      },
+      "live-green": {
+        "role": "secondary",
+        "displayName": "Live Green",
+        "canonical": "#56d898",
+        "note": "The pulsing signal dot in the live badge and availability line. The only mint-family color allowed at dot scale on light surfaces.",
+        "tonalRamp": ["oklch(21% 0.06 158)", "oklch(32% 0.09 158)", "oklch(43% 0.12 158)", "oklch(55% 0.14 158)", "oklch(67% 0.14 158)", "oklch(79% 0.11 158)", "oklch(89% 0.07 158)", "oklch(96% 0.03 158)"]
+      },
+      "slab": {
+        "role": "neutral",
+        "displayName": "Ink Slab",
+        "canonical": "#151517",
+        "note": "The deepest surface. Hero profile card and the ManeMap product case. Reads as sealed equipment on the bench.",
+        "tonalRamp": ["oklch(16% 0.004 280)", "oklch(26% 0.004 280)", "oklch(37% 0.004 280)", "oklch(48% 0.004 280)", "oklch(60% 0.004 280)", "oklch(72% 0.004 280)", "oklch(85% 0.004 280)", "oklch(96% 0.004 280)"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1d1d1f",
+        "note": "Primary text on light surfaces, and the fill for the approach and contact slabs. The near-black that is never pure black.",
+        "tonalRamp": ["oklch(18% 0.003 285)", "oklch(28% 0.003 285)", "oklch(39% 0.003 285)", "oklch(50% 0.003 285)", "oklch(62% 0.003 285)", "oklch(74% 0.003 285)", "oklch(86% 0.003 285)", "oklch(96% 0.003 285)"]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "canonical": "#6e6e73",
+        "note": "Section intros, hints, metric captions, inactive nav. The most-referenced token in the stylesheet.",
+        "tonalRamp": ["oklch(20% 0.004 286)", "oklch(30% 0.004 286)", "oklch(41% 0.005 286)", "oklch(52% 0.005 286)", "oklch(63% 0.004 286)", "oklch(75% 0.004 286)", "oklch(86% 0.003 286)", "oklch(96% 0.002 286)"]
+      },
+      "subtle": {
+        "role": "neutral",
+        "displayName": "Subtle Tray",
+        "canonical": "#f5f5f7",
+        "note": "The quiet tray. Credential cards, the adoption case, assistant answer bubbles. Separates by tone, never by shadow.",
+        "tonalRamp": ["oklch(21% 0.003 286)", "oklch(32% 0.003 286)", "oklch(44% 0.003 286)", "oklch(56% 0.003 286)", "oklch(68% 0.003 286)", "oklch(80% 0.003 286)", "oklch(90% 0.003 286)", "oklch(97% 0.002 286)"]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "#d2d2d7",
+        "note": "Section dividers and timeline rules. The lighter #e4e4e8 hairline is used for card edges.",
+        "tonalRamp": ["oklch(22% 0.004 286)", "oklch(33% 0.004 286)", "oklch(45% 0.005 286)", "oklch(57% 0.005 286)", "oklch(69% 0.004 286)", "oklch(80% 0.004 286)", "oklch(88% 0.003 286)", "oklch(96% 0.002 286)"]
+      },
+      "warn": {
+        "role": "tertiary",
+        "displayName": "Warn",
+        "canonical": "#a24b00",
+        "note": "Assistant error text. The only non-blue, non-mint signal color in the system.",
+        "tonalRamp": ["oklch(20% 0.06 48)", "oklch(30% 0.09 48)", "oklch(40% 0.11 48)", "oklch(50% 0.13 48)", "oklch(62% 0.13 48)", "oklch(74% 0.10 48)", "oklch(86% 0.06 48)", "oklch(96% 0.02 48)"]
+      },
+      "glass-fill": {
+        "role": "neutral",
+        "displayName": "Glass Fill",
+        "canonical": "rgba(250, 252, 255, .76)",
+        "note": "The sticky header, ask panel, secondary button and chips. Always paired with backdrop-filter saturate(160-180%) blur(18-24px) and an inset lit top edge.",
+        "tonalRamp": []
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page-opening H1 only — the portfolio hero and the architecture hero. Bricolage Grotesque 700 at up to 82px, tracking -0.058em, leading 0.98." },
+      "headline": { "displayName": "Headline", "purpose": "Section H2s and the contact call. Hard-set to 41-42px below 760px." },
+      "title": { "displayName": "Title", "purpose": "Card and stage headings at the display face\u0027s 700: 28px on capability cards, 24px on credential and process cards, 22px on architecture stages." },
+      "lead": { "displayName": "Lead", "purpose": "The single supporting paragraph under a display or headline. 21px in the hero, 18px under section headings, 16px on mobile." },
+      "body": { "displayName": "Body", "purpose": "Default running text at 17px/1.52. Measure capped by max-width (630-840px), not by a ch rule." },
+      "action": { "displayName": "Action", "purpose": "Button and control labels. 16px/500 on full-size buttons, 14px/600 on compact controls." },
+      "label": { "displayName": "Label", "purpose": "Every eyebrow, panel eyebrow and card kicker. Uppercase, 13px, tracking 0.045em, always in the accent." },
+      "meta": { "displayName": "Meta", "purpose": "Metric captions, footer, privacy line. The system floor — nothing is set below 11px." }
+    },
+    "fontFaces": [
+      { "family": "Bricolage Grotesque", "weights": [600, 700], "files": ["fonts/bricolage-grotesque-latin-600-normal.woff2", "fonts/bricolage-grotesque-latin-700-normal.woff2"], "license": "SIL OFL (fonts/OFL-bricolage.txt)", "status": "wired — @font-face declared in style.css, exposed as --font-display / --font-body, with font-display: swap" },
+      { "family": "IBM Plex Sans", "weights": [400, 500, 600], "files": ["fonts/ibm-plex-sans-latin-400-normal.woff2", "fonts/ibm-plex-sans-latin-500-normal.woff2", "fonts/ibm-plex-sans-latin-600-normal.woff2"], "license": "SIL OFL (fonts/OFL-ibm-plex-sans.txt)", "status": "wired — @font-face declared in style.css, exposed as --font-display / --font-body, with font-display: swap" }
+    ],
+    "shadows": [
+      { "name": "card-rest", "value": "0 12px 32px rgba(29, 29, 31, .045)", "purpose": "Light cards on the white canvas. Almost subliminal — it exists only to separate white from white." },
+      { "name": "card-raised", "value": "0 18px 38px rgba(29, 29, 31, .09)", "purpose": "Hover state for capability and credential cards, paired with translateY(-4px)." },
+      { "name": "glass-plate", "value": "0 20px 56px rgba(22, 34, 54, .11), inset 0 1px 0 rgba(255, 255, 255, .98), inset 0 -1px 0 rgba(113, 135, 158, .1)", "purpose": "The ask panel: the --glass-shadow token plus a lit top edge and a cool bottom edge." },
+      { "name": "header-float", "value": "0 10px 30px rgba(29, 29, 31, .08), inset 0 1px 0 rgba(255, 255, 255, .96)", "purpose": "The detached header capsule floating over scrolling content." },
+      { "name": "slab", "value": "0 24px 60px rgba(29, 29, 31, .14)", "purpose": "Dark surfaces. Wide and diffuse at low opacity so the slab rests in light rather than hovering." },
+      { "name": "slab-deep", "value": "0 32px 80px rgba(22, 34, 54, .2)", "purpose": "The hero profile card — the deepest surface in the system." },
+      { "name": "accent-lift", "value": "0 8px 22px rgba(0, 113, 227, .2)", "purpose": "Primary buttons at rest. Tinted with the button's own fill color." },
+      { "name": "accent-lift-hover", "value": "0 11px 28px rgba(0, 113, 227, .26)", "purpose": "Primary button hover, with a 2px rise." },
+      { "name": "focus-halo", "value": "0 0 0 4px #eaf4ff", "purpose": "The ask box focus-within state, alongside a System Blue border." },
+      { "name": "signal-halo", "value": "0 0 0 4px rgba(110, 231, 168, .12)", "purpose": "Status and signal dots at rest; animates out to 0 0 0 9px transparent on the pulse." }
+    ],
+    "motion": [
+      { "name": "motion-fast", "value": "180ms", "purpose": "Every state transition: hover, focus, color and transform." },
+      { "name": "motion-enter", "value": "650ms", "purpose": "Scroll-reveal entrances for sections and cards." },
+      { "name": "motion-ambient", "value": "9s", "purpose": "The hero profile card's drifting internal bloom (desktop only)." },
+      { "name": "ease-standard", "value": "cubic-bezier(.2, .7, .2, 1)", "purpose": "Default easing for state transitions and glyph nudges." },
+      { "name": "ease-out", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Entrances — reveals, product-shot arrivals, the process-flow connector draw." },
+      { "name": "reveal-stagger", "value": "80ms per child (to 240ms)", "purpose": "Sequential delay across grouped cards in a reveal-stagger container." },
+      { "name": "rotating-border-periods", "value": "8s / 10s / 14s / 16s with -3s / 0s / -7s / -11s delays", "purpose": "Deliberately desynchronized periods across the four bordered surfaces so they never align." },
+      { "name": "live-pulse", "value": "3.2s ease-out infinite", "purpose": "Status dot and live badge halo pulse." },
+      { "name": "timeline-pulse", "value": "2.6s ease-out infinite (0.45s offset on the second node)", "purpose": "Career timeline node halos." }
+    ],
+    "breakpoints": [
+      { "name": "shell", "value": "1280px", "purpose": "Max content width of the page shell." },
+      { "name": "lg", "value": "1040px", "purpose": "Asymmetric splits collapse to one column; 3-up grids go 1-up; the first nav link is dropped." },
+      { "name": "md", "value": "760px", "purpose": "The real mobile rewrite: nav drawer, vertical process rail, one-step-down radii, 44px targets, slabs break the shell." },
+      { "name": "sm", "value": "390px", "purpose": "Brand wordmark hides, buttons go full width, the live product card stacks." }
+    ],
+    "degradationQueries": [
+      { "query": "@supports not (backdrop-filter: blur(1px))", "purpose": "Opaque fallbacks for the header, ask panel and secondary button." },
+      { "query": "@media (prefers-reduced-transparency: reduce)", "purpose": "Blur removed and every glass surface made opaque." },
+      { "query": "@media (prefers-contrast: more)", "purpose": "All glass and card borders darkened to #8e8e93." },
+      { "query": "@media (prefers-reduced-motion: reduce)", "purpose": "Reveals shown, rotating border frozen at 42deg, scroll progress hidden, all hover transforms removed." },
+      { "query": "@media (hover: none) and (pointer: coarse)", "purpose": "Rotating border steps at 24s/steps(96) instead of rotating continuously." },
+      { "query": "@media (forced-colors: active)", "purpose": "Rotating border removed; slabs fall back to a CanvasText border." },
+      { "query": "@media print", "purpose": "Motion and reveals neutralized, rotating border removed, product shots forced visible." }
+    ],
+    "radiusDrift": {
+      "normativeScale": ["13px", "20px", "26px", "32px", "38px", "999px", "50%"],
+      "observedValues": ["2px", "10px", "13px", "16px", "17px", "18px", "19px", "20px", "21px", "22px", "23px", "24px", "25px", "26px", "27px", "28px", "30px", "32px", "34px", "36px", "38px", "999px", "50%"],
+      "note": "24 distinct radius values ship today, many separated by a single pixel with no systemic reason. The normative scale is derived from the real clusters; off-scale values are legacy and should collapse onto the nearest step as files are touched. Recorded, not yet fixed."
+    },
+    "resolvedTokens": [
+      { "name": "--mint", "value": "#a8efd1", "note": "Adopted. Previously declared and bypassed by four literal #a8efd1 uses; those now reference var(--mint)." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single highest-intent action on a light surface. Blue fill, blue-tinted lift, 2px rise and a sliding glyph on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Explore my work <span aria-hidden=\"true\">↓</span></a>",
+      "css": ".ds-btn-primary { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 8px; padding: 0 19px; border-radius: 999px; background: #0071e3; box-shadow: 0 8px 22px rgba(0, 113, 227, .2); color: #fff; font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease; } .ds-btn-primary span { transition: transform 180ms cubic-bezier(.2, .7, .2, 1); } .ds-btn-primary:hover { background: #0077ed; box-shadow: 0 11px 28px rgba(0, 113, 227, .26); transform: translateY(-2px); } .ds-btn-primary:hover span, .ds-btn-primary:focus-visible span { transform: translateY(3px); } .ds-btn-primary:focus-visible { outline: 3px solid #0071e3; outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button (Glass)",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The alternative action beside a primary. Translucent, blurred, with a lit top edge — the glass register in control form.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ask my CV</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 8px; padding: 0 19px; border: 1px solid rgba(255, 255, 255, .92); border-radius: 999px; background: rgba(245, 245, 247, .72); box-shadow: 0 5px 16px rgba(29, 29, 31, .06), inset 0 1px 0 #fff; color: #1d1d1f; font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%); transition: transform 180ms ease, background-color 180ms ease; } .ds-btn-secondary:hover { background: rgba(232, 232, 237, .82); transform: translateY(-2px); } .ds-btn-secondary:focus-visible { outline: 3px solid #0071e3; outline-offset: 3px; }"
+    },
+    {
+      "name": "Suggestion Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "A tappable example question in the assistant panel. Glass pill, left-aligned, border and text shift to the accent on hover. No selected state — these are suggestions, not filters.",
+      "html": "<button class=\"ds-chip\" type=\"button\">What has Marco built with AI?</button>",
+      "css": ".ds-chip { min-height: 38px; padding: 8px 11px; border: 1px solid rgba(255, 255, 255, .92); border-radius: 999px; background: rgba(255, 255, 255, .64); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .96); color: #334155; font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; font-size: 13px; text-align: left; cursor: pointer; transition: border-color 180ms ease, color 180ms ease; } .ds-chip:not(:disabled):hover { border-color: #0071e3; color: #0071e3; } .ds-chip:disabled { cursor: default; opacity: .52; } .ds-chip:focus-visible { outline: 3px solid #0071e3; outline-offset: 3px; }"
+    },
+    {
+      "name": "Ask Box",
+      "kind": "input",
+      "refersTo": "input-askbox",
+      "description": "The assistant's question field. The container carries the border, fill, radius and focus ring; the textarea inside is borderless and transparent. Focus is handled by :focus-within on the container.",
+      "html": "<div class=\"ds-askbox\"><label class=\"ds-askbox-label\" for=\"ds-q\">Your question</label><textarea class=\"ds-askbox-field\" id=\"ds-q\" rows=\"3\" placeholder=\"What has Marco built with AI?\"></textarea><div class=\"ds-askrow\"><span class=\"ds-hint\">Press Enter to ask. Up to 15 questions a day.</span><button class=\"ds-askbtn\" type=\"button\">Ask</button></div></div>",
+      "css": ".ds-askbox { padding: 16px; border: 1px solid rgba(255, 255, 255, .92); border-radius: 20px; background: rgba(255, 255, 255, .78); box-shadow: 0 8px 24px rgba(29, 29, 31, .055), inset 0 1px 0 #fff; font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; } .ds-askbox:focus-within { border-color: #0071e3; box-shadow: 0 0 0 4px #eaf4ff; } .ds-askbox-label { display: block; margin-bottom: 7px; color: #6e6e73; font-size: 13px; font-weight: 500; } .ds-askbox-field { display: block; width: 100%; min-height: 82px; border: 0; outline: 0; resize: none; background: transparent; color: #1d1d1f; font: 400 18px/1.35 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; } .ds-askbox-field::placeholder { color: #86868b; } .ds-askrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid #e8e8ed; } .ds-hint { color: #6e6e73; font-size: 12px; line-height: 1.35; } .ds-askbtn { min-height: 40px; padding: 9px 17px; border: 0; border-radius: 999px; background: #0071e3; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; transition: background-color 180ms ease; } .ds-askbtn:hover { background: #0077ed; } .ds-askbtn:focus-visible { outline: 3px solid #0071e3; outline-offset: 3px; }"
+    },
+    {
+      "name": "Floating Nav Capsule",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "The sticky header: a detached glass capsule, not a bar. Muted pill links that fill with white on hover, a blue CTA at the right end, and a 2px scroll-progress rail inset along the bottom edge.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><span class=\"ds-nav-avatar\" aria-hidden=\"true\"></span><span>Marco Rohns</span></a><nav class=\"ds-nav-links\" aria-label=\"Primary\"><a class=\"ds-nav-link\" href=\"#\">Value</a><a class=\"ds-nav-link ds-nav-link-current\" href=\"#\">Work</a><a class=\"ds-nav-link\" href=\"#\">Approach</a><a class=\"ds-nav-cta\" href=\"#\">Download CV</a></nav><span class=\"ds-nav-progress\" aria-hidden=\"true\"><i></i></span></header>",
+      "css": ".ds-nav { display: flex; position: relative; align-items: center; justify-content: space-between; height: 60px; padding: 0 10px 0 12px; border: 1px solid rgba(255, 255, 255, .84); border-radius: 22px; background: rgba(250, 250, 252, .76); box-shadow: 0 10px 30px rgba(29, 29, 31, .08), inset 0 1px 0 rgba(255, 255, 255, .96); font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; -webkit-backdrop-filter: saturate(180%) blur(18px); backdrop-filter: saturate(180%) blur(18px); } .ds-nav-brand { display: inline-flex; align-items: center; gap: 10px; color: #1d1d1f; font-size: 16px; font-weight: 600; letter-spacing: -.01em; text-decoration: none; } .ds-nav-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(140deg, #d2d2d7, #8e8e93); } .ds-nav-links { display: flex; align-items: center; gap: 2px; font-size: 14px; } .ds-nav-link { padding: 8px 9px; border-radius: 999px; color: #6e6e73; text-decoration: none; transition: color 180ms ease, background-color 180ms ease; } .ds-nav-link:hover { background: rgba(255, 255, 255, .76); color: #1d1d1f; } .ds-nav-link-current { background: rgba(255, 255, 255, .92); color: #1d1d1f; } .ds-nav-cta { display: inline-flex; min-height: 42px; align-items: center; margin-left: 7px; padding: 8px 14px; border: 1px solid rgba(255, 255, 255, .44); border-radius: 999px; background: rgba(0, 113, 227, .92); box-shadow: 0 4px 13px rgba(0, 83, 181, .22), inset 0 1px 0 rgba(255, 255, 255, .28); color: #fff; font-weight: 500; text-decoration: none; transition: background-color 180ms ease, transform 180ms ease; } .ds-nav-cta:hover { background: rgba(0, 119, 237, .98); transform: translateY(-1px); } .ds-nav-link:focus-visible, .ds-nav-cta:focus-visible { outline: 3px solid #0071e3; outline-offset: 3px; } .ds-nav-progress { position: absolute; right: 18px; bottom: 0; left: 18px; overflow: hidden; height: 2px; border-radius: 999px; background: rgba(0, 113, 227, .1); } .ds-nav-progress i { display: block; width: 42%; height: 100%; border-radius: inherit; background: #0071e3; }"
+    },
+    {
+      "name": "Light Card",
+      "kind": "card",
+      "refersTo": "card-light",
+      "description": "The capability card: white on white, separated by hairline and a near-subliminal shadow. A blue numeral sits above a 48px gap before the heading; the list below is top-bordered rows with blue arrow markers.",
+      "html": "<article class=\"ds-card\"><span class=\"ds-card-number\">01</span><h3 class=\"ds-card-title\">Build the product</h3><p class=\"ds-card-body\">Turn a useful AI idea into working software across the model, backend and user experience.</p><ul class=\"ds-card-list\"><li>LLM integration &amp; RAG</li><li>Mobile and backend delivery</li><li>Data and API architecture</li></ul></article>",
+      "css": ".ds-card { padding: 28px; border: 1px solid #e4e4e8; border-radius: 28px; background: #fff; box-shadow: 0 12px 32px rgba(29, 29, 31, .045); font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; transition: transform 180ms ease, box-shadow 180ms ease; } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(29, 29, 31, .09); } .ds-card-number { display: block; color: #0071e3; font-size: 13px; font-weight: 700; letter-spacing: .08em; } .ds-card-title { margin: 48px 0 14px; color: #1d1d1f; font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -.04em; line-height: 1.08; } .ds-card-body { margin: 0; color: #6e6e73; font-size: 15px; line-height: 1.52; } .ds-card-list { margin: 27px 0 0; padding: 0; list-style: none; } .ds-card-list li { padding: 9px 0; border-top: 1px solid #e5e5e8; color: #424245; font-size: 13px; } .ds-card-list li::before { margin-right: 8px; color: #0071e3; content: '→'; }"
+    },
+    {
+      "name": "Metric Tray",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The recurring evidence device, and the layout expression of the north star: a 1px-gap grid over a tinted parent, so the parent color shows through as hairline dividers. Fact first, caption second.",
+      "html": "<div class=\"ds-tray\"><div><strong>10+ years</strong><span>Client-facing project delivery</span></div><div><strong>App Store + Play</strong><span>Live product with paying subscribers</span></div><div><strong>Promoted in 12 months</strong><span>Customer Success Manager to Senior</span></div><div><strong>€10k/month account</strong><span>Recovered and renewed at Ryte</span></div></div>",
+      "css": ".ds-tray { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; overflow: hidden; border: 1px solid #dceafb; border-radius: 26px; background: #dceafb; font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; } .ds-tray > div { padding: 22px 24px; background: rgba(245, 250, 255, .96); } .ds-tray strong { display: block; margin-bottom: 3px; color: #1d1d1f; font-size: 17px; letter-spacing: -.02em; } .ds-tray span { display: block; color: #6e6e73; font-size: 12px; line-height: 1.4; } @media (max-width: 760px) { .ds-tray { grid-template-columns: 1fr; border-radius: 22px; } .ds-tray > div { padding: 18px 20px; } }"
+    },
+    {
+      "name": "Rotating-Border Slab",
+      "kind": "custom",
+      "refersTo": "slab",
+      "description": "The signature: a dark instrument slab with an animated conic-gradient rim, clipped by a double mask and driven by a registered @property angle. Applied to exactly four surfaces in the real system, each on a different period. Freezes at 42deg under reduced motion.",
+      "html": "<article class=\"ds-slab\"><div class=\"ds-slab-top\"><span>Now · Founder &amp; AI Engineer</span><span class=\"ds-slab-badge\"><i></i>Live</span></div><h3 class=\"ds-slab-title\">ManeMap</h3><p class=\"ds-slab-lead\">An AI-powered horse-care app I designed, built and shipped end to end — now live with paying subscribers.</p><a class=\"ds-slab-link\" href=\"#\">See the architecture <span aria-hidden=\"true\">→</span></a></article>",
+      "css": "@property --ds-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; } @keyframes ds-spin { to { --ds-angle: 360deg; } } .ds-slab { position: relative; isolation: isolate; overflow: hidden; padding: 34px; border-radius: 32px; background: #151517; box-shadow: 0 24px 60px rgba(29, 29, 31, .16), inset 0 0 0 1px rgba(232, 255, 247, .28); color: #fff; font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; } .ds-slab::before { position: absolute; z-index: -1; right: -180px; bottom: -180px; width: 430px; height: 430px; border-radius: 50%; background: rgba(0, 119, 237, .3); filter: blur(10px); content: ''; } .ds-slab::after { position: absolute; z-index: 3; inset: 0; padding: 3px; border-radius: inherit; background: conic-gradient(from var(--ds-angle), transparent 0deg 210deg, rgba(22, 119, 234, 0) 218deg, #1677ea 242deg, #5bc0ff 272deg, #fff 292deg, #a8efd1 318deg, rgba(168, 239, 209, .6) 344deg, transparent 356deg 360deg); content: ''; pointer-events: none; filter: drop-shadow(0 0 3px rgba(91, 192, 255, .42)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; animation: ds-spin 8s linear infinite -3s; } .ds-slab-top { display: flex; align-items: center; justify-content: space-between; color: #a7a7ad; font-size: 12px; } .ds-slab-badge { display: inline-flex; align-items: center; gap: 7px; padding: 6px 9px; border: 1px solid rgba(255, 255, 255, .15); border-radius: 999px; color: #d7f7e9; } .ds-slab-badge i { width: 7px; height: 7px; border-radius: 50%; background: #56d898; } .ds-slab-title { margin: 34px 0 15px; font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif; font-size: 52px; font-weight: 700; letter-spacing: -.055em; line-height: 1; } .ds-slab-lead { max-width: 660px; margin: 0; color: #d4d4d9; font-size: 18px; line-height: 1.48; } .ds-slab-link { display: inline-block; margin-top: 25px; color: #a8efd1; font-size: 14px; font-weight: 600; text-decoration: none; } .ds-slab-link span { display: inline-block; margin-left: 4px; transition: transform 180ms cubic-bezier(.2, .7, .2, 1); } .ds-slab-link:hover span, .ds-slab-link:focus-visible span { transform: translateX(4px); } .ds-slab-link:focus-visible { outline: 3px solid rgba(180, 234, 216, .7); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-slab::after { --ds-angle: 42deg; animation: none; } .ds-slab-link:hover span { transform: none; } }"
+    },
+    {
+      "name": "Assistant Answer",
+      "kind": "custom",
+      "refersTo": "card-quiet",
+      "description": "A grounded answer in the CV assistant thread: question as a weight-600 line, answer in a quiet tray bubble that rises on entrance, structured details as a two-column definition grid, and a blue source label closing it out.",
+      "html": "<div class=\"ds-thread\"><div class=\"ds-q\">What has Marco built with AI?</div><div class=\"ds-a\"><p>He designed and shipped ManeMap, an AI-powered horse-care app, solo to both app stores.</p><dl class=\"ds-a-details\"><div><dt>Stack</dt><dd>Kotlin, Compose Multiplatform, Supabase, pgvector</dd></div><div><dt>Live since</dt><dd>05.2026</dd></div></dl><a class=\"ds-src\" href=\"#\">Source: Experience</a></div></div>",
+      "css": "@keyframes ds-rise { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } } .ds-thread { display: flex; max-width: 840px; flex-direction: column; gap: 22px; font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; color: #1d1d1f; } .ds-q { font-size: 17px; font-weight: 600; } .ds-a { margin-top: 7px; padding: 18px 20px; border-radius: 20px; background: #f5f5f7; animation: ds-rise .25s ease-out; } .ds-a p { margin: 0; font-size: 17px; line-height: 1.52; } .ds-a-details { margin: 14px 0 0; } .ds-a-details > div { display: grid; grid-template-columns: minmax(135px, .35fr) minmax(0, 1fr); gap: 14px; padding: 10px 0; border-top: 1px solid #dedee3; } .ds-a-details dt { font-size: 14px; font-weight: 600; } .ds-a-details dd { margin: 0; color: #424245; font-size: 14px; } .ds-src { display: inline-block; margin-top: 12px; color: #0071e3; font-size: 13px; font-weight: 600; text-decoration: none; } .ds-src:focus-visible { outline: 3px solid #0071e3; outline-offset: 3px; } @media (max-width: 760px) { .ds-a-details > div { grid-template-columns: 1fr; gap: 3px; } } @media (prefers-reduced-motion: reduce) { .ds-a { animation: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Evidence Bench",
+    "overview": "Every claim on this site is laid out as an artifact under even light. The canvas is pure white with a single cool blue bloom in the upper right; onto it are set dark instrument slabs, quiet grey trays and one translucent glass panel. Nothing is styled to persuade — the design's whole job is to present verifiable objects and let the reader pick them up: a proof strip of four facts, metric grids with hairline dividers, checked lists, source links, and a live assistant the visitor can interrogate directly. Where a lesser portfolio would assert, this one exhibits.\n\nThe density is deliberately uneven, and that unevenness is the system. Light sections breathe (118px of vertical section padding, 630-780px measure on headings and body) so the recruiter's eye can skim four facts in two seconds. The dark slabs compress (34px padding, 1px hairlines at 12-13% white, 11-15px metric type) so the engineering reader gets instrument density where density is the point. The same page serves a sixty-second scan and a close technical read because it changes its own weather between sections.\n\nExpression lives almost entirely in two places: the enormous, tightly-tracked display type (down to -0.058em at 82px, leading below 1) and the signature rotating conic border that traces the edge of exactly four surfaces. Everything else is restrained to the point of plainness. There is no second accent, no illustration, no decorative texture, no gradient on type. The one thing that moves on its own is the thing that is genuinely live.",
+    "keyCharacteristics": [
+      "Near-white field (#ffffff) with a single radial blue bloom at 88% 6%, 8% opacity — no second background treatment anywhere",
+      "Dark instrument slabs (#151517, #1d1d1f) for product, process and contact; quiet grey trays (#f5f5f7) for supporting cards",
+      "One accent: System Blue (#0071e3). It is the only color that means act or navigate",
+      "Evidence Mint (#a8efd1) appears only on dark surfaces, and only where something is live or verified",
+      "Display type as the primary visual gesture: weight 700, tracking to -0.058em, leading to 0.98",
+      "Pill geometry for every control; generously rounded rectangles (20-38px) for every surface",
+      "Tonal depth, atmospheric shadow: wide, soft, low-opacity shadows that read as ambient light, never as a lift",
+      "An animated conic-gradient border on four surfaces — the system's only self-initiated motion",
+      "Live signal pulses (status dot, live badge, timeline nodes) on a 2.6-3.2s cycle",
+      "Fully degrading: reduced motion, reduced transparency, increased contrast, forced colors and print all have real fallbacks"
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "System Blue is the only color that acts. If an element is interactive on a light surface, it is blue, blue-tinted, or ink; if it is blue, it had better be interactive or a label pointing at something. No decorative use, ever.", "section": "colors" },
+      { "name": "The Mint-On-Dark Rule", "body": "Evidence Mint exists only on dark surfaces, and only to mark something live or verified. Mint on white is off-system — on light surfaces, live is Live Green at dot scale, never a mint field.", "section": "colors" },
+      { "name": "The Never-Black Rule", "body": "No surface or text uses #000. The darkest text is Ink (#1d1d1f); the darkest surface is Ink Slab (#151517). Pure black appears only inside shadow and mask color functions.", "section": "colors" },
+      { "name": "The Single Bloom Rule", "body": "The page carries exactly one background gradient: a blue radial at 88% 6%, 8% opacity. Slabs may each carry their own internal bloom; the light field gets one and only one.", "section": "colors" },
+      { "name": "The Tracking-Follows-Size Rule", "body": "Negative tracking scales with type size and is never applied below 17px: -0.058em at display, -0.052em at headline, -0.035/-0.04em at title, -0.02em on the proof strip, normal everywhere in body and below. Positive tracking is the inverse — it belongs only to uppercase labels at 11-13px.", "section": "typography" },
+      { "name": "The One Lead Rule", "body": "A heading gets exactly one supporting paragraph before the content begins. The eyebrow, headline, single lead triad is the only section-opening structure in the system.", "section": "typography" },
+      { "name": "The Numeral-First Rule", "body": "In every metric cell — proof strip, case proof, profile metrics, fit panel — the number or fact is the strong element on its own line and the caption is the muted 11-12px line beneath it. Never the reverse.", "section": "typography" },
+      { "name": "The Hairline-Gap Rule", "body": "Grouped metrics are never bordered individually. Build them as a 1px-gap grid on a tinted parent with overflow hidden and let the parent color become the dividers.", "section": "layout" },
+      { "name": "The Edge-Break Rule", "body": "Below 760px, dark slabs extend 4px past the shell on both sides. They are the only elements permitted to break the container.", "section": "layout" },
+      { "name": "The Atmosphere Rule", "body": "Shadows are wide (at least 24px blur) and faint (at most 20% alpha). A tight, dark shadow is off-system; if a surface needs more presence, change its tone or add a hairline, don't deepen the shadow.", "section": "elevation" },
+      { "name": "The Tinted-Shadow Rule", "body": "A colored surface casts a shadow tinted with its own hue — blue buttons cast blue, slabs cast the cool rgba(22, 34, 54, …) rather than neutral grey. Never a generic black shadow under a colored element.", "section": "elevation" },
+      { "name": "The Lit-Edge Rule", "body": "Every translucent surface carries inset 0 1px 0 of near-white on its top edge. That highlight, not the blur, is what makes glass read as glass.", "section": "elevation" },
+      { "name": "The No-Sharp-Corner Rule", "body": "Nothing in this system has a 0 radius. The smallest radius in use is 2px (the nav toggle bars and the scroll-progress track); every real surface is at least 13px.", "section": "shapes" },
+      { "name": "The Pill-For-Action Rule", "body": "If it is a control, it is a pill. A rounded-rectangle button is off-system.", "section": "shapes" },
+      { "name": "The Radius-Follows-Size Rule", "body": "Radius scales with surface area and with viewport. Bigger surface, bigger radius; smaller viewport, one step down.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep System Blue (#0071e3) as the only accent. If something needs emphasis and isn't interactive, use tone, weight or a hairline tray — not a second color.",
+      "Do reserve Evidence Mint for dark surfaces and for liveness or verification only.",
+      "Do scale negative tracking with type size (-0.058em display to -0.052em headline to -0.04em title to normal at body) and never apply it below 17px.",
+      "Do build grouped metrics as 1px-gap grids over a tinted parent, following the Hairline-Gap Rule.",
+      "Do give every translucent surface an inset 0 1px 0 near-white top edge.",
+      "Do pair every backdrop-filter with an @supports not fallback plus a prefers-reduced-transparency opaque variant — the existing CSS does this for the header, ask panel, secondary button, chips, availability pill and ask box, and new glass must match.",
+      "Do keep every control at a 44px minimum touch target below 760px.",
+      "Do write the full degradation set for any new motion: prefers-reduced-motion, coarse-pointer, forced-colors and print. The rotating border is the reference implementation.",
+      "Do keep the one-step-down radius shift at the 760px breakpoint when adding a new surface.",
+      "Do use the rounded scale (13 / 20 / 26 / 32 / 38 / pill / circle) for all new work, and collapse legacy off-scale radii onto the nearest step when you touch a rule.",
+      "Do collapse the incumbent fine-grained font weights (720, 650, 560, 550) onto the real available faces when wiring the fonts — Bricolage Grotesque ships only 600 and 700, IBM Plex Sans only 400, 500 and 600. A font-weight of 720 against a static 700 face triggers synthetic bolding, which will coarsen the display type that carries this system."
+    ],
+    "donts": [
+      "Don't introduce a second accent color, a decorative gradient on type, an illustration style, or a background texture. The field stays uncontaminated.",
+      "Don't use Evidence Mint on a light surface, or pure #000 anywhere outside a shadow or mask color function.",
+      "Don't cast tight, dark shadows. At least 24px blur, at most 20% alpha, tinted with the surface's own hue.",
+      "Don't promote a card to a higher elevation on hover. The hover vocabulary is a 2-4px translate plus a marginally deeper pool — nothing more.",
+      "Don't add a second background gradient to the light field. One bloom, at 88% 6%.",
+      "Don't give a control a rounded-rectangle radius; controls are pills.",
+      "Don't set a 0 radius on any surface.",
+      "Don't set type below 11px, or apply positive letter-spacing to anything that isn't an uppercase label at 11-13px.",
+      "Don't add a third-party font, script, image host or stylesheet. The CSP forbids it and the privacy posture depends on it — new type must be self-hosted in fonts/ and new imagery must live in the repo.",
+      "Don't put more than one supporting paragraph under a heading.",
+      "Don't add self-initiated motion to a fifth surface. The rotating border's scarcity across exactly four panels is what keeps it a signature instead of a tic."
+    ]
+  }
+}
