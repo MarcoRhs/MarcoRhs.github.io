@@ -182,18 +182,6 @@ if (!reduceMotion && "IntersectionObserver" in window) {
   });
 }
 
-const heroProfile = document.querySelector(".hero-profile");
-if (heroProfile && !reduceMotion) {
-  if ("IntersectionObserver" in window) {
-    const ambientObserver = new IntersectionObserver(([entry]) => {
-      heroProfile.classList.toggle("is-ambient", entry.isIntersecting);
-    }, {threshold: .08});
-    ambientObserver.observe(heroProfile);
-  } else {
-    heroProfile.classList.add("is-ambient");
-  }
-}
-
 const rotatingBorders = [...document.querySelectorAll(".rotating-border")];
 if (rotatingBorders.length && !reduceMotion) {
   if ("IntersectionObserver" in window) {
@@ -210,12 +198,16 @@ if (rotatingBorders.length && !reduceMotion) {
 
 const productShots = $("product-shots");
 const screenButtons = [...document.querySelectorAll("[data-screen-target]")];
+const screenNotes = [...document.querySelectorAll("[data-screen-note]")];
+const screenIndex = document.querySelector(".product-visual-label span");
 if (productShots && screenButtons.length) {
   screenButtons.forEach(button => {
     button.addEventListener("click", () => {
       const target = button.dataset.screenTarget;
       productShots.dataset.active = target;
       screenButtons.forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+      screenNotes.forEach(note => { note.hidden = note.dataset.screenNote !== target; });
+      if (screenIndex) screenIndex.textContent = target === "daily" ? "01 / 02" : "02 / 02";
     });
   });
 }

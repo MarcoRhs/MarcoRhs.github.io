@@ -3,6 +3,10 @@
   "generatedAt": "2026-10-13T00:00:00Z",
   "title": "Design System: Marco Rohns — Portfolio & Grounded CV",
   "extensions": {
+    "historicalContext": {
+      "status": "superseded by October 2026 product-led redesign",
+      "note": "This design snapshot predates the current homepage. The live layout leads with a real ManeMap screen, combines the product case and screen evidence, and follows with enterprise adoption, AskCV and contact. See index.html and the .home-page rules in style.css for current implementation."
+    },
     "colorMeta": {
       "blue": {
         "role": "primary",

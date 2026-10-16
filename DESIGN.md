@@ -167,6 +167,8 @@ components:
     padding: "30px"
 ---
 
+> **Historical design snapshot.** This document describes the portfolio before the October 2026 product-led redesign. The current homepage leads with the real ManeMap app, combines its case study and screen evidence, and follows with enterprise adoption, AskCV and contact. Use `index.html` and the `.home-page` rules in `style.css` as the source of truth for current layout and behavior; this record remains for design history.
+
 # Design System: Marco Rohns — Portfolio & Grounded CV
 
 ## Overview
