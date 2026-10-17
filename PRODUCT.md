@@ -44,7 +44,7 @@ A neighbouring portfolio cannot truthfully copy it: the site's own assistant, it
 
 ## Capabilities and Constraints
 
-**Hard constraint — zero third-party requests.** Strict Content-Security-Policy, self-hosted fonts, no analytics, no trackers, no CDN. The only reachable external origin is the Supabase function endpoint. Nothing in any future design may introduce an outbound third-party request.
+**Hard constraint — zero third-party requests.** Strict Content-Security-Policy, system fonts, no analytics, no trackers, no CDN. The only reachable external origin is the Supabase function endpoint. Nothing in any future design may introduce an outbound third-party request.
 
 Other confirmed facts:
 
@@ -58,8 +58,8 @@ Other confirmed facts:
 
 - Name: Marco Rohns. Company entity: The Rohns UG. Product: ManeMap (assistant: Milo), manemap.app.
 - A real portrait of Marco is a fixed element of the identity. The specific file `photo.jpg` is **not** — it may be replaced with a better portrait.
-- Type pair **Bricolage Grotesque + IBM Plex Sans** is retained through any redesign (self-hosted, SIL OFL, in `fonts/`).
-- Beyond the name, the portrait and the type pair, the **visual identity is open**: colour, layout, composition and the overall look may be replaced in a redesign.
+- Typography uses the native Apple-style system font stack throughout the site, as requested in the October 2026 redesign review. The older self-hosted fonts remain in `fonts/` but are no longer loaded.
+- Beyond the name, portrait and typography, the **visual identity is open**: colour, layout, composition and the overall look may be replaced in a redesign.
 - Voice: plain, precise, non-boastful. Claims are stated with their evidence and their limits (e.g. the site itself says the assistant can be incomplete). Hedged marketing language and unverifiable superlatives are off-brand.
 
 ## Evidence on Hand

@@ -5,22 +5,22 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://ulkqedfxgogayealzqpv.supabase.co; img-src 'self'; font-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Marco Rohns — The engineer behind ManeMap</title>
-<meta name="description" content="Meet Marco Rohns, the engineer behind ManeMap. Explore the live iOS and Android product, the decisions behind its AI, and Marco's enterprise adoption work.">
+<title>Marco Rohns — AI Engineer &amp; Product Builder</title>
+<meta name="description" content="Marco Rohns builds AI products and helps people use them. Explore ManeMap, his live iOS and Android app, enterprise adoption work, and an interactive CV.">
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Marco Rohns — The engineer behind ManeMap">
-<meta property="og:description" content="ManeMap is live on iOS and Android. Explore the product, the engineering decisions and Marco's enterprise adoption experience.">
+<meta property="og:title" content="Marco Rohns — AI Engineer &amp; Product Builder">
+<meta property="og:description" content="I build AI products and help people use them. Explore my live product, engineering decisions and enterprise adoption work.">
 <meta property="og:url" content="https://marcorhs.github.io/">
 <meta property="og:image" content="https://marcorhs.github.io/photo.jpg">
-<link rel="icon" href="photo.jpg" type="image/jpeg">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="canonical" href="https://marcorhs.github.io/">
 <link rel="alternate" type="text/markdown" href="resume.md" title="CV as Markdown">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Marco Rohns","jobTitle":"AI Engineer, Product Builder & Enterprise Adoption","address":{"@type":"PostalAddress","addressLocality":"Uplengen","addressCountry":"DE"},"email":"mailto:marco.rohns12@gmail.com","sameAs":["https://www.linkedin.com/in/marco-rohns","https://manemap.app"],"knowsLanguage":["de","es","en"],"knowsAbout":["Retrieval-Augmented Generation","Large Language Models","Kotlin","Compose Multiplatform","Supabase","PostgreSQL","Enterprise Customer Success","AI adoption"],"worksFor":{"@type":"Organization","name":"The Rohns UG (ManeMap)","url":"https://manemap.app"}}
 </script>
-<link rel="preload" href="fonts/bricolage-grotesque-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=15">
+<link rel="preload" href="assets/marco-hero.png" as="image">
+<link rel="stylesheet" href="style.css?v=17">
 </head>
 <body class="home-page">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -47,29 +47,50 @@
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow">Marco Rohns / AI engineer &amp; product builder</p>
-        <h1 id="hero-title">The builder behind <em>ManeMap.</em></h1>
-        <p class="intro">I built ManeMap from idea to paying subscribers on iOS and Android. I also bring 4.5 years of enterprise adoption experience.</p>
+        <h1 id="hero-title">I build AI products.<br><em>And bring people with them.</em></h1>
+        <p class="intro">I’m Marco. I built ManeMap from idea to paying subscribers on iOS and Android, after 4.5 years helping enterprise teams adopt software.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#work">Explore the product <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="hero-byline">
-          <img src="photo.jpg" width="52" height="52" alt="Portrait of Marco Rohns">
-          <p><strong>Marco Rohns</strong><span>Based in Germany · Open to discussing the right role or project</span></p>
+          <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
+          <a class="button button-secondary" href="#askzone">Ask my CV <span aria-hidden="true">↗</span></a>
+          <a class="button button-cv" href="Marco_Rohns_CV.pdf" download>Download my CV <span aria-hidden="true">↓</span></a>
         </div>
       </div>
+      <div class="hero-portrait reveal">
+        <span class="portrait-halo" aria-hidden="true"></span>
+        <span class="portrait-wordmark" aria-hidden="true"><b>MARCO</b><b>ROHNS</b></span>
+        <img src="assets/marco-hero.png" width="851" height="1847" fetchpriority="high" alt="Marco Rohns holding a laptop and coffee">
+        <a class="hero-proof hero-proof-product rotating-border" href="#manemap"><span>Live in production</span><strong>ManeMap</strong><small>iOS + Android ↗</small></a>
+        <div class="hero-proof hero-proof-adoption"><span>Beyond the build</span><strong>4.5 years</strong><small>enterprise adoption</small></div>
+      </div>
+      <div class="hero-bottom"><span>Based in Germany · Open to the right role or project</span><a href="#directions">See the work <span aria-hidden="true">↓</span></a></div>
+    </section>
 
-      <figure class="hero-product reveal" aria-label="Preview of the live ManeMap mobile app">
-        <div class="hero-product-head"><span>01 / Shipped product</span><span>iOS + Android</span></div>
-        <div class="hero-product-stage">
-          <span class="hero-product-wordmark" aria-hidden="true">ManeMap</span>
-          <img src="assets/manemap-home.webp" width="760" height="1569" fetchpriority="high" alt="ManeMap home screen showing a horse profile and Milo's daily care tip">
-          <span class="hero-product-stamp">Live product<br>May 2026</span>
-        </div>
-        <figcaption><span>Real app. Real context.</span><a href="#manemap">See how it works <span aria-hidden="true">↗</span></a></figcaption>
-      </figure>
+    <section class="directions-section" id="directions" aria-labelledby="directions-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Start here</p>
+        <h2 id="directions-title">The work, from three angles.</h2>
+        <p>A shipped product, the decisions that make its AI useful, and experience bringing technology into real teams.</p>
+      </div>
+      <div class="direction-grid reveal-stagger">
+        <a class="direction-card direction-product reveal" href="#manemap">
+          <span class="direction-index">01 / Product</span>
+          <div class="direction-art direction-art-phone"><img src="assets/manemap-home.webp" width="760" height="1569" loading="lazy" alt=""></div>
+          <h3>See what I shipped.</h3><p>ManeMap is live in both app stores with paying subscribers.</p><span class="direction-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="direction-card direction-systems reveal" href="architecture.html">
+          <span class="direction-index">02 / Decisions</span>
+          <div class="direction-art direction-art-flow" aria-hidden="true"><span>Context</span><i></i><span>Grounding</span><i></i><span>Safety</span></div>
+          <h3>Inspect the system.</h3><p>Follow the context, retrieval and safety decisions behind the assistant.</p><span class="direction-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="direction-card direction-adoption reveal" href="#adoption">
+          <span class="direction-index">03 / Adoption</span>
+          <div class="direction-art direction-art-adoption" aria-hidden="true"><strong>4.5</strong><span>years connecting software<br>with the people using it</span></div>
+          <h3>Look beyond launch.</h3><p>Enterprise onboarding, renewals and AI feature adoption.</p><span class="direction-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </section>
 
     <section class="work-section" id="work" aria-labelledby="work-title">
@@ -125,10 +146,10 @@
       <div class="section-heading reveal">
         <p class="eyebrow">Selected work / 02</p>
         <h2 id="adoption-title">Shipping is half the job.<br>Adoption is the other.</h2>
-        <p>Before building ManeMap, I spent 4.5 years helping enterprise customers launch, use and renew software.</p>
+        <p>Before building ManeMap, I spent 4.5 years helping enterprise customers launch, use and renew software — building on nearly a decade of project delivery.</p>
       </div>
       <div class="adoption-record reveal">
-        <div class="adoption-record-intro"><span>In practice</span><strong>Product decisions get better when you understand how people work after launch.</strong></div>
+        <div class="adoption-record-intro"><span>In practice</span><strong>Product decisions get better when you understand how people work after launch.</strong><div class="practice-loop" aria-hidden="true"><span class="practice-signal">Customer signal</span><i></i><span class="practice-decision">Product decision</span><i></i><span class="practice-adoption">Adoption</span></div></div>
         <div class="career-timeline">
           <div>
             <span>2022–2025 / Ryte</span>
@@ -139,7 +160,12 @@
           <div>
             <span>2021–2022 / e-bot7</span>
             <b>Customer Adoption Manager</b>
-            <p>Launched AI chatbots with enterprise service teams and used adoption data to improve the product.</p>
+            <p>Rolled out enterprise AI chatbots, configuring flows, NLU training data, escalations, handover and integrations. At Vienna Airport, unresolved traveller questions became Zendesk tickets, while I onboarded the dedicated bot manager to run content updates after go-live.</p>
+          </div>
+          <div>
+            <span>2011–2020 / Move-Ment.net</span>
+            <b>Project Manager</b>
+            <p>Planned and delivered client and event projects across cross-functional teams, then applied lean methods to make workflows clearer and faster.</p>
           </div>
         </div>
       </div>
@@ -148,7 +174,7 @@
     <section class="ask-section" id="askzone" aria-labelledby="ask-title">
       <div class="ask-intro reveal">
         <p class="eyebrow">Recruiter shortcut</p>
-        <h2 id="ask-title">Ask the CV directly.</h2>
+        <h2 id="ask-title">Ask the CV directly.<img class="ask-pet" src="assets/gpt-pet-crop.png" width="70" height="84" alt=""></h2>
         <p>Get a focused answer about my experience, technical decisions or role fit. Every response is grounded in the CV and points back to its source.</p>
         <div class="source-links"><a href="Marco_Rohns_CV.pdf" download>PDF CV ↓</a><a href="resume.md">CV for AI agents ↗</a></div>
       </div>
@@ -236,6 +262,6 @@
   </footer>
 </div>
 
-<script src="app.js?v=11" defer></script>
+<script src="app.js?v=12" defer></script>
 </body>
 </html>

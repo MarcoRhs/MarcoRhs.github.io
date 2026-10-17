@@ -6,6 +6,7 @@ const SUGGESTIONS = [
   {label: "Production proof", question: "What production evidence shows that Marco can ship AI products end to end?"},
   {label: "Technical stack", question: "Which technologies has Marco used across AI, backend and mobile product development?"},
   {label: "Enterprise adoption", question: "How has Marco helped enterprise teams adopt AI products and improve customer outcomes?"},
+  {label: "Project delivery", question: "What project delivery experience does Marco bring to an AI product role?"},
   {label: "Role fit", question: "Which roles best match Marco's experience, based on his CV?"}
 ];
 const COPY = {

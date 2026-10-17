@@ -45,6 +45,8 @@ Tools: Ryte Website User Experience & SEO platform · Jira · Confluence
 Tools: conversational AI platform · enterprise chatbot deployments
 
 - Took enterprise customer-service teams live on AI chatbots, owning onboarding and rollout against adoption and satisfaction KPIs.
+- Owned configuration and integrations from setup through go-live: conversation flows, NLU training data, fallback and escalation rules, live-agent handover, channels and customer REST APIs.
+- At Vienna Airport, routed unanswered traveller questions into Zendesk tickets and onboarded the dedicated bot manager to own content and flow updates after launch.
 - Analysed adoption metrics and usage patterns to find friction points and feed product improvements.
 - Worked with Product, Sales and Engineering across global teams; customised embedded chat interfaces (CSS).
 
