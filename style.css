@@ -1458,15 +1458,13 @@ footer a { color: var(--ink); }
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .portrait-ring-outer { animation: portrait-ring-clockwise 34s linear infinite; }
-  .portrait-ring-middle { animation: portrait-ring-counterclockwise 42s linear infinite; }
-  .portrait-ring-inner { animation: portrait-ring-clockwise 58s linear infinite; }
-  .portrait-wordmark b:first-child { animation: wordmark-left 1.3s var(--ease-out) .16s both; }
-  .portrait-wordmark b:last-child { animation: wordmark-right 1.3s var(--ease-out) .32s both; }
-  .home-page .hero-portrait img { transition: transform 550ms var(--ease-out); }
-  .home-page .hero:hover .hero-portrait img { transform: translateY(-6px); }
-}
+.portrait-ring-outer { animation: portrait-ring-clockwise 34s linear infinite; }
+.portrait-ring-middle { animation: portrait-ring-counterclockwise 42s linear infinite; }
+.portrait-ring-inner { animation: portrait-ring-clockwise 58s linear infinite; }
+.portrait-wordmark b:first-child { animation: wordmark-left 1.3s var(--ease-out) .16s both; }
+.portrait-wordmark b:last-child { animation: wordmark-right 1.3s var(--ease-out) .32s both; }
+.home-page .hero-portrait img { transition: transform 550ms var(--ease-out); }
+.home-page .hero:hover .hero-portrait img { transform: translateY(-6px); }
 
 @media (max-width: 1040px) {
   .home-page .hero { min-height: 1050px; padding: 61px 6% 80px; }
