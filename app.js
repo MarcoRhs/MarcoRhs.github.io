@@ -287,3 +287,71 @@ if (navToggle && navLinks) {
     if (!event.target.closest("#nav-links") && !event.target.closest("#navToggle")) setNav(false);
   });
 }
+
+
+const agentViewToggle = $("agentViewToggle");
+const humanProfile = $("main");
+const agentProfile = $("agent-profile");
+const copyAgentProfile = $("copyAgentProfile");
+const agentCopyStatus = $("agentCopyStatus");
+const AGENT_PROFILE_TEXT = `# Marco Rohns
+
+AI engineer, product builder and enterprise adoption specialist.
+
+Best-fit roles: AI Engineer; AI Product Engineer; AI Solutions & Adoption
+Current proof: Founder and AI Engineer of ManeMap, a live iOS and Android horse-care app with paying subscribers.
+Technical range: RAG, vector search, LLM integration, Kotlin, Compose Multiplatform, Supabase, PostgreSQL, TypeScript and REST APIs.
+Enterprise record: 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7, built on nearly a decade of project delivery.
+Availability: Uplengen, Germany; open to the right full-time role, project or collaboration.
+
+Full machine-readable CV: https://marcorhs.github.io/resume.md
+AskCV: https://marcorhs.github.io/#askzone`;
+
+function setReadingMode(mode, updateUrl = true){
+  if (!agentViewToggle || !humanProfile || !agentProfile) return;
+  const agentMode = mode === "agent";
+  document.body.classList.toggle("agent-mode", agentMode);
+  humanProfile.hidden = agentMode;
+  agentProfile.hidden = !agentMode;
+  agentViewToggle.setAttribute("aria-checked", String(agentMode));
+  agentViewToggle.setAttribute("aria-label", agentMode ? "Switch to the people view" : "Switch to the AI agent view");
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    if (agentMode) url.searchParams.set("view", "agent");
+    else url.searchParams.delete("view");
+    history.replaceState({}, "", url);
+  }
+  if (agentMode) {
+    document.title = "Marco Rohns — AI Agent Profile";
+    window.scrollTo({top: 0, behavior: reduceMotion ? "auto" : "smooth"});
+  } else {
+    document.title = "Marco Rohns — AI Engineer & Product Builder";
+  }
+}
+
+if (agentViewToggle) {
+  agentViewToggle.addEventListener("click", () => {
+    setReadingMode(agentViewToggle.getAttribute("aria-checked") === "true" ? "human" : "agent");
+  });
+  setReadingMode(new URLSearchParams(window.location.search).get("view") === "agent" ? "agent" : "human", false);
+}
+
+if (copyAgentProfile && agentCopyStatus) {
+  copyAgentProfile.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(AGENT_PROFILE_TEXT);
+      agentCopyStatus.textContent = "Profile copied.";
+    } catch {
+      const field = document.createElement("textarea");
+      field.value = AGENT_PROFILE_TEXT;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.append(field);
+      field.select();
+      document.execCommand("copy");
+      field.remove();
+      agentCopyStatus.textContent = "Profile copied.";
+    }
+  });
+}

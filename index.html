@@ -6,19 +6,19 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Marco Rohns — AI Engineer &amp; Product Builder</title>
-<meta name="description" content="Marco Rohns builds AI products and helps people use them. Explore ManeMap, his live iOS and Android app, enterprise adoption work, and an interactive CV.">
+<meta name="description" content="Marco Rohns builds AI products and helps teams adopt them. Explore ManeMap, his live iOS and Android app, enterprise adoption work, and an interactive CV.">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Marco Rohns — AI Engineer &amp; Product Builder">
-<meta property="og:description" content="I build AI products and help people use them. Explore my live product, engineering decisions and enterprise adoption work.">
+<meta property="og:description" content="I build AI products and help teams adopt them. Explore my live product, engineering decisions and enterprise adoption work.">
 <meta property="og:url" content="https://marcorhs.github.io/">
-<meta property="og:image" content="https://marcorhs.github.io/assets/social-preview.png">
+<meta property="og:image" content="https://marcorhs.github.io/assets/social-preview.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Marco Rohns, AI Engineer and Product Builder">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Marco Rohns — AI Engineer &amp; Product Builder">
-<meta name="twitter:description" content="I build AI products and bring people with them.">
-<meta name="twitter:image" content="https://marcorhs.github.io/assets/social-preview.png">
+<meta name="twitter:description" content="I build AI products and help teams adopt them.">
+<meta name="twitter:image" content="https://marcorhs.github.io/assets/social-preview.png?v=2">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="canonical" href="https://marcorhs.github.io/">
@@ -27,7 +27,7 @@
 {"@context":"https://schema.org","@type":"Person","name":"Marco Rohns","jobTitle":"AI Engineer, Product Builder & Enterprise Adoption","address":{"@type":"PostalAddress","addressLocality":"Uplengen","addressCountry":"DE"},"email":"mailto:marco.rohns12@gmail.com","sameAs":["https://www.linkedin.com/in/marco-rohns","https://manemap.app"],"knowsLanguage":["de","es","en"],"knowsAbout":["Retrieval-Augmented Generation","Large Language Models","Kotlin","Compose Multiplatform","Supabase","PostgreSQL","Enterprise Customer Success","AI adoption"],"worksFor":{"@type":"Organization","name":"The Rohns UG (ManeMap)","url":"https://manemap.app"}}
 </script>
 <link rel="preload" href="assets/marco-hero.png" as="image">
-<link rel="stylesheet" href="style.css?v=21">
+<link rel="stylesheet" href="style.css?v=22">
 </head>
 <body class="home-page">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -52,13 +52,24 @@
     <div class="scroll-progress" aria-hidden="true"><span></span></div>
   </header>
 
+
+  <div class="view-switch-wrap" aria-label="Choose a reading mode">
+    <div class="view-switch">
+      <span id="humanViewLabel">For people</span>
+      <button class="view-switch-control" id="agentViewToggle" type="button" role="switch" aria-checked="false" aria-labelledby="humanViewLabel agentViewLabel" aria-controls="agent-profile">
+        <span aria-hidden="true"></span>
+      </button>
+      <span id="agentViewLabel">For AI agents</span>
+    </div>
+  </div>
+
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow">Marco Rohns / AI engineer &amp; product builder</p>
-        <h1 id="hero-title">I build AI products.<br><em>And bring people with them.</em></h1>
-        <p class="intro">I’m Marco. I built ManeMap from idea to paying subscribers on iOS and Android, after 4.5 years helping enterprise teams adopt software.</p>
+        <h1 id="hero-title">I build AI products.<br><em>And help teams adopt them.</em></h1>
+        <p class="intro">I’m Marco. I built ManeMap from idea to paying subscribers on iOS and Android, with 4.5 years of experience helping enterprise teams adopt software.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a>
           <a class="button button-secondary" href="#askzone">Ask my CV <span aria-hidden="true">↗</span></a>
@@ -156,7 +167,7 @@
     <section class="adoption-section" id="adoption" aria-labelledby="adoption-title">
       <div class="section-heading reveal">
         <p class="eyebrow">Selected work / 02</p>
-        <h2 id="adoption-title">Shipping is half the job.<br>Adoption is the other.</h2>
+        <h2 id="adoption-title">Building the product is half the work.<br>Helping teams use it is the other.</h2>
         <p>Before building ManeMap, I spent 4.5 years helping enterprise customers launch, use and renew software — building on nearly a decade of project delivery.</p>
       </div>
       <div class="adoption-record reveal">
@@ -255,7 +266,7 @@
     <section class="contact-section rotating-border panel-border reveal" id="contact" aria-labelledby="contact-title">
       <div>
         <p class="eyebrow">Next step</p>
-        <h2 id="contact-title">Need someone who can build the system and bring the team with it?</h2>
+        <h2 id="contact-title">Need someone who can build the system and help the team use it?</h2>
         <p>Let’s compare the role, the problem and what useful progress would look like.</p>
       </div>
       <div class="contact-actions">
@@ -267,12 +278,36 @@
     </section>
   </main>
 
+  <section class="agent-profile" id="agent-profile" hidden aria-labelledby="agent-profile-title" tabindex="-1">
+    <div class="agent-profile-shell">
+      <div class="agent-profile-intro">
+        <p class="eyebrow">Structured profile for AI agents</p>
+        <h1 id="agent-profile-title">Marco Rohns</h1>
+        <p>AI engineer, product builder and enterprise adoption specialist. This view is a concise, factual entry point for evaluating role fit.</p>
+        <div class="agent-profile-actions">
+          <button class="agent-copy" id="copyAgentProfile" type="button">Copy profile <span aria-hidden="true">↗</span></button>
+          <a href="resume.md">Open machine-readable CV <span aria-hidden="true">↗</span></a>
+          <a href="Marco_Rohns_CV.pdf" download>Download PDF CV <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="agent-copy-status" id="agentCopyStatus" role="status" aria-live="polite"></p>
+      </div>
+      <dl class="agent-facts">
+        <div><dt>Best-fit roles</dt><dd>AI Engineer · AI Product Engineer · AI Solutions &amp; Adoption</dd></div>
+        <div><dt>Current proof</dt><dd>Founder and AI Engineer of ManeMap, a live iOS and Android horse-care app with paying subscribers.</dd></div>
+        <div><dt>Technical range</dt><dd>RAG, vector search, LLM integration, Kotlin, Compose Multiplatform, Supabase, PostgreSQL, TypeScript and REST APIs.</dd></div>
+        <div><dt>Enterprise record</dt><dd>4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7, built on nearly a decade of project delivery.</dd></div>
+        <div><dt>Availability</dt><dd>Uplengen, Germany · open to the right full-time role, project or collaboration.</dd></div>
+        <div><dt>Source material</dt><dd>Use the machine-readable CV or AskCV for grounded detail; unsupported claims are identified as gaps.</dd></div>
+      </dl>
+    </div>
+  </section>
+
   <footer>
     <p>AskCV uses Google Gemini and can be incomplete. It retains questions and answers for up to 90 days and stores a salted IP hash for request limits for up to 3 days.</p>
     <div><a href="mailto:marco.rohns12@gmail.com">marco.rohns12@gmail.com</a><a href="legal.html">Legal notice</a><a href="privacy.html">Privacy</a></div>
   </footer>
 </div>
 
-<script src="app.js?v=12" defer></script>
+<script src="app.js?v=13" defer></script>
 </body>
 </html>
