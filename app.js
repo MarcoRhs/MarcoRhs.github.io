@@ -298,11 +298,26 @@ const AGENT_PROFILE_TEXT = `# Marco Rohns
 
 AI engineer, product builder and enterprise adoption specialist.
 
-Best-fit roles: AI Engineer; AI Product Engineer; AI Solutions & Adoption
-Current proof: Founder and AI Engineer of ManeMap, a live iOS and Android horse-care app with paying subscribers.
-Technical range: RAG, vector search, LLM integration, Kotlin, Compose Multiplatform, Supabase, PostgreSQL, TypeScript and REST APIs.
-Enterprise record: 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7, built on nearly a decade of project delivery.
-Availability: Uplengen, Germany; open to the right full-time role, project or collaboration.
+## Best fit
+AI Engineer; AI Product Engineer; AI Solutions & Adoption
+Uplengen, Germany; open to full-time roles, projects and collaborations.
+Languages: German and Spanish native; professional English.
+
+## Current product — ManeMap, Founder & AI Engineer
+Built solo from idea to paying subscribers on the App Store and Google Play. Owns product direction, architecture, data model, safety logic, evaluation and releases.
+Stack: Kotlin, Compose Multiplatform, Supabase, PostgreSQL, Edge Functions, pgvector, Gemini, RAG and RevenueCat.
+
+## AI system evidence
+Milo combines curated bilingual veterinary knowledge with horse profile, weather and training history. Health risk is classified before generation; unsafe medication detail is removed after generation. Regression tests cover emergency detection, retrieval quality and context retention before release.
+
+## Enterprise AI adoption — e-bot7, Customer Adoption Manager, 2021–2022
+Owned onboarding, rollout, configuration and integrations for enterprise AI chatbots: conversation flows, NLU training data, fallbacks, escalation and live-agent handover. At Vienna Airport, routed unanswered traveller questions to Zendesk and onboarded the client bot manager.
+
+## Enterprise customer success — Ryte, Senior Customer Success Manager, 2022–2025
+Owned onboarding, reviews, renewals and expansion for enterprise accounts. Promoted within 12 months. Recovered and renewed a €10k/month enterprise account and drove adoption of AI-powered SEO features.
+
+## Project delivery — Move-Ment.net, Project Manager, 2011–2020
+Planned and delivered client and event projects across cross-functional teams; applied lean methods to make workflows clearer and faster.
 
 Full machine-readable CV: https://marcorhs.github.io/resume.md
 AskCV: https://marcorhs.github.io/#askzone`;
@@ -335,6 +350,10 @@ if (agentViewToggle) {
   });
   setReadingMode(new URLSearchParams(window.location.search).get("view") === "agent" ? "agent" : "human", false);
 }
+
+document.querySelectorAll("[data-return-to-human]").forEach(link => {
+  link.addEventListener("click", () => setReadingMode("human"));
+});
 
 if (copyAgentProfile && agentCopyStatus) {
   copyAgentProfile.addEventListener("click", async () => {

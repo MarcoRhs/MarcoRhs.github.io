@@ -1589,3 +1589,56 @@ footer a { color: var(--ink); }
   .view-switch-control, .view-switch-control > span, .agent-profile-actions a, .agent-copy { transition: none; }
   .agent-profile-actions a:hover, .agent-copy:hover { transform: none; }
 }
+
+/* Proof cards use deliberate zones at each layout range, never independent overlapping coordinates. */
+@media (min-width: 761px) and (max-width: 1040px) {
+  .hero-proof-adoption { top: 56%; right: auto; bottom: auto; left: 7%; }
+  .hero-proof-product { top: 74%; right: 7%; bottom: auto; }
+}
+
+@media (max-width: 760px) {
+  .hero-proof { width: min(205px, calc(50% - 28px)); min-width: 0; }
+  .hero-proof span { white-space: nowrap; font-size: 9px; letter-spacing: .065em; }
+  .hero-proof-adoption { top: 59%; right: auto; bottom: auto; left: 4%; }
+  .hero-proof-product { top: 74%; right: 4%; bottom: auto; }
+}
+
+@media (max-width: 450px) {
+  .hero-proof-adoption { top: 59%; left: 5%; }
+  .hero-proof-product { top: 74%; right: 5%; bottom: auto; }
+}
+
+/* Agent view contains comparable factual depth without visual portfolio material. */
+.agent-detail-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-content: start; gap: 1px; background: rgba(218,241,222,.18); }
+.agent-detail { min-height: 258px; padding: 29px 28px; background: rgba(5,31,32,.51); }
+.agent-detail p:first-child, .agent-detail dt { margin: 0 0 11px; color: #a9d6b3; font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.agent-detail h2 { margin: 0 0 15px; color: #fff; font-size: 23px; line-height: 1.08; letter-spacing: -.04em; }
+.agent-detail p:not(:first-child) { margin: 0; color: #f6fff7; font-size: 15px; line-height: 1.48; }
+.agent-detail ul { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; color: #f6fff7; font-size: 14px; line-height: 1.43; }
+.agent-detail li { position: relative; padding-left: 14px; }
+.agent-detail li::before { position: absolute; top: .6em; left: 0; width: 5px; height: 5px; border-radius: 50%; background: #8eb69b; content: ""; }
+.agent-detail-lead { background: rgba(5,31,32,.76); }
+.agent-detail-lead h2 { max-width: 330px; font-size: 27px; }
+.agent-detail-lead dl { display: grid; gap: 12px; margin: 0; }
+.agent-detail-lead dl > div { display: grid; gap: 3px; }
+.agent-detail-lead dt { margin: 0; }
+.agent-detail-lead dd { margin: 0; color: #f6fff7; font-size: 14px; line-height: 1.42; }
+.agent-detail-source { background: radial-gradient(circle at 84% 9%,rgba(142,182,155,.24),transparent 45%),rgba(5,31,32,.7); }
+.agent-detail-source > div { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 22px; }
+.agent-detail-source a { color: #c2e6ca; font-size: 14px; font-weight: 600; }
+.agent-detail-source a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+
+@media (max-width: 760px) {
+  .agent-detail-grid { grid-template-columns: 1fr; }
+  .agent-detail { min-height: auto; padding: 24px; }
+}
+
+/* On phone, these offsets are relative to the portrait layer. Keep the cards above the fixed hero footer. */
+@media (max-width: 760px) {
+  .hero-proof-adoption { top: 45%; }
+  .hero-proof-product { top: 62%; }
+}
+@media (max-width: 450px) {
+  .hero-proof-adoption { top: 45%; }
+  .hero-proof-product { top: 62%; }
+}
