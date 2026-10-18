@@ -1371,7 +1371,7 @@ footer a { color: var(--ink); }
 .hero-proof small { color: #d2e4d4; font-size: 11px; }
 .hero-proof-product { right: 6%; bottom: 10%; min-width: 178px; transition: transform 220ms var(--ease-out), background-color 220ms ease; }
 .hero-proof-product:hover { transform: translateY(-5px); background: #163832; }
-.hero-proof-adoption { top: auto; bottom: 132px; left: 55%; }
+.hero-proof-adoption { right: 6%; bottom: 29%; left: auto; }
 .hero-bottom { position: absolute; z-index: 5; right: 6%; bottom: 17px; left: 6%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 11px 14px; border: 1px solid rgba(218,241,222,.21); border-radius: 12px; background: rgba(5,31,32,.76); color: #d2e5d5; font-size: 12px; }
 .hero-bottom a { color: #e8f6e9; font-weight: 600; white-space: nowrap; }
 .hero-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
