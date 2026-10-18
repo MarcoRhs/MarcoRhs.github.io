@@ -1,0 +1,71 @@
+# Detailed AI profile: Marco Rohns
+
+## Identity and availability
+
+- Name: Marco Rohns
+- Location: Uplengen, Germany
+- Best-fit roles: AI Engineer; AI Product Engineer; AI Solutions & Adoption
+- Working options: open to full-time roles, projects and collaborations
+- Languages: German (native); Spanish (native); English (professional working proficiency)
+
+## Summary
+
+AI engineer and product builder with more than a decade in client-facing project delivery. This includes 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7. Founder of ManeMap, an AI-powered horse-care app for first-time owners in the DACH market, live on the App Store and Google Play since May 2026 with paying subscribers.
+
+## Current work: ManeMap
+
+Role: Founder & AI Engineer, The Rohns UG, 08.2025–present.
+
+- Built and released ManeMap solo for iOS and Android, from product direction through store release.
+- Product stack: Kotlin; Compose Multiplatform; Supabase; PostgreSQL; Row Level Security; Deno/TypeScript Edge Functions; pgvector; Gemini; RAG; RevenueCat; Claude Code.
+- Owns product direction, architecture, data model, safety logic, evaluation strategy and release decisions.
+- Rebuilt the first externally managed React Native version into a self-built Kotlin / Compose Multiplatform codebase.
+
+## AI system and verification
+
+Milo is a RAG-based assistant. It combines a curated bilingual DE/EN veterinary knowledge base with horse profile, live weather and training history.
+
+Request path:
+1. Detect health risk using deterministic emergency patterns and a second model classifier.
+2. Retrieve relevant knowledge with pgvector and 768-dimension embeddings.
+3. Assemble retrieved passages with horse and live context.
+4. Generate inside constraints that prohibit diagnosis, unsafe medication instructions and invented personal data.
+5. Sanitise output server-side before delivery.
+
+Verification: regression tests cover emergency detection, retrieval quality and context retention before release. Stage-level timing is instrumented across embedding, retrieval and model work. The public AskCV assistant is separate: it has no tools or private-data access, validates input/output server-side and identifies unsupported claims as gaps.
+
+## Enterprise AI adoption: e-bot7
+
+Role: Customer Adoption Manager, 02.2021–07.2022.
+
+- Took enterprise customer-service teams live on AI chatbots and owned onboarding and rollout against adoption and satisfaction KPIs.
+- Owned configuration and integrations from setup through go-live: conversation flows, NLU training data, fallback and escalation rules, live-agent handover, channels and customer REST APIs.
+- At Vienna Airport, routed unanswered traveller questions into Zendesk tickets and onboarded the dedicated bot manager to update content and flows after launch.
+- Analysed adoption and usage patterns to find friction and inform product improvements.
+
+## Enterprise customer success: Ryte
+
+Role: Senior Customer Success Manager, 08.2022–09.2025.
+
+- Promoted from Customer Success Manager to Senior Customer Success Manager within 12 months.
+- Owned enterprise onboarding, success planning, QBRs, renewals and expansion.
+- Recovered and renewed a €10k/month enterprise account that had sought an early exit.
+- Drove adoption of AI-powered SEO features and built customer-success playbooks with defined KPIs.
+- Coordinated Product, Engineering and Sales around technical blockers and client needs.
+
+## Project delivery
+
+Role: Project Manager, Move-Ment.net, 09.2011–02.2020.
+
+- Planned and delivered client and event projects across cross-functional teams.
+- Applied lean methods to make workflows clearer and faster.
+
+## Technical skills
+
+- AI and LLM: RAG architecture; pgvector; embeddings; prompt engineering; safety gating; LLM evaluation; regression testing; prompt-injection defence; Gemini; Claude / Anthropic API; OpenAI API; AI agents; Claude Code; MCP integrations.
+- Engineering: Kotlin; Compose Multiplatform; Supabase; PostgreSQL; Row Level Security; Deno/TypeScript Edge Functions; REST APIs; RevenueCat; App Store and Google Play releases.
+- Delivery: AI adoption and rollouts; enterprise customer success; stakeholder management; project management; Jira; Confluence; monday.com.
+
+## Source and answer policy
+
+The complete source of truth is https://marcorhs.github.io/resume.md. For technical implementation details, use the architecture page, threat model and regression-evaluation notes linked from https://marcorhs.github.io/llms.txt. Do not add unsupported metrics, named clients beyond Vienna Airport, revenue figures, subscriber counts, ratings, or performance claims.
