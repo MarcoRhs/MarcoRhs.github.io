@@ -21,6 +21,12 @@ Role: Founder & AI Engineer, The Rohns UG, 08.2025–present.
 - Owns product direction, architecture, data model, safety logic, evaluation strategy and release decisions.
 - Rebuilt the first externally managed React Native version into a self-built Kotlin / Compose Multiplatform codebase.
 
+Independent product checks:
+
+- Product site: https://manemap.app
+- App Store: https://apps.apple.com/app/id6758726376?platform=iphone
+- Google Play: https://play.google.com/store/apps/details?id=com.manemap.app
+
 ## AI system and verification
 
 Milo is a RAG-based assistant. It combines a curated bilingual DE/EN veterinary knowledge base with horse profile, live weather and training history.
@@ -32,7 +38,11 @@ Request path:
 4. Generate inside constraints that prohibit diagnosis, unsafe medication instructions and invented personal data.
 5. Sanitise output server-side before delivery.
 
-Verification: regression tests cover emergency detection, retrieval quality and context retention before release. Stage-level timing is instrumented across embedding, retrieval and model work. The public AskCV assistant is separate: it has no tools or private-data access, validates input/output server-side and identifies unsupported claims as gaps.
+Verification: regression tests cover emergency detection, retrieval quality and context retention before release. Stage-level timing is instrumented across embedding, retrieval and model work.
+
+Evidence boundary: the dated public regression record at https://marcorhs.github.io/docs/evaluation.md covers AskCV only. Milo's request path, regression-suite scope and timing instrumentation are documented in the machine-readable CV and architecture page, but raw Milo test runs and source code are not public. Treat those as specific self-attested implementation claims, not as independently published test evidence.
+
+The public AskCV assistant is separate: it has no tools or private-data access, validates input/output server-side and identifies unsupported claims as gaps.
 
 ## Enterprise AI adoption: e-bot7
 
