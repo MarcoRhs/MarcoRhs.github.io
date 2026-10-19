@@ -40,7 +40,9 @@ Request path:
 
 Verification: regression tests cover emergency detection, retrieval quality and context retention before release. Stage-level timing is instrumented across embedding, retrieval and model work.
 
-Evidence boundary: the dated public regression record at https://marcorhs.github.io/docs/evaluation.md covers AskCV only. Milo's request path, regression-suite scope and timing instrumentation are documented in the machine-readable CV and architecture page, but raw Milo test runs and source code are not public. Treat those as specific self-attested implementation claims, not as independently published test evidence.
+Public Milo evidence: https://marcorhs.github.io/docs/milo-evaluation.md records the v117 deterministic emergency-gate release: 103 offline cases, 0 unintended safety regressions, 27 newly routed cases, 5 intended false-positive reductions, and 12/12 live smoke probes. It also documents a known failing pre-existing case and the scope limits.
+
+Evidence boundary: the dated public regression record at https://marcorhs.github.io/docs/evaluation.md covers AskCV only. The public Milo record covers deterministic emergency-gate routing, not universal model safety, clinical correctness, general retrieval quality, or all production behaviour. Raw Milo test runs and source code are not public. Treat the implementation claims as specific self-attested statements, supplemented by the published release evidence rather than independently audited proof.
 
 The public AskCV assistant is separate: it has no tools or private-data access, validates input/output server-side and identifies unsupported claims as gaps.
 
