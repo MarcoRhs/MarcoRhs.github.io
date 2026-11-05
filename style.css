@@ -1649,3 +1649,13 @@ footer a { color: var(--ink); }
   .hero-proof-adoption { top: 45%; }
   .hero-proof-product { top: 62%; }
 }
+
+/* Forest Glass previews are screen captures; frame them without altering their content. */
+.direction-art-phone img, .home-page .product-shots img {
+  box-sizing: border-box;
+  border: 3px solid #87988d;
+  border-radius: 24px;
+  background: #071813;
+}
+.direction-art-phone img { border-width: 2px; border-radius: 17px; }
+.screen-annotation .screen-preview-disclaimer { margin: 0 0 7px; color: #bfd4c3; font-size: 11px; }
