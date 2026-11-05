@@ -1,0 +1,17 @@
+/* Light cards in the dark section need their own readable text colours. */
+#milo .credential-card h3,
+#milo .credential-card p,
+#milo .credential-card a {
+  color: #173a30;
+}
+#milo .credential-card .card-kicker {
+  color: #285b4c;
+}
+#milo .credential-card a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+#milo .credential-card a:hover,
+#milo .credential-card a:focus-visible {
+  color: #0c4a36;
+}
