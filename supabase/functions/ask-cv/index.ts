@@ -6,7 +6,7 @@
  *
  * Guarantees:
  * - The model sees only the CV, the rules and the visitor's questions. It has no tools and no data access.
- * - Cost is capped: IP_LIMIT questions per visitor and GLOBAL_LIMIT in total per UTC day.
+ * - Admission counters limit requests per visitor and globally; refunds mean these are not a strict spending cap.
  * - IP addresses are never stored — only a salted SHA-256 hash, kept for at most 3 days.
  * - Questions and answers are logged for 90 days without any visitor identifier.
  *
@@ -16,6 +16,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
 import { buildUserTurn, hasValidSourceLine, normalizeSourceLine, SYSTEM_PROMPT } from "./prompt.ts";
 import { parseBody, type Question } from "./request.ts";
+import { CV_SHA256 } from "./cv.ts";
 
 const IP_LIMIT = 15;
 const GLOBAL_LIMIT = 1000; // runaway-cost backstop, set well above organic traffic
@@ -44,7 +45,7 @@ const db = createClient(env("SUPABASE_URL"), env("SUPABASE_SERVICE_ROLE_KEY"), {
 function corsHeaders(origin: string | null): HeadersInit {
   return {
     "Access-Control-Allow-Origin": origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0],
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "content-type",
     "Access-Control-Max-Age": "86400",
     "Vary": "Origin",
@@ -125,9 +126,13 @@ async function askGemini(q: Question): Promise<Payload> {
 
 async function handle(req: Request, origin: string | null): Promise<Response> {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders(origin) });
-  if (req.method !== "POST") return reply({ error: "method_not_allowed" }, 405, origin);
   // Browser-only guard. Non-browser clients send no Origin; the rate limit is the real control.
   if (origin && !ALLOWED_ORIGINS.includes(origin)) return reply({ error: "origin_not_allowed" }, 403, origin);
+  // Public metadata; exposes no CV content or configuration secrets and does not call the model.
+  if (req.method === "GET") return new Response(JSON.stringify({ corpusSha256: CV_SHA256 }), {
+    headers: { ...corsHeaders(origin), "Content-Type": "application/json", "Cache-Control": "no-store" },
+  });
+  if (req.method !== "POST") return reply({ error: "method_not_allowed" }, 405, origin);
   if (!CONFIGURED) {
     console.error("ask-cv: missing or invalid secret(s)");
     return reply({ error: "not_configured" }, 500, origin);

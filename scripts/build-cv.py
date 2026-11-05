@@ -45,6 +45,8 @@ BULLET = style("bullet", fontSize=8.8, leading=12.4, leftIndent=9,
 
 def markup(text):
     text = escape(text)
+    text = re.sub(r"\[([^\]]+)\]\((https://[^)]+)\)",
+                  r'<a href="\2" color="#0071E3">\1</a>', text)
     return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
 
 

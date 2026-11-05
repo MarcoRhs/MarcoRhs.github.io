@@ -120,7 +120,7 @@ function renderAnswer(el, text){
       el.append(p);
     }
   }
-  if (src){ const s = document.createElement("span"); s.className = "src"; s.textContent = formatSourceLine(src); el.append(s); }
+  if (src){ const s = document.createElement("a"); s.href = "resume.md"; s.className = "src"; s.textContent = formatSourceLine(src); el.append(s); }
 }
 
 async function ask(question = q.value){
@@ -289,88 +289,4 @@ if (navToggle && navLinks) {
 }
 
 
-const agentViewToggle = $("agentViewToggle");
-const humanProfile = $("main");
-const agentProfile = $("agent-profile");
-const copyAgentProfile = $("copyAgentProfile");
-const agentCopyStatus = $("agentCopyStatus");
-const AGENT_PROFILE_TEXT = `# Marco Rohns
-
-AI engineer, product builder and enterprise adoption specialist.
-
-## Best fit
-AI Engineer; AI Product Engineer; AI Solutions & Adoption
-Uplengen, Germany; open to full-time roles, projects and collaborations.
-Languages: German and Spanish native; professional English.
-
-## Current product — ManeMap, Founder & AI Engineer
-Built solo from idea to paying subscribers on the App Store and Google Play. Owns product direction, architecture, data model, safety logic, evaluation and releases.
-Stack: Kotlin, Compose Multiplatform, Supabase, PostgreSQL, Edge Functions, pgvector, Gemini, RAG and RevenueCat.
-
-## AI system evidence
-Milo combines curated bilingual veterinary knowledge with horse profile, weather and training history. Health risk is classified before generation; unsafe medication detail is removed after generation. Regression tests cover emergency detection, retrieval quality and context retention before release.
-
-## Enterprise AI adoption — e-bot7, Customer Adoption Manager, 2021–2022
-Owned onboarding, rollout, configuration and integrations for enterprise AI chatbots: conversation flows, NLU training data, fallbacks, escalation and live-agent handover. At Vienna Airport, routed unanswered traveller questions to Zendesk and onboarded the client bot manager.
-
-## Enterprise customer success — Ryte, Senior Customer Success Manager, 2022–2025
-Owned onboarding, reviews, renewals and expansion for enterprise accounts. Promoted within 12 months. Recovered and renewed a €10k/month enterprise account and drove adoption of AI-powered SEO features.
-
-## Project delivery — Move-Ment.net, Project Manager, 2011–2020
-Planned and delivered client and event projects across cross-functional teams; applied lean methods to make workflows clearer and faster.
-
-Full machine-readable CV: https://marcorhs.github.io/resume.md
-AskCV: https://marcorhs.github.io/#askzone`;
-
-function setReadingMode(mode, updateUrl = true){
-  if (!agentViewToggle || !humanProfile || !agentProfile) return;
-  const agentMode = mode === "agent";
-  document.body.classList.toggle("agent-mode", agentMode);
-  humanProfile.hidden = agentMode;
-  agentProfile.hidden = !agentMode;
-  agentViewToggle.setAttribute("aria-checked", String(agentMode));
-  agentViewToggle.setAttribute("aria-label", agentMode ? "Switch to the people view" : "Switch to the AI agent view");
-  if (updateUrl) {
-    const url = new URL(window.location.href);
-    if (agentMode) url.searchParams.set("view", "agent");
-    else url.searchParams.delete("view");
-    history.replaceState({}, "", url);
-  }
-  if (agentMode) {
-    document.title = "Marco Rohns — AI Agent Profile";
-    window.scrollTo({top: 0, behavior: reduceMotion ? "auto" : "smooth"});
-  } else {
-    document.title = "Marco Rohns — AI Engineer & Product Builder";
-  }
-}
-
-if (agentViewToggle) {
-  agentViewToggle.addEventListener("click", () => {
-    setReadingMode(agentViewToggle.getAttribute("aria-checked") === "true" ? "human" : "agent");
-  });
-  setReadingMode(new URLSearchParams(window.location.search).get("view") === "agent" ? "agent" : "human", false);
-}
-
-document.querySelectorAll("[data-return-to-human]").forEach(link => {
-  link.addEventListener("click", () => setReadingMode("human"));
-});
-
-if (copyAgentProfile && agentCopyStatus) {
-  copyAgentProfile.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(AGENT_PROFILE_TEXT);
-      agentCopyStatus.textContent = "Profile copied.";
-    } catch {
-      const field = document.createElement("textarea");
-      field.value = AGENT_PROFILE_TEXT;
-      field.setAttribute("readonly", "");
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.append(field);
-      field.select();
-      document.execCommand("copy");
-      field.remove();
-      agentCopyStatus.textContent = "Profile copied.";
-    }
-  });
-}
+initProfileView({ document, window, history, navigator });

@@ -1,0 +1,44 @@
+name: Portfolio checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check generated CV and profile
+        run: node scripts/sync-cv.mjs --check
+      - name: Check request and answer contracts
+        run: node scripts/eval/check.mjs
+      - name: Check profile navigation and copying
+        run: node scripts/check-profile-view.mjs
+      - name: Check evidence references
+        run: node scripts/check-evidence.mjs
+  # Model calls are opt-in, synthetic, and run only on manual dispatch. Never expose
+  # provider secrets to pull requests. Their reports are artifacts, not live claims.
+  model-regression:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run offline model regression
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/eval/run.mjs --mode=offline --model=gemini-2.5-flash
+      - name: Upload report including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-model-regression-${{ github.run_id }}
+          path: scripts/eval/results/*.json
+          if-no-files-found: warn

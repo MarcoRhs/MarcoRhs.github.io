@@ -1,6 +1,6 @@
 # Marco Rohns
 
-**AI Engineer & Enterprise Customer Success**
+**Applied AI Engineer & Product Builder**
 
 Uplengen, Germany · marco.rohns12@gmail.com
 linkedin.com/in/marco-rohns · marcorhs.github.io · manemap.app
@@ -8,7 +8,7 @@ Open to full-time roles, projects and collaborations
 
 ## Summary
 
-AI engineer and product builder with more than a decade in client-facing project delivery, including 4.5 years in enterprise customer success and AI adoption at Ryte (acquired by Semrush) and e-bot7 (acquired by LivePerson). Founder of ManeMap, an AI-powered care app for horse owners that I designed and built end to end — live on the App Store and Google Play since May 2026 with paying subscribers. I combine enterprise account ownership, technical rollouts and customer enablement with hands-on work in LLM integration, RAG, backend and mobile development. Open to full-time roles, projects and collaborations across AI engineering, AI product and adoption.
+Applied AI engineer and product builder combining LLM integration, retrieval, backend and mobile development with 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7. At ManeMap, I built and release the current Kotlin application and Supabase backend after managing the initial externally developed React Native version. The product is live on iOS and Android with paying subscribers. At Ryte, I managed approximately €3 million ARR across around 90 accounts. Open to full-time roles, projects and collaborations in applied AI/product engineering, AI solutions and implementation, and technical customer delivery.
 
 ## Experience
 
@@ -17,25 +17,25 @@ AI engineer and product builder with more than a decade in client-facing project
 
 Stack: Kotlin · Compose Multiplatform · Supabase (PostgreSQL, Row Level Security, Edge Functions in Deno/TypeScript, pgvector) · Gemini · RAG · RevenueCat · Claude Code
 
-- Built and shipped ManeMap solo — an AI-powered horse care app for first-time owners in the DACH market — to the App Store and Google Play (live since 05.2026), earning recurring revenue from paying subscribers on monthly and annual plans.
+- Built the current Kotlin / Compose Multiplatform app and Supabase backend since 04.2026, after managing the initial externally developed React Native version. Live on iOS and Android since 05.2026, with monthly and annual paying subscribers.
 - Architected Milo, a RAG-based AI assistant: vector search (pgvector, 768-dimension embeddings) over a curated bilingual DE/EN veterinary knowledge base, combined with horse profile, live weather and training history into daily care advice.
 - Built layered health-safety controls: deterministic emergency patterns and a second model classifier identify active incidents before generation; server-side output sanitisation removes unsafe medication detail and internal labels afterwards.
-- Wrote a regression test suite for the assistant covering emergency detection, retrieval quality and context retention, run before each release to catch safety-gate regressions.
-- Rebuilt the app natively in Kotlin / Compose Multiplatform, self-built since 04.2026, after managing an external React Native team for the first version.
+- Own the evaluation strategy and release decisions. Published a scoped Milo emergency-routing regression record, including defects found, changes made and a known remaining failure; details below.
 - Developed the Supabase backend: PostgreSQL data model, row-level security, serverless Edge Functions and content pipelines, with stage-level request timing instrumented across the pipeline.
 - Run an AI-assisted development workflow with Claude Code and MCP tool integrations for coding, QA and store releases.
-- Designed and hardened a public LLM assistant against prompt injection, rate-limit abuse and IP spoofing, documented the threat model, and put it through independent AI-assisted security reviews before release.
+- Built the public AskCV assistant with input validation, request limits, source-label checks and adversarial regression cases; published its source, threat model and dated evaluation record.
 
 ### Senior Customer Success Manager — Ryte GmbH (acquired by Semrush)
 08.2022 – 09.2025 · Remote
 
 Tools: Ryte Website User Experience & SEO platform · Jira · Confluence
 
-- Promoted from Customer Success Manager to Senior Customer Success Manager within 12 months (09.2023) based on portfolio performance.
+- Managed approximately €3 million ARR across around 90 accounts, connecting onboarding, adoption, technical issue resolution and renewal work.
+- Promoted to Senior Customer Success Manager in September 2023 based on portfolio performance.
 - Retained and renewed a €10k/month enterprise account that began adversarially — the client sought early exit with legal involvement weeks after signing — turning it around to a full renewal before the contract term ended.
 - Drove renewal and expansion across enterprise accounts, owning the full lifecycle from onboarding and success planning through QBRs.
 - Supported enterprise accounts across DACH and international markets, working with both consumption-based and seat-based usage models to identify adoption and expansion opportunities.
-- Helped build an automated onboarding system and monitored product usage to make adoption work across a large account portfolio.
+- Helped build automated onboarding and used product-usage data to improve adoption across the portfolio.
 - Led coordination between Product, Engineering and Sales to resolve technical blockers and feed client needs into the roadmap.
 - Drove adoption of new AI-powered SEO features in client workflows and built customer success playbooks with defined KPIs.
 
@@ -62,10 +62,12 @@ Tools: conversational AI platform · enterprise chatbot deployments
 
 ## Technical architecture & decisions
 
-- **Milo request path and safety:** classify health risk first, retrieve with pgvector, assemble horse and live context, generate with Gemini, then sanitise the output before delivery.
-- **Stack decisions:** kept data, authentication, Edge Functions and vector retrieval in Supabase; moved from the externally managed React Native version to one shared Kotlin / Compose Multiplatform codebase that I build and release directly.
-- **Verification:** regression tests cover emergency detection, retrieval quality and conversation context; stage-level timings expose embedding, retrieval and model latency.
-- **Ownership:** I own the product direction, architecture, data model, safety logic, evaluation strategy and release decisions. Claude Code and MCP integrations accelerate implementation, QA and store work.
+- **Milo architecture:** risk routing, 768-dimension vector retrieval, horse/context assembly, Gemini generation and server-side output controls. Stage timings support diagnosis.
+- **Stack decisions:** consolidated data, authentication, functions and retrieval in Supabase; replaced the externally managed React Native version with one shared Kotlin codebase.
+- **Milo evidence:** the self-published v117 record (21 August 2026) reports 103 deterministic-routing cases including one known failure, zero unintended regressions and 12/12 live smoke probes passed. This historical scope does not establish clinical correctness, retrieval quality or later-release safety. [Milo record](https://marcorhs.github.io/docs/milo-evaluation.md).
+- **AskCV evidence:** uses the full CV in the prompt, without vector retrieval or tools. The 2 October 2026 record reports 31/31 pattern-based regression checks and separate live probes. Valid source labels do not establish factual accuracy. [AskCV record](https://marcorhs.github.io/docs/evaluation.md).
+- **Ownership:** product direction, architecture, data model, safety logic, evaluation and releases; Claude Code and MCP integrations support implementation and QA.
+- **Inspect:** [ManeMap architecture](https://marcorhs.github.io/architecture.html) · [AskCV engineering](https://marcorhs.github.io/askcv.html) · [public source](https://github.com/MarcoRhs/MarcoRhs.github.io) · [threat model](https://marcorhs.github.io/docs/threat-model.md). ManeMap's private implementation is self-attested.
 
 ## Skills
 

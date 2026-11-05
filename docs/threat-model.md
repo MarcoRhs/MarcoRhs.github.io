@@ -15,7 +15,7 @@ The public page accepts a question and up to four earlier questions. The server 
 
 ## What the source line proves
 
-The server checks that a completed answer ends with a `Source:` line naming existing CV sections. It does **not** verify that the preceding sentences are supported by those sections. The 30-case regression suite probes common hallucinations and injection attempts, but passing it does not establish universal safety. Recruiters should verify important details with Marco and the downloadable CV.
+The server checks that a completed answer ends with a `Source:` line naming existing CV sections. It does **not** verify that the preceding sentences are supported by those sections. The current suite defines 35 regression cases for common hallucinations and injection attempts. The published 31/31 result is a separate historical record from 2 October 2026, not a run of the updated suite. Passing these checks does not establish universal safety. Recruiters should verify important details with Marco and the downloadable CV.
 
 ## Review cadence
 

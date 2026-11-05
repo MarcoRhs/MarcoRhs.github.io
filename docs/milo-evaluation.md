@@ -44,3 +44,4 @@ The 12 deployed probes covered Spanish emergency, Spanish educational, German em
 This is evidence that the v117 deterministic emergency gate was tested against defined scenarios, found defects, and passed its recorded release checks. It does **not** prove universal safety, clinical correctness, retrieval quality, or every aspect of Milo's generated answer. The project treats emergency guidance as a safety boundary: when signals are uncertain, the product directs the user to veterinary care.
 
 The public AskCV evaluation is separate and covers a different system. See [AskCV evaluation](evaluation.md) and the [ManeMap architecture](../architecture.html) for their distinct scopes.
+

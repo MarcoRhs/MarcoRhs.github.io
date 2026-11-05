@@ -1569,7 +1569,14 @@ footer a { color: var(--ink); }
 .agent-facts > div { min-height: 180px; padding: 29px 28px; background: rgba(5,31,32,.51); }
 .agent-facts dt { margin-bottom: 11px; color: #a9d6b3; font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 .agent-facts dd { margin: 0; color: #f6fff7; font-size: 15px; line-height: 1.48; }
-.agent-mode footer { display: none; }
+.agent-mode footer { display: block; }
+
+/* Evidence stays readable without changing the existing visual language. */
+.credential-card p a { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--blue); text-underline-offset: 3px; }
+.source-links { flex-wrap: wrap; row-gap: 10px; }
+.case-cta-row { flex-wrap: wrap; }
+.a .src { text-decoration: underline; text-underline-offset: 3px; }
+.agent-detail p, .agent-detail li { overflow-wrap: anywhere; }
 
 @media (max-width: 760px) {
   .view-switch-wrap { justify-content: center; margin: 13px 0 -1px; }

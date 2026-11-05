@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; font-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AskCV Engineering — Marco Rohns</title>
+<meta name="description" content="An inspectable LLM application: AskCV's curated context, untrusted input boundary, server-side validation, request limits and dated regression evidence.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AskCV Engineering — Marco Rohns">
+<meta property="og:description" content="Public code, design decisions, regression checks and known limits behind the portfolio's AI assistant.">
+<meta property="og:url" content="https://marcorhs.github.io/askcv.html">
+<meta property="og:image" content="https://marcorhs.github.io/assets/social-preview.png?v=2">
+<link rel="icon" href="assets/favicon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="https://marcorhs.github.io/askcv.html">
+<link rel="alternate" type="text/plain" href="llms-full.txt" title="Detailed profile for AI readers">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"AskCV: engineering a public profile assistant","description":"Curated context, input boundaries, source-label validation and dated regression evidence for a public LLM application.","mainEntityOfPage":"https://marcorhs.github.io/askcv.html","author":{"@type":"Person","name":"Marco Rohns","url":"https://marcorhs.github.io/"},"dateModified":"2026-11-04","inLanguage":"en"}
+</script>
+<link rel="stylesheet" href="style.css?v=25">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page-shell">
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Marco Rohns — home">
+      <img src="photo.jpg" width="40" height="40" alt="Portrait of Marco Rohns">
+      <span>Marco Rohns</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="./#work">Work</a>
+        <a class="nav-link" href="architecture.html">Architecture</a>
+        <a class="nav-link" href="askcv.html" aria-current="page">AskCV engineering</a>
+        <a class="nav-link" href="./#askzone">Ask my CV</a>
+      </div>
+      <a class="nav-cta" href="Marco_Rohns_CV.pdf" download>Download CV</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="arch-hero reveal" aria-labelledby="askcv-title">
+      <p class="eyebrow">Public engineering case study</p>
+      <h1 id="askcv-title">An assistant you can inspect.</h1>
+      <p>AskCV lets a visitor ask about my experience. The engineering work is in defining what the model may use, handling untrusted input, validating responses and testing plausible failures. The code, threat model and dated results are public.</p>
+      <div class="source-links"><a href="./#askzone">Try AskCV →</a><a href="https://github.com/MarcoRhs/MarcoRhs.github.io/tree/main/supabase/functions/ask-cv" target="_blank" rel="noopener">Inspect the source ↗</a><a href="evidence.html#askcv">Read the evaluation ↗</a></div>
+    </section>
+
+    <section class="proof-strip arch-proof reveal reveal-stagger" aria-label="AskCV implementation highlights">
+      <div><strong>Curated context</strong><span>Published CV included in the prompt</span></div>
+      <div><strong>No model tools</strong><span>No browsing or private-data access</span></div>
+      <div><strong>Public source</strong><span>Deno/TypeScript · Supabase · Gemini</span></div>
+      <div><strong>Dated checks</strong><span>Recorded 2 October 2026</span></div>
+    </section>
+
+    <section class="architecture-section architecture-section-dark" aria-labelledby="askcv-decisions-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Architecture decisions</p>
+        <h2 id="askcv-decisions-title">Choose the system the problem needs.</h2>
+        <p>A small professional profile has different requirements from ManeMap's contextual assistant. AskCV uses the full curated CV directly, with no vector retrieval or autonomous tools.</p>
+      </div>
+      <div class="decision-grid reveal-stagger">
+        <article class="decision-card reveal"><span>Knowledge</span><h3>One reviewed record.</h3><p>The Markdown CV generates a TypeScript constant included in the system prompt. This makes factual updates reviewable and avoids retrieval ranking for a corpus that fits in context. The tradeoff is that changes require regeneration and deployment.</p></article>
+        <article class="decision-card reveal"><span>Conversation</span><h3>Questions remain untrusted.</h3><p>The server serializes the current question and earlier questions as untrusted JSON. Previous assistant answers are not replayed. That preserves follow-up context without treating client-supplied assistant turns or fake CV additions as authoritative.</p></article>
+        <article class="decision-card reveal"><span>Output</span><h3>Validate the contract.</h3><p>The server accepts only a completed response with known source labels. It rejects truncated answers and invalid labels. This validates response structure; it cannot prove that every sentence is supported by the cited section.</p></article>
+      </div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="askcv-path-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Request path</p>
+        <h2 id="askcv-path-title">Browser to model, through explicit boundaries.</h2>
+        <p>The browser submits a question. The Edge Function controls admission, builds the model request and validates its response. Database operations belong to the application; the model has no database access.</p>
+      </div>
+      <ol class="arch-stage-grid reveal-stagger">
+        <li class="arch-stage reveal"><span>01 · PARSE</span><h3>Bound the input.</h3><p>Reject invalid JSON and empty questions. Limit the body to 8,000 UTF-8 bytes and the question to 600 JavaScript string units. Keep at most four earlier questions, with 600 units combined.</p></li>
+        <li class="arch-stage reveal"><span>02 · ADMIT</span><h3>Check request allowance.</h3><p>Database counters apply configured limits of 15 requests per IP bucket and 1,000 globally per UTC day. The function uses a salted IP hash. Shared connections and distributed traffic remain limitations.</p></li>
+        <li class="arch-stage reveal"><span>03 · GENERATE</span><h3>Constrain the task.</h3><p>Gemini receives the reviewed CV, fixed rules and untrusted questions. A server-side timeout bounds the upstream wait. The prompt asks for supported facts, explicit gaps and answers in English, German or Spanish.</p></li>
+        <li class="arch-stage reveal"><span>04 · VALIDATE</span><h3>Check completion and source.</h3><p>Require a completed answer and a final source line with recognized section names. Normalize a trailing period before checking labels. Reject missing, duplicated or invented source labels.</p></li>
+        <li class="arch-stage reveal"><span>05 · DISPLAY</span><h3>Render text safely.</h3><p>The interface formats supported emphasis and lists without inserting model output as arbitrary HTML. Defined error states explain unavailable service, invalid responses and exhausted request allowances.</p></li>
+      </ol>
+      <div class="source-links"><a href="https://github.com/MarcoRhs/MarcoRhs.github.io/blob/main/supabase/functions/ask-cv/request.ts" target="_blank" rel="noopener">Input parser ↗</a><a href="https://github.com/MarcoRhs/MarcoRhs.github.io/blob/main/supabase/functions/ask-cv/prompt.ts" target="_blank" rel="noopener">Prompt and source validation ↗</a><a href="https://github.com/MarcoRhs/MarcoRhs.github.io/blob/main/supabase/functions/ask-cv/index.ts" target="_blank" rel="noopener">Request orchestration ↗</a></div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="askcv-eval-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Historical evaluation · 2 October 2026</p>
+        <h2 id="askcv-eval-title">Tests that changed the implementation.</h2>
+        <p>The published record reports 31/31 offline regression checks after the final formatting refinement, using Gemini 2.5 Flash. Checks used pattern matching and manual inspection of sensitive answers. This is a dated result, not a 100% accuracy claim or a fresh test of today's deployment.</p>
+      </div>
+      <div class="credentials-grid reveal-stagger">
+        <article class="credential-card reveal"><p class="card-kicker">Citation contract</p><h3>Valid answers were rejected.</h3><p>A role-fit answer correctly cited six CV sections, but the server allowed only five. The cap was aligned with the allowed source set. A separate check exposed a valid source label with a sentence-ending period; normalization now handles that presentation difference.</p></article>
+        <article class="credential-card reveal"><p class="card-kicker">Unsupported claims</p><h3>Refusal needed its own test.</h3><p>Forged history and fake credentials probe whether visitor text can overwrite the CV. A response rejected a fabricated claim but omitted the required “not in CV” label. Prompt clarification and repeated checks addressed the missing citation behavior.</p></article>
+        <article class="credential-card reveal"><p class="card-kicker">Boundary and presentation</p><h3>Real inputs exposed gaps.</h3><p>Live boundary probes covered malformed JSON, long questions, oversized UTF-8 bodies and foreign browser origins. Visitor feedback also exposed visible Markdown and collapsed lists; rendering was updated without accepting arbitrary model-generated HTML.</p></article>
+      </div>
+      <div class="source-links"><a href="evidence.html#askcv">Results, samples and caveats ↗</a><a href="https://github.com/MarcoRhs/MarcoRhs.github.io/tree/main/scripts/eval" target="_blank" rel="noopener">Evaluation scripts and cases ↗</a><a href="evidence.html#askcv">Threat model ↗</a></div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="askcv-limits-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Threat model and limits</p>
+        <h2 id="askcv-limits-title">Controls have a job and a boundary.</h2>
+        <p>Useful hardening starts with specifying what each control actually does. Important facts should still be checked against the CV and discussed directly with me.</p>
+      </div>
+      <div class="credentials-grid reveal-stagger">
+        <article class="credential-card reveal"><p class="card-kicker">Factuality</p><h3>Labels are not entailment.</h3><p>A permitted source label confirms that a section exists. It does not verify every statement above it. Model answers can still omit facts, misinterpret requirements or make unsupported claims. The evaluation probes defined cases rather than proving universal correctness.</p></article>
+        <article class="credential-card reveal"><p class="card-kicker">Abuse and cost</p><h3>Limits reduce exposure.</h3><p>Origin checks constrain browser callers, but non-browser clients can omit Origin. Rate counters are the main admission control and are not an identity or anti-bot system. Some failed requests are refunded, so the counters are not a strict monetary spending cap.</p></article>
+        <article class="credential-card reveal"><p class="card-kicker">Data and operations</p><h3>Keep secrets server-side.</h3><p>Provider credentials and database service access remain in the function. The application logs questions and answers under its published privacy policy; users should avoid sensitive information. Shared infrastructure and deployed settings remain operational responsibilities.</p></article>
+      </div>
+      <div class="source-links"><a href="privacy.html">Read the privacy policy →</a><a href="resume.md">Inspect the factual source ↗</a></div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="askcv-value-title">
+      <div class="ownership-panel reveal">
+        <div><p class="eyebrow">What this demonstrates</p><h2 id="askcv-value-title">From model call to usable service.</h2></div>
+        <div><p>I designed and built the public assistant as part of this portfolio, using AI-assisted implementation and review. It demonstrates practical work with request contracts, prompt boundaries, application controls, failure handling, evaluation and the interface a customer sees.</p><p>These skills are useful for bounded internal assistants, customer-facing AI features and implementation projects where the source of truth and acceptable behavior must be explicit. AskCV is a small application; it is not evidence of model training or large-scale ML infrastructure.</p><p>Milo is a different system with retrieval and horse-specific context. Its historical routing results and this assistant's CV regression checks have separate scopes.</p></div>
+      </div>
+    </section>
+
+    <section class="contact-section reveal" aria-labelledby="askcv-contact-title">
+      <div><p class="eyebrow">Discuss the work</p><h2 id="askcv-contact-title">Have an AI workflow that needs to work in practice?</h2><p>Let’s look at the user, available data, failure modes and the smallest useful implementation.</p></div>
+      <div class="contact-actions"><a class="button button-light" href="mailto:marco.rohns12@gmail.com?subject=AI%20implementation%20project">Email Marco ↗</a><a class="button button-outline" href="architecture.html">ManeMap architecture →</a><a class="button button-outline" href="./#askzone">Try AskCV →</a></div>
+    </section>
+  </main>
+  <footer><p>Implementation notes reviewed 4 November 2026. Model evaluation results are historical and dated separately. See the source and evaluation record for their limits.</p><div><a href="./">Portfolio</a><a href="legal.html">Legal notice</a><a href="privacy.html">Privacy</a></div></footer>
+</div>
+<script src="arch.js?v=8" defer></script>
+</body>
+</html>

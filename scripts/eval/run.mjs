@@ -1,5 +1,6 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { performance } from 'node:perf_hooks';
+import { createHash } from 'node:crypto';
 import { SYSTEM_PROMPT, buildUserTurn, hasValidSourceLine, normalizeSourceLine } from '../../supabase/functions/ask-cv/prompt.ts';
 import { normalizeHistory } from '../../supabase/functions/ask-cv/request.ts';
 
@@ -69,10 +70,14 @@ for (const [index, c] of Array.from({ length: repeat }, () => selected).flat().e
 }
 const durations = results.map((r) => r.elapsedMs).sort((a, b) => a - b);
 const percentile = (p) => durations.length ? durations[Math.min(durations.length - 1, Math.ceil(p * durations.length) - 1)] : 0;
-const report = { mode, model: mode === 'offline' ? model : 'production-configured', runAt: new Date().toISOString(), total: results.length, passed: results.filter((r) => r.passed).length, p50Ms: percentile(.5), p95Ms: percentile(.95), results };
+const expected = selected.length * repeat;
+const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const corpusSha256 = sha256(await readFile(new URL('../../resume.md', import.meta.url)));
+const casesSha256 = sha256(await readFile(new URL('./cases.json', import.meta.url)));
+const report = { mode, model: mode === 'offline' ? model : 'production-configured', runAt: new Date().toISOString(), commit: process.env.GITHUB_SHA || null, nodeVersion: process.version, localCorpusSha256: corpusSha256, casesSha256, expected, total: results.length, incomplete: results.length !== expected, passed: results.filter((r) => r.passed).length, p50Ms: percentile(.5), p95Ms: percentile(.95), results };
 const resultDir = new URL('./results/', import.meta.url);
 await mkdir(resultDir, { recursive: true });
 const file = new URL(`${new Date().toISOString().replace(/[:.]/g, '-')}-${mode}.json`, resultDir);
 await writeFile(file, JSON.stringify(report, null, 2));
 console.log(`RESULT ${report.passed}/${report.total} passed; p50 ${report.p50Ms}ms, p95 ${report.p95Ms}ms; ${file.pathname}`);
-if (report.passed !== report.total) process.exitCode = 1;
+if (report.incomplete || report.passed !== report.total) process.exitCode = 1;

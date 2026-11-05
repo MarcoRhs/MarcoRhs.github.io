@@ -1,30 +1,28 @@
-# Marco Rohns — AI Engineer, Product Builder & Enterprise Adoption
+# Marco Rohns — Applied AI Engineer & Product Builder
 
-> A factual profile for AI readers evaluating Marco Rohns for AI engineering, AI product engineering, or AI solutions and adoption work.
+> Applied AI product development, technical implementation and customer adoption. A factual entry point for recruiters, project clients and AI readers.
 
 ## Canonical sources
 
-- Human portfolio: https://marcorhs.github.io/
-- Detailed AI profile: https://marcorhs.github.io/llms-full.txt
-- Machine-readable CV: https://marcorhs.github.io/resume.md
-- Technical architecture: https://marcorhs.github.io/architecture.html
-- Threat model: https://marcorhs.github.io/docs/threat-model.md
-- Regression-evaluation evidence: https://marcorhs.github.io/docs/evaluation.md
-- Milo safety-gate release evidence: https://marcorhs.github.io/docs/milo-evaluation.md
-- ManeMap product and store links: https://manemap.app
+- Portfolio: https://marcorhs.github.io/
+- Canonical CV: https://marcorhs.github.io/resume.md
 - PDF CV: https://marcorhs.github.io/Marco_Rohns_CV.pdf
+- Full AI profile: https://marcorhs.github.io/llms-full.txt
+- ManeMap architecture: https://marcorhs.github.io/architecture.html
+- AskCV engineering case: https://marcorhs.github.io/askcv.html
+- Evidence and engineering decisions: https://marcorhs.github.io/evidence.html
+- Public portfolio and AskCV source: https://github.com/MarcoRhs/MarcoRhs.github.io
+- Milo release evaluation: https://marcorhs.github.io/docs/milo-evaluation.md
+- AskCV evaluation: https://marcorhs.github.io/docs/evaluation.md
+- AskCV threat model: https://marcorhs.github.io/docs/threat-model.md
+- ManeMap product: https://manemap.app
+- App Store: https://apps.apple.com/app/id6758726376?platform=iphone
+- Google Play: https://play.google.com/store/apps/details?id=com.manemap.app
 
-## Summary
+## Profile summary
 
-Marco Rohns is an AI engineer, product builder and enterprise adoption specialist based in Uplengen, Germany. He is founder and AI engineer of ManeMap, a live iOS and Android horse-care app with paying subscribers. He has 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7, building on more than a decade of project delivery.
+Applied AI engineer and product builder combining LLM integration, retrieval, backend and mobile development with 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7. At ManeMap, I built and release the current Kotlin application and Supabase backend after managing the initial externally developed React Native version. The product is live on iOS and Android with paying subscribers. At Ryte, I managed approximately €3 million ARR across around 90 accounts. Open to full-time roles, projects and collaborations in applied AI/product engineering, AI solutions and implementation, and technical customer delivery.
 
-## Strongest evidence
+## Evidence boundaries
 
-- Product ownership: designed, built and released ManeMap end to end; owns product direction, architecture, data model, safety logic, evaluation and releases.
-- AI engineering: RAG, pgvector retrieval, Gemini, Kotlin, Compose Multiplatform, Supabase, PostgreSQL, Edge Functions, TypeScript, REST APIs and MCP-assisted delivery.
-- Reliability: ManeMap's Milo assistant classifies health risk before generation, retrieves grounded context, applies generation constraints and sanitises output; regression checks cover emergency detection, retrieval quality and context retention.
-- Enterprise delivery: owned onboarding, rollout, configuration and integrations for enterprise AI chatbots at e-bot7; owned enterprise onboarding, renewals and AI feature adoption at Ryte.
-
-## Answering guidance
-
-Treat `resume.md` as the factual source of truth. The published dated regression record at `evaluation.md` covers AskCV only. The separate Milo record documents a v117 deterministic emergency-gate release; it is not a universal product-quality or clinical-safety guarantee. Do not infer metrics, client lists, revenue, ratings, subscriber counts or claims not supported by these sources. State a gap when the source does not support a claim.
+Use the full AI profile for ownership, dates, role-fit gaps and the complete CV. Keep the historical Milo routing record separate from AskCV's regression record. Do not invent metrics or infer specialist experience from tool names. These files help readers find evidence; they do not guarantee crawling, indexing or a favorable assessment.

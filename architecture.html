@@ -6,21 +6,21 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ManeMap &amp; Milo Architecture — Marco Rohns</title>
-<meta name="description" content="A technical walkthrough of ManeMap and Milo: retrieval, context assembly, health-safety controls, model generation, output sanitisation and the decisions behind the stack.">
+<meta name="description" content="ManeMap engineering: Kotlin mobile delivery, Supabase orchestration, bilingual retrieval, context assembly, failure handling and dated Milo evaluation evidence.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ManeMap & Milo Architecture — Marco Rohns">
 <meta property="og:description" content="How the live AI horse-care product handles retrieval, context, safety, generation and evaluation.">
 <meta property="og:url" content="https://marcorhs.github.io/architecture.html">
 <meta property="og:image" content="https://marcorhs.github.io/assets/manemap-milo.webp">
-<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="icon" href="assets/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="canonical" href="https://marcorhs.github.io/architecture.html">
 <link rel="alternate" type="text/plain" href="llms-full.txt" title="Detailed profile for AI readers">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"TechArticle","headline":"ManeMap and Milo architecture","description":"A technical walkthrough of retrieval, context assembly, health-safety controls, model generation, output sanitisation and evaluation in ManeMap.","mainEntityOfPage":"https://marcorhs.github.io/architecture.html","author":{"@type":"Person","name":"Marco Rohns","url":"https://marcorhs.github.io/"},"about":{"@type":"SoftwareApplication","name":"ManeMap","operatingSystem":"iOS, Android","applicationCategory":"LifestyleApplication"},"inLanguage":"en"}
 </script>
-<link rel="stylesheet" href="style.css?v=17">
+<link rel="stylesheet" href="style.css?v=25">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -33,8 +33,8 @@
     <nav aria-label="Primary navigation">
       <div class="nav-links" id="nav-links">
         <a class="nav-link" href="./#work">Work</a>
-        <a class="nav-link" href="./#adoption">Experience</a>
         <a class="nav-link" href="architecture.html" aria-current="page">Architecture</a>
+        <a class="nav-link" href="askcv.html">AskCV engineering</a>
         <a class="nav-link" href="./#askzone">Ask my CV</a>
       </div>
       <a class="nav-cta" href="Marco_Rohns_CV.pdf" download>Download CV</a>
@@ -48,33 +48,47 @@
     <section class="arch-hero reveal" aria-labelledby="arch-title">
       <p class="eyebrow">Technical deep dive</p>
       <h1 id="arch-title">How ManeMap and Milo are actually built.</h1>
-      <p>ManeMap is a Kotlin / Compose Multiplatform app on iOS and Android with a Supabase backend. Milo combines retrieval, live horse context and layered safety controls before a response reaches the owner.</p>
+      <p>A live mobile product connects the interface, user data, retrieval and model behavior. Here is how I bring those parts together in ManeMap, the decisions behind the implementation, and the evidence available to inspect.</p>
       <a class="arch-back" href="./">← Back to the portfolio</a>
+      <div class="source-links"><a href="#system-boundaries">System boundaries ↓</a><a href="#verification-title">Recorded evaluation ↓</a><a href="llms-full.txt">Full profile for AI readers ↗</a></div>
     </section>
 
     <section class="proof-strip arch-proof reveal reveal-stagger" aria-label="Architecture highlights">
       <div><strong>1 shared codebase</strong><span>Kotlin · iOS and Android</span></div>
       <div><strong>768 dimensions</strong><span>Gemini embeddings in pgvector</span></div>
       <div><strong>2 emergency paths</strong><span>Rules plus model classification</span></div>
-      <div><strong>Before each release</strong><span>Regression checks for critical behaviour</span></div>
+      <div><strong>v117 record</strong><span>Dated routing tests · limits included</span></div>
+    </section>
+
+    <section class="architecture-section" id="system-boundaries" aria-labelledby="boundaries-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">System boundaries</p>
+        <h2 id="boundaries-title">One product, distinct responsibilities.</h2>
+        <p>The engineering problem is to turn a question about a specific horse into a useful response with the right context, while keeping model behavior separate from application and data controls.</p>
+      </div>
+      <div class="credentials-grid reveal-stagger">
+        <article class="credential-card reveal"><p class="card-kicker">Interface</p><h3>Shared mobile application.</h3><p>Kotlin and Compose Multiplatform provide the current iOS and Android client. The app collects the question and active horse context, presents the response, and connects the conversation to care, training and daily workflows.</p></article>
+        <article class="credential-card reveal"><p class="card-kicker">Application and data</p><h3>Supabase orchestration.</h3><p>PostgreSQL stores application data, with authentication and row-level access rules. Deno/TypeScript Edge Functions assemble context, call retrieval and model services, apply output checks and return the result.</p></article>
+        <article class="credential-card reveal"><p class="card-kicker">Model boundary</p><h3>Selected context in, text out.</h3><p>Gemini receives the assembled prompt and selected context. Prompt instructions guide generation; application code handles retrieval, response processing and delivery. A model instruction does not replace a database permission or an output check.</p></article>
+      </div>
     </section>
 
     <section class="architecture-section" aria-labelledby="request-path-title">
       <div class="section-heading reveal">
         <p class="eyebrow">Request path</p>
         <h2 id="request-path-title">From question to guarded answer.</h2>
-        <p>The safety decision starts before generation and continues after it. Retrieval is one part of the system, rather than the entire system.</p>
+        <p>Known emergency signals can route to a predefined response before normal generation. The stages below describe the retrieval and generation path; optional context and upstream failures also affect what is available to it.</p>
       </div>
       <ol class="arch-stage-grid reveal-stagger">
         <li class="arch-stage reveal">
           <span>01 · CLASSIFY</span>
           <h3>Assess the risk first.</h3>
-          <p>Explicit emergency patterns catch known high-risk language. A second, lightweight model classifier checks symptom descriptions that do not use clinical terms.</p>
+          <p>Deterministic patterns route known emergency wording. A separate model classifier assesses symptom descriptions and paraphrases. These are complementary checks with different failure modes.</p>
         </li>
         <li class="arch-stage reveal">
           <span>02 · RETRIEVE</span>
           <h3>Find relevant evidence.</h3>
-          <p>The question becomes a 768-dimension embedding and is matched with pgvector against the bilingual veterinary knowledge base.</p>
+          <p>The query embedding is checked for the configured 768 dimensions. A vector-search RPC requests five matches from the bilingual knowledge base using the question vector and language.</p>
         </li>
         <li class="arch-stage reveal">
           <span>03 · ASSEMBLE</span>
@@ -89,7 +103,7 @@
         <li class="arch-stage reveal">
           <span>05 · SANITISE</span>
           <h3>Check the output.</h3>
-          <p>The server removes leaked internal labels and unsafe medication detail, adds a safe vet redirect when needed, then returns the cleaned response.</p>
+          <p>Server-side sanitisation targets internal labels and unsafe medication detail, with veterinary redirection when needed. Pattern-based cleaning reduces specific risks; it cannot validate every medical statement.</p>
         </li>
       </ol>
     </section>
@@ -104,18 +118,31 @@
         <article class="decision-card reveal">
           <span>Client</span>
           <h3>Kotlin / Compose Multiplatform</h3>
-          <p>A shared codebase ships to both stores while keeping the app under direct product and engineering ownership. It replaced the first React Native version managed with an external team.</p>
+          <p>I built the current shared Kotlin codebase after managing the first React Native version with an external team. This gives me direct ownership of implementation and releases across both stores. Platform integration and store QA still need separate attention.</p>
         </article>
         <article class="decision-card reveal">
           <span>Data and retrieval</span>
           <h3>Supabase + pgvector</h3>
-          <p>PostgreSQL, authentication, row-level access rules, serverless orchestration and vector retrieval stay in one backend stack, avoiding another service to operate.</p>
+          <p>Relational data, authentication, access rules, Edge Functions and vector retrieval stay in one backend stack. That reduces service coordination for a small product, while concentrating operational responsibilities in one platform.</p>
         </article>
         <article class="decision-card reveal">
           <span>Model layer</span>
           <h3>Gemini with explicit controls</h3>
-          <p>The model handles multilingual generation and classification. Deterministic checks, constrained context and regression tests carry the product requirements around it.</p>
+          <p>The model handles generation and classification. Deterministic routing, selected context and output processing make specific requirements executable around it. Provider changes and probabilistic responses still require evaluation.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="architecture-section" aria-labelledby="retrieval-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Retrieval and resilience</p>
+        <h2 id="retrieval-title">The useful detail is in the failure paths.</h2>
+        <p>These implementation notes describe reviewed source. They are not a benchmark or a claim that every deployed answer follows an identical path.</p>
+      </div>
+      <div class="credentials-grid reveal-stagger">
+        <article class="credential-card reveal"><p class="card-kicker">Context assembly</p><h3>Relevant to this horse.</h3><p>Retrieved passages are combined with profile, medical, feeding, care and training information. Context fetches run in parallel where possible; weather is included when available. Keeping these inputs explicit makes missing or irrelevant context easier to diagnose.</p></article>
+        <article class="credential-card reveal"><p class="card-kicker">Degraded retrieval</p><h3>Grounding has conditions.</h3><p>The reviewed source can proceed without retrieved passages if embeddings are unavailable. That distinguishes a context-based answer from one supported by retrieved knowledge. The public routing tests do not measure retrieval relevance or answer faithfulness.</p></article>
+        <article class="credential-card reveal"><p class="card-kicker">Provider failures</p><h3>Bounded work and timing.</h3><p>The model integration includes timeout and cancellation handling, bounded retry attempts and different handling of failure classes. Stage-level timings cover embedding, retrieval and model work. These are diagnostic controls, not a published latency or availability guarantee.</p></article>
       </div>
     </section>
 
@@ -129,19 +156,19 @@
         <article class="safety-step reveal">
           <span>Before generation</span>
           <h3>Emergency detection</h3>
-          <p>Rules cover high-precision signals; the second classifier covers paraphrases and symptom descriptions. Educational questions are separated from active incidents.</p>
+          <p>Rules target known signals; the second classifier assesses paraphrases and symptom descriptions. Distinguishing educational questions from active incidents is an explicit routing requirement and a source of regression cases.</p>
         </article>
         <div class="safety-arrow" aria-hidden="true">→</div>
         <article class="safety-step reveal">
           <span>During generation</span>
           <h3>Response constraints</h3>
-          <p>The prompt sets the response mode and blocks definitive diagnoses, prescribed medication detail and unrelated financial context in health situations.</p>
+          <p>The prompt sets the response mode and instructs the model to avoid definitive diagnoses, prescribed medication detail and unrelated financial context in health situations. These instructions are constraints to test, not guarantees.</p>
         </article>
         <div class="safety-arrow" aria-hidden="true">→</div>
         <article class="safety-step reveal">
           <span>After generation</span>
           <h3>Output sanitisation</h3>
-          <p>Server-side cleaning removes internal mode labels and named medication content before the app receives the response.</p>
+          <p>Server-side cleaning targets internal mode labels and named medication content before delivery. The product directs users to veterinary care; the assistant does not replace a veterinarian.</p>
         </article>
       </div>
     </section>
@@ -149,25 +176,31 @@
     <section class="architecture-section" aria-labelledby="verification-title">
       <div class="section-heading reveal">
         <p class="eyebrow">Verification</p>
-        <h2 id="verification-title">What I test and observe.</h2>
-        <p>The public claims on this site come from systems and checks that exist in the working products.</p>
+        <h2 id="verification-title">A test record with a defined scope.</h2>
+        <p>Historical release evidence: Milo v117, deployed 21 August 2026. The published QA record compares deterministic emergency routing with v116 and documents both improvements and a remaining failure.</p>
       </div>
       <div class="credentials-grid reveal-stagger">
         <article class="credential-card reveal">
-          <p class="card-kicker">Regression suite</p>
-          <h3>Critical behaviour before release.</h3>
-          <p>Tests cover emergency detection, retrieval quality and context retention so prompt or model changes do not silently alter the highest-risk paths.</p>
+          <p class="card-kicker">Offline routing</p>
+          <h3>103 defined scenarios.</h3>
+          <p>Zero unintended regressions; 27 newly routed cases; five intended false-positive reductions. One pre-existing German inflection case remained failing and documented. This is not a 103/103 pass claim.</p>
         </article>
         <article class="credential-card reveal">
-          <p class="card-kicker">Observability</p>
-          <h3>Timing by pipeline stage.</h3>
-          <p>Embedding, retrieval and model stages emit timing data, which makes slow paths visible before optimisation work begins.</p>
+          <p class="card-kicker">Deployed smoke checks</p>
+          <h3>12/12 probes passed.</h3>
+          <p>The recorded probes checked gate state, selected category and medication-name leakage across specified language and routing scenarios. They are a small release sample, not exhaustive coverage of generated answers.</p>
         </article>
         <article class="credential-card reveal">
-          <p class="card-kicker">Public assistant</p>
-          <h3>A separate grounded system.</h3>
-          <p>AskCV has no tools or private data access. It validates input and output server-side, enforces source labels and is regression-tested for false claims and prompt injection.</p>
+          <p class="card-kicker">Test-driven change</p>
+          <h3>Fix the decision, then recheck.</h3>
+          <p>Tests exposed Spanish routing gaps, substring false positives and a category-ordering problem. The release added language coverage, used boundary matching and changed routing precedence. The record explains what changed and what remained open.</p>
         </article>
+      </div>
+      <div class="source-links"><a href="evidence.html#milo">Read the full v117 evaluation ↗</a><a href="askcv.html">Inspect the separate AskCV system →</a></div>
+
+      <div class="ownership-panel reveal">
+        <div><p class="eyebrow">Evidence boundary</p><h2>Specific results, honest limits.</h2></div>
+        <div><p>The v117 record is a self-published release summary. It tests deterministic emergency routing, not clinical correctness, general retrieval quality, every generated answer or every subsequent release. Raw Milo runs and source code are private.</p><p>The public AskCV code and its dated regression record provide a separate, inspectable example of how I work with model boundaries and failure cases. Its results must not be transferred to Milo.</p></div>
       </div>
 
       <div class="ownership-panel reveal">
@@ -176,8 +209,11 @@
           <h2>What I build, and what tools accelerate.</h2>
         </div>
         <div>
-          <p>I own the product direction, architecture, data model, safety logic, evaluation strategy and release decisions for ManeMap. I also built the current mobile client and Supabase backend.</p>
+          <p>I own product direction, architecture, the data model, safety logic, evaluation strategy and release decisions. I built the current Kotlin/Compose Multiplatform client and Supabase backend after managing the initial React Native version with an external team. Product work began in August 2025; the current Kotlin implementation began in April 2026.</p>
           <p>Claude Code and MCP integrations accelerate implementation, QA and store work. I remain responsible for the decisions, review and released behaviour.</p>
+          <p>This work transfers to projects that need practical LLM integration, context and API orchestration, evaluation and an interface people can use. My enterprise implementation and adoption experience connects those engineering choices to customer workflows.</p>
+          <p>Earlier, at e-bot7, I configured chatbot conversation flows, NLU training data, fallback and escalation, live-agent handover and customer API integrations. At Vienna Airport I routed unanswered traveller questions into Zendesk tickets and onboarded the bot manager to maintain content after launch. This is an implementation and adoption example, not a claim of enterprise RAG delivery.</p>
+          <p><a href="evidence.html">Explore the evidence and engineering decisions →</a></p>
         </div>
       </div>
     </section>
@@ -186,18 +222,18 @@
       <div>
         <p class="eyebrow">Go deeper</p>
         <h2 id="arch-contact-title">Have a technical question?</h2>
-        <p>Use AskCV for a sourced answer, inspect the live product, or ask me directly.</p>
+        <p>Discuss an AI product or implementation project, inspect the public AskCV code, or ask about a specific architecture decision.</p>
       </div>
       <div class="contact-actions">
         <a class="button button-light" href="./#askzone">Ask my CV</a>
-        <a class="button button-outline" href="https://manemap.app" target="_blank" rel="noopener">Visit ManeMap ↗</a>
+        <a class="button button-outline" href="askcv.html">AskCV engineering →</a>
         <a class="button button-outline contact-cv" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=marco.rohns12@gmail.com&amp;su=ManeMap%20architecture" target="_blank" rel="noopener">Email Marco ↗</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>This page describes the current public architecture at a useful review level and intentionally excludes secrets, credentials and private user data.</p>
+    <p>Implementation notes reviewed 4 November 2026. Evaluation results retain their original release dates and scope. No private user data or credentials are included.</p>
     <div><a href="./">Portfolio</a><a href="legal.html">Legal notice</a><a href="privacy.html">Privacy</a></div>
   </footer>
 </div>

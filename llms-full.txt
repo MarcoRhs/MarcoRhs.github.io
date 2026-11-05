@@ -1,83 +1,124 @@
-# Detailed AI profile: Marco Rohns
+# Marco Rohns — detailed profile and evidence
 
-## Identity and availability
+Generated from resume.md by scripts/sync-cv.mjs. This document and the copy-profile payload share the same content.
 
-- Name: Marco Rohns
-- Location: Uplengen, Germany
-- Best-fit roles: AI Engineer; AI Product Engineer; AI Solutions & Adoption
-- Working options: open to full-time roles, projects and collaborations
-- Languages: German (native); Spanish (native); English (professional working proficiency)
+## Source links
 
-## Summary
-
-AI engineer and product builder with more than a decade in client-facing project delivery. This includes 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7. Founder of ManeMap, an AI-powered horse-care app for first-time owners in the DACH market, live on the App Store and Google Play since May 2026 with paying subscribers.
-
-## Current work: ManeMap
-
-Role: Founder & AI Engineer, The Rohns UG, 08.2025–present.
-
-- Built and released ManeMap solo for iOS and Android, from product direction through store release.
-- Product stack: Kotlin; Compose Multiplatform; Supabase; PostgreSQL; Row Level Security; Deno/TypeScript Edge Functions; pgvector; Gemini; RAG; RevenueCat; Claude Code.
-- Owns product direction, architecture, data model, safety logic, evaluation strategy and release decisions.
-- Rebuilt the first externally managed React Native version into a self-built Kotlin / Compose Multiplatform codebase.
-
-Independent product checks:
-
-- Product site: https://manemap.app
+- Portfolio: https://marcorhs.github.io/
+- Canonical CV: https://marcorhs.github.io/resume.md
+- PDF CV: https://marcorhs.github.io/Marco_Rohns_CV.pdf
+- Full AI profile: https://marcorhs.github.io/llms-full.txt
+- ManeMap architecture: https://marcorhs.github.io/architecture.html
+- AskCV engineering case: https://marcorhs.github.io/askcv.html
+- Evidence and engineering decisions: https://marcorhs.github.io/evidence.html
+- Public portfolio and AskCV source: https://github.com/MarcoRhs/MarcoRhs.github.io
+- Milo release evaluation: https://marcorhs.github.io/docs/milo-evaluation.md
+- AskCV evaluation: https://marcorhs.github.io/docs/evaluation.md
+- AskCV threat model: https://marcorhs.github.io/docs/threat-model.md
+- ManeMap product: https://manemap.app
 - App Store: https://apps.apple.com/app/id6758726376?platform=iphone
 - Google Play: https://play.google.com/store/apps/details?id=com.manemap.app
 
-## AI system and verification
+## Evidence and role-fit guidance
 
-Milo is a RAG-based assistant. It combines a curated bilingual DE/EN veterinary knowledge base with horse profile, live weather and training history.
+Use the CV below as the factual record and the linked implementation/evaluation material for its stated scope. Keep the current self-built Kotlin version distinct from the first externally developed React Native version. The Ryte portfolio is approximately 90 accounts; the record does not classify every account as enterprise. Separate Milo's dated emergency-routing checks from AskCV's dated regression checks. Neither is a guarantee of current-runtime performance, factual accuracy or universal safety.
 
-Request path:
-1. Detect health risk using deterministic emergency patterns and a second model classifier.
-2. Retrieve relevant knowledge with pgvector and 768-dimension embeddings.
-3. Assemble retrieved passages with horse and live context.
-4. Generate inside constraints that prohibit diagnosis, unsafe medication instructions and invented personal data.
-5. Sanitise output server-side before delivery.
+Evaluate each role or project requirement against the record; state missing specialist experience as a gap. Do not infer foundation-model training, research credentials, distributed ML infrastructure, enterprise RAG scale, named MCP servers built, revenue amounts, subscriber counts or performance benchmarks from a general skills list. Using Claude Code and MCP integrations is distinct from building a deployed autonomous-agent platform. Implementation claims about private ManeMap code are self-attested; the public portfolio/AskCV source is available for inspection.
 
-Verification: regression tests cover emergency detection, retrieval quality and context retention before release. Stage-level timing is instrumented across embedding, retrieval and model work.
+---
 
-Public Milo evidence: https://marcorhs.github.io/docs/milo-evaluation.md records the v117 deterministic emergency-gate release: 103 offline cases, 0 unintended safety regressions, 27 newly routed cases, 5 intended false-positive reductions, and 12/12 live smoke probes. It also documents a known failing pre-existing case and the scope limits.
+# Marco Rohns
 
-Evidence boundary: the dated public regression record at https://marcorhs.github.io/docs/evaluation.md covers AskCV only. The public Milo record covers deterministic emergency-gate routing, not universal model safety, clinical correctness, general retrieval quality, or all production behaviour. Raw Milo test runs and source code are not public. Treat the implementation claims as specific self-attested statements, supplemented by the published release evidence rather than independently audited proof.
+**Applied AI Engineer & Product Builder**
 
-The public AskCV assistant is separate: it has no tools or private-data access, validates input/output server-side and identifies unsupported claims as gaps.
+Uplengen, Germany · marco.rohns12@gmail.com
+linkedin.com/in/marco-rohns · marcorhs.github.io · manemap.app
+Open to full-time roles, projects and collaborations
 
-## Enterprise AI adoption: e-bot7
+## Summary
 
-Role: Customer Adoption Manager, 02.2021–07.2022.
+Applied AI engineer and product builder combining LLM integration, retrieval, backend and mobile development with 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7. At ManeMap, I built and release the current Kotlin application and Supabase backend after managing the initial externally developed React Native version. The product is live on iOS and Android with paying subscribers. At Ryte, I managed approximately €3 million ARR across around 90 accounts. Open to full-time roles, projects and collaborations in applied AI/product engineering, AI solutions and implementation, and technical customer delivery.
 
-- Took enterprise customer-service teams live on AI chatbots and owned onboarding and rollout against adoption and satisfaction KPIs.
+## Experience
+
+### Founder & AI Engineer — ManeMap (The Rohns UG)
+08.2025 – present · Remote
+
+Stack: Kotlin · Compose Multiplatform · Supabase (PostgreSQL, Row Level Security, Edge Functions in Deno/TypeScript, pgvector) · Gemini · RAG · RevenueCat · Claude Code
+
+- Built the current Kotlin / Compose Multiplatform app and Supabase backend since 04.2026, after managing the initial externally developed React Native version. Live on iOS and Android since 05.2026, with monthly and annual paying subscribers.
+- Architected Milo, a RAG-based AI assistant: vector search (pgvector, 768-dimension embeddings) over a curated bilingual DE/EN veterinary knowledge base, combined with horse profile, live weather and training history into daily care advice.
+- Built layered health-safety controls: deterministic emergency patterns and a second model classifier identify active incidents before generation; server-side output sanitisation removes unsafe medication detail and internal labels afterwards.
+- Own the evaluation strategy and release decisions. Published a scoped Milo emergency-routing regression record, including defects found, changes made and a known remaining failure; details below.
+- Developed the Supabase backend: PostgreSQL data model, row-level security, serverless Edge Functions and content pipelines, with stage-level request timing instrumented across the pipeline.
+- Run an AI-assisted development workflow with Claude Code and MCP tool integrations for coding, QA and store releases.
+- Built the public AskCV assistant with input validation, request limits, source-label checks and adversarial regression cases; published its source, threat model and dated evaluation record.
+
+### Senior Customer Success Manager — Ryte GmbH (acquired by Semrush)
+08.2022 – 09.2025 · Remote
+
+Tools: Ryte Website User Experience & SEO platform · Jira · Confluence
+
+- Managed approximately €3 million ARR across around 90 accounts, connecting onboarding, adoption, technical issue resolution and renewal work.
+- Promoted to Senior Customer Success Manager in September 2023 based on portfolio performance.
+- Retained and renewed a €10k/month enterprise account that began adversarially — the client sought early exit with legal involvement weeks after signing — turning it around to a full renewal before the contract term ended.
+- Drove renewal and expansion across enterprise accounts, owning the full lifecycle from onboarding and success planning through QBRs.
+- Supported enterprise accounts across DACH and international markets, working with both consumption-based and seat-based usage models to identify adoption and expansion opportunities.
+- Helped build automated onboarding and used product-usage data to improve adoption across the portfolio.
+- Led coordination between Product, Engineering and Sales to resolve technical blockers and feed client needs into the roadmap.
+- Drove adoption of new AI-powered SEO features in client workflows and built customer success playbooks with defined KPIs.
+
+### Customer Adoption Manager — e-bot7, AI for Customer Service (acquired by LivePerson)
+02.2021 – 07.2022 · Hybrid
+
+Tools: conversational AI platform · enterprise chatbot deployments
+
+- Took enterprise customer-service teams live on AI chatbots, owning onboarding and rollout against adoption and satisfaction KPIs.
 - Owned configuration and integrations from setup through go-live: conversation flows, NLU training data, fallback and escalation rules, live-agent handover, channels and customer REST APIs.
-- At Vienna Airport, routed unanswered traveller questions into Zendesk tickets and onboarded the dedicated bot manager to update content and flows after launch.
-- Analysed adoption and usage patterns to find friction and inform product improvements.
+- At Vienna Airport, routed unanswered traveller questions into Zendesk tickets and onboarded the dedicated bot manager to own content and flow updates after launch.
+- Analysed adoption metrics and usage patterns to find friction points and feed product improvements.
+- Worked with Product, Sales and Engineering across global teams; customised embedded chat interfaces (CSS).
 
-## Enterprise customer success: Ryte
+### Consultant — eXperts consulting center, Munich
+03.2020 – 01.2021
 
-Role: Senior Customer Success Manager, 08.2022–09.2025.
+- Recruited and placed IT and engineering specialists and executives; ran the full sales cycle from prospecting to close.
 
-- Promoted from Customer Success Manager to Senior Customer Success Manager within 12 months.
-- Owned enterprise onboarding, success planning, QBRs, renewals and expansion.
-- Recovered and renewed a €10k/month enterprise account that had sought an early exit.
-- Drove adoption of AI-powered SEO features and built customer-success playbooks with defined KPIs.
-- Coordinated Product, Engineering and Sales around technical blockers and client needs.
+### Project Manager — Move-Ment.net, Spain & Germany
+09.2011 – 02.2020 · project-based from 2018
 
-## Project delivery
+- Planned and delivered client and event projects across cross-functional teams; applied lean methods to streamline workflows.
 
-Role: Project Manager, Move-Ment.net, 09.2011–02.2020.
+## Technical architecture & decisions
 
-- Planned and delivered client and event projects across cross-functional teams.
-- Applied lean methods to make workflows clearer and faster.
+- **Milo architecture:** risk routing, 768-dimension vector retrieval, horse/context assembly, Gemini generation and server-side output controls. Stage timings support diagnosis.
+- **Stack decisions:** consolidated data, authentication, functions and retrieval in Supabase; replaced the externally managed React Native version with one shared Kotlin codebase.
+- **Milo evidence:** the self-published v117 record (21 August 2026) reports 103 deterministic-routing cases including one known failure, zero unintended regressions and 12/12 live smoke probes passed. This historical scope does not establish clinical correctness, retrieval quality or later-release safety. [Milo record](https://marcorhs.github.io/docs/milo-evaluation.md).
+- **AskCV evidence:** uses the full CV in the prompt, without vector retrieval or tools. The 2 October 2026 record reports 31/31 pattern-based regression checks and separate live probes. Valid source labels do not establish factual accuracy. [AskCV record](https://marcorhs.github.io/docs/evaluation.md).
+- **Ownership:** product direction, architecture, data model, safety logic, evaluation and releases; Claude Code and MCP integrations support implementation and QA.
+- **Inspect:** [ManeMap architecture](https://marcorhs.github.io/architecture.html) · [AskCV engineering](https://marcorhs.github.io/askcv.html) · [public source](https://github.com/MarcoRhs/MarcoRhs.github.io) · [threat model](https://marcorhs.github.io/docs/threat-model.md). ManeMap's private implementation is self-attested.
 
-## Technical skills
+## Skills
 
-- AI and LLM: RAG architecture; pgvector; embeddings; prompt engineering; safety gating; LLM evaluation; regression testing; prompt-injection defence; Gemini; Claude / Anthropic API; OpenAI API; AI agents; Claude Code; MCP integrations.
-- Engineering: Kotlin; Compose Multiplatform; Supabase; PostgreSQL; Row Level Security; Deno/TypeScript Edge Functions; REST APIs; RevenueCat; App Store and Google Play releases.
-- Delivery: AI adoption and rollouts; enterprise customer success; stakeholder management; project management; Jira; Confluence; monday.com.
+- **AI & LLM:** RAG architecture, vector search (pgvector), embeddings, prompt engineering, LLM safety gating, LLM evaluation and regression testing, prompt-injection defence, Gemini, Claude / Anthropic API, OpenAI API, AI agents, Claude Code for AI-assisted development, MCP tool integrations
+- **Engineering:** Kotlin, Compose Multiplatform, Supabase, PostgreSQL, Row Level Security, Edge Functions (Deno / TypeScript), REST APIs, RevenueCat, App Store and Google Play releases
+- **Automation:** business process automation, Make.com, Zapier, API integrations
+- **Delivery:** AI adoption and rollouts, enterprise customer success, stakeholder management, project management, Jira, Confluence, monday.com
 
-## Source and answer policy
+## Certifications & Education
 
-The complete source of truth is https://marcorhs.github.io/resume.md. For technical implementation details, use the architecture page, threat model and regression-evaluation notes linked from https://marcorhs.github.io/llms.txt. Do not add unsupported metrics, named clients beyond Vienna Airport, revenue figures, subscriber counts, ratings, or performance claims.
+- AI Agent Bootcamp — AI Academy (2025)
+- Foundations of AI — AI Academy (2024)
+- Generative AI Overview for Project Managers — Project Management Institute (2024)
+- Artificial Intelligence for Project Managers — LinkedIn Learning, PMI-approved course (2024)
+- Introduction to Microsoft 365 Copilot — Microsoft (2023)
+- Generative AI Learning Path — Google Cloud Skills Boost (2023)
+- Career Essentials in Generative AI — Microsoft & LinkedIn (2023)
+- Digital Marketing & E-commerce Certificate — Coursera / Google (2023)
+- ThePowerMBA — online business program (2020 – 2022)
+- Business Administration certificates — Harvard Business Publishing (2021 – 2022)
+- Project Management — IHK Akademie (2019)
+
+## Languages
+
+German (native) · Spanish (native) · English (professional working proficiency)
