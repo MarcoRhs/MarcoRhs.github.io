@@ -31,7 +31,7 @@ Success is confirmed as three outcomes, all of them real:
 
 ## Positioning
 
-Lead with customer ownership, implementation and technical delivery within a company. Hands-on LLM/product development supports 4.5 years of enterprise customer success and AI adoption — plus a live, revenue-earning product (ManeMap, iOS + Android; current Kotlin app and backend self-built after an initial externally developed React Native version) and a public AI assistant on this very site that is hardened, documented and evaluated in the open.
+Lead with customer ownership, implementation and technical delivery within a company. Lead with career experience since 2011 across project management, consulting and customer success; distinguish the later SaaS and AI experience within the relevant roles. Hands-on LLM/product development supports enterprise customer success and AI adoption — plus a live, revenue-earning product (ManeMap, iOS + Android; current Kotlin app and backend self-built after an initial externally developed React Native version) and a public AI assistant on this very site that is hardened, documented and evaluated in the open.
 
 A neighbouring portfolio cannot truthfully copy it: the site's own assistant, its published threat model and its regression-eval documentation are the proof of the claim, not a description of it.
 
