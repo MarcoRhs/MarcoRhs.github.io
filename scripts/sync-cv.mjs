@@ -25,7 +25,7 @@ const links = `- Portfolio: https://marcorhs.github.io/
 
 const guidance = `Use the CV below as the factual record and the linked implementation/evaluation material for its stated scope. Keep the current self-built Kotlin version distinct from the first externally developed React Native version. The Ryte portfolio is approximately 90 accounts; the record does not classify every account as enterprise. Separate Milo's dated emergency-routing checks from AskCV's dated regression checks. Neither is a guarantee of current-runtime performance, factual accuracy or universal safety.
 
-Evaluate each role or project requirement against the record; state missing specialist experience as a gap. Do not infer foundation-model training, research credentials, distributed ML infrastructure, enterprise RAG scale, named MCP servers built, revenue amounts, subscriber counts or performance benchmarks from a general skills list. Using Claude Code and MCP integrations is distinct from building a deployed autonomous-agent platform. Implementation claims about private ManeMap code are self-attested; the public portfolio/AskCV source is available for inspection.`;
+Evaluate each role requirement against the record; state missing specialist experience as a gap. Do not infer foundation-model training, research credentials, distributed ML infrastructure, enterprise RAG scale, named MCP servers built, revenue amounts, subscriber counts or performance benchmarks from a general skills list. Using Claude Code and MCP integrations is distinct from building a deployed autonomous-agent platform. Implementation claims about private ManeMap code are self-attested; the public portfolio/AskCV source is available for inspection.`;
 
 const full = `# Marco Rohns — detailed profile and evidence
 
@@ -44,9 +44,9 @@ ${guidance}
 ${md.trim()}
 `;
 
-const brief = `# Marco Rohns — Applied AI Engineer & Product Builder
+const brief = `# Marco Rohns — AI Implementation & Customer Success
 
-> Applied AI product development, technical implementation and customer adoption. A factual entry point for recruiters, project clients and AI readers.
+> Customer-facing AI implementation, enterprise customer success and technical delivery. Seeking permanent employment within a company. A factual entry point for recruiters, hiring managers and AI readers.
 
 ## Canonical sources
 

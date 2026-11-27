@@ -1,6 +1,6 @@
-# Marco Rohns — Applied AI Engineer & Product Builder
+# Marco Rohns — AI Implementation & Customer Success
 
-> Applied AI product development, technical implementation and customer adoption. A factual entry point for recruiters, project clients and AI readers.
+> Customer-facing AI implementation, enterprise customer success and technical delivery. Seeking permanent employment within a company. A factual entry point for recruiters, hiring managers and AI readers.
 
 ## Canonical sources
 
@@ -21,7 +21,7 @@
 
 ## Profile summary
 
-Applied AI engineer and product builder combining LLM integration, retrieval, backend and mobile development with 4.5 years in enterprise customer success and AI adoption at Ryte and e-bot7. At ManeMap, I built and release the current Kotlin application and Supabase backend after managing the initial externally developed React Native version. The product is live on iOS and Android with paying subscribers. At Ryte, I managed approximately €3 million ARR across around 90 accounts. Open to full-time roles, projects and collaborations in applied AI/product engineering, AI solutions and implementation, and technical customer delivery.
+Customer-facing implementation and customer success professional combining enterprise account ownership at Ryte, conversational AI delivery at e-bot7 and hands-on product work at ManeMap. Managed approximately €3 million ARR across around 90 accounts at Ryte. I translate customer needs into requirements, integration coordination and adoption plans, working with customers and Product, Engineering and Sales. At ManeMap, I develop the current Kotlin app and Supabase backend with AI-assisted implementation and QA, after managing the initial external build. Seeking permanent employment in AI implementation, solutions consulting, senior or technical customer success, or technical account management: full-time or suitable part-time, remote from Uplengen without recurring office days, with travel up to quarterly.
 
 ## Evidence boundaries
 

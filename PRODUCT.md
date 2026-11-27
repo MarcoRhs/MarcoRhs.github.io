@@ -15,23 +15,23 @@ Plain static HTML/CSS/JS served from GitHub Pages, with a Supabase Edge Function
 Two readers in sequence, and the page must satisfy both:
 
 1. **Recruiters and talent sourcers, scanning fast.** A short credibility check before deciding to forward the candidate. They need role fit, proof, and a CV they can take with them in seconds.
-2. **Hiring managers and engineering/AI leads, reading closely.** They decide whether Marco can actually build and own production AI. They dig into the architecture page and judge technical depth and evidence of shipped work.
+2. **Hiring managers and engineering/AI leads, reading closely.** They assess Marco’s fit for customer-facing implementation, solutions and technical customer roles, including the scope of his hands-on AI work. They dig into the architecture page and judge technical depth and evidence of shipped work.
 
 Recruiter first, manager second. Failing either reader fails the site.
 
 ## Product Purpose
 
-A personal professional site for Marco Rohns that converts a cold visitor into a real hiring conversation, for full-time roles, projects and collaborations in AI engineering, AI product and AI adoption.
+A personal professional site for Marco Rohns that converts a cold visitor into a real hiring conversation, for permanent employment in AI implementation, solutions consulting, senior or technical customer success, and technical account management.
 
 Success is confirmed as three outcomes, all of them real:
 
-- a direct email arrives about a role, project or collaboration;
+- a direct email arrives about a suitable employment role;
 - the CV leaves the page and travels inside a company (PDF download, or `resume.md` picked up by a person or an AI agent);
 - visitors actually use the AskCV assistant and come away convinced it is grounded — the assistant is itself a demonstration of the capability being claimed.
 
 ## Positioning
 
-The combination, evidenced rather than asserted: hands-on LLM/product engineering **and** 4.5 years of enterprise customer success and AI adoption — plus a live, revenue-earning product (ManeMap, iOS + Android; current Kotlin app and backend self-built after an initial externally developed React Native version) and a public AI assistant on this very site that is hardened, documented and evaluated in the open.
+Lead with customer ownership, implementation and technical delivery within a company. Hands-on LLM/product development supports 4.5 years of enterprise customer success and AI adoption — plus a live, revenue-earning product (ManeMap, iOS + Android; current Kotlin app and backend self-built after an initial externally developed React Native version) and a public AI assistant on this very site that is hardened, documented and evaluated in the open.
 
 A neighbouring portfolio cannot truthfully copy it: the site's own assistant, its published threat model and its regression-eval documentation are the proof of the claim, not a description of it.
 

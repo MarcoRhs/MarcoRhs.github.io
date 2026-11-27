@@ -2,11 +2,11 @@ document.documentElement.classList.add("js");
 
 const ENDPOINT = "https://ulkqedfxgogayealzqpv.supabase.co/functions/v1/ask-cv";
 const SUGGESTIONS = [
-  {label: "AI engineering fit", question: "What evidence in Marco's CV supports his fit for an AI engineering role?"},
-  {label: "Production proof", question: "What production evidence shows that Marco can ship AI products end to end?"},
-  {label: "Technical stack", question: "Which technologies has Marco used across AI, backend and mobile product development?"},
+  {label: "AI implementation", question: "What experience supports Marco’s fit for customer-facing AI implementation roles?"},
+  {label: "Customer ownership", question: "What customer responsibilities and outcomes did Marco own at Ryte?"},
+  {label: "Hands-on experience", question: "What did Marco personally develop at ManeMap, and where did external developers and AI tools contribute?"},
   {label: "Enterprise adoption", question: "How has Marco helped enterprise teams adopt AI products and improve customer outcomes?"},
-  {label: "Project delivery", question: "What project delivery experience does Marco bring to an AI product role?"},
+  {label: "Project delivery", question: "How has Marco coordinated integrations, customer requirements and go-live with technical teams?"},
   {label: "Role fit", question: "Which roles best match Marco's experience, based on his CV?"}
 ];
 const COPY = {

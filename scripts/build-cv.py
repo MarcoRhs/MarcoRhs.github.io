@@ -17,10 +17,10 @@ from reportlab.platypus import (
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "Marco_Rohns_CV.pdf"
-INK = colors.HexColor("#1D1D1F")
-BLUE = colors.HexColor("#0071E3")
-MUTED = colors.HexColor("#5E6066")
-RULE = colors.HexColor("#D2D2D7")
+INK = colors.HexColor("#051f20")
+GREEN = colors.HexColor("#235347")
+MUTED = colors.HexColor("#52675e")
+RULE = colors.HexColor("#cbdccc")
 
 
 def style(name, **options):
@@ -31,10 +31,10 @@ def style(name, **options):
 
 
 NAME = style("name", fontName="Helvetica-Bold", fontSize=25, leading=28)
-TITLE = style("title", fontSize=11.4, leading=15, textColor=BLUE)
+TITLE = style("title", fontSize=11.4, leading=15, textColor=GREEN)
 META = style("meta", fontSize=8.4, leading=12, textColor=MUTED)
 SECTION = style("section", fontName="Helvetica-Bold", fontSize=9,
-                leading=12, textColor=BLUE)
+                leading=12, textColor=GREEN)
 ROLE = style("role", fontName="Helvetica-Bold", fontSize=9.6, leading=12.6)
 DATE = style("date", fontSize=8.2, leading=11.3, textColor=MUTED)
 DETAIL = style("detail", fontSize=8.2, leading=11.3, textColor=MUTED)
@@ -46,7 +46,7 @@ BULLET = style("bullet", fontSize=8.8, leading=12.4, leftIndent=9,
 def markup(text):
     text = escape(text)
     text = re.sub(r"\[([^\]]+)\]\((https://[^)]+)\)",
-                  r'<a href="\2" color="#0071E3">\1</a>', text)
+                  r'<a href="\2" color="#235347">\1</a>', text)
     return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
 
 
@@ -74,9 +74,9 @@ def build():
     sections = split_sections(lines)
     doc = BaseDocTemplate(
         str(OUT), pagesize=A4, leftMargin=17 * mm, rightMargin=17 * mm,
-        topMargin=14 * mm, bottomMargin=15 * mm,
+        topMargin=12 * mm, bottomMargin=12 * mm,
         title="Marco Rohns — CV", author="Marco Rohns",
-        subject="AI products and enterprise customer success",
+        subject="AI implementation, enterprise customer success and technical delivery",
         keywords="AI, RAG, customer success, enterprise adoption, Kotlin, Supabase",
     )
     frame = Frame(doc.leftMargin, doc.bottomMargin, doc.width, doc.height,
