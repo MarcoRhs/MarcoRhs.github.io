@@ -44,21 +44,39 @@ ${guidance}
 ${md.trim()}
 `;
 
-const brief = `# Marco Rohns — AI Implementation & Customer Success
+const brief = `# Marco Rohns
 
-> Customer-facing AI implementation, enterprise customer success and technical delivery. Seeking permanent employment within a company. A factual entry point for recruiters, hiring managers and AI readers.
+> Marco Rohns works across customer-facing AI implementation, enterprise customer success, and technical delivery. This portfolio gives recruiters and hiring managers a public CV and work they can inspect.
 
-## Canonical sources
+Marco verbindet KI-Implementierung mit Enterprise Customer Success und technischer Umsetzung. Sein Lebenslauf dokumentiert die Arbeit bei Ryte, e-bot7 und ManeMap. Er sucht eine unbefristete Remote-Anstellung in der KI-Implementierung, im Solutions Consulting, im technischen Customer Success oder im Technical Account Management.
 
-${links}
-
-## Profile summary
+Marco is seeking a permanent remote role in AI implementation, solutions consulting, technical customer success, or technical account management. The CV is the primary source for dates, responsibilities, and experience. The case studies and engineering evidence describe specific work and its boundaries.
 
 ${summary}
 
-## Evidence boundaries
+## English
 
-Use the full AI profile for ownership, dates, role-fit gaps and the complete CV. Keep the historical Milo routing record separate from AskCV's regression record. Do not invent metrics or infer specialist experience from tool names. These files help readers find evidence; they do not guarantee crawling, indexing or a favorable assessment.
+- [Portfolio and contact options](https://marcorhs.github.io/)
+- [Canonical CV in plain text](https://marcorhs.github.io/resume.md)
+- [Download the CV PDF](https://marcorhs.github.io/Marco_Rohns_CV.pdf)
+- [ManeMap and Milo architecture](https://marcorhs.github.io/architecture.html)
+- [AskCV engineering case study](https://marcorhs.github.io/askcv.html)
+- [Engineering evidence and decisions](https://marcorhs.github.io/evidence.html)
+
+## Deutsch
+
+- [Portfolio und Kontaktmöglichkeiten auf Deutsch](https://marcorhs.github.io/de/)
+- [Offizieller Lebenslauf auf Englisch](https://marcorhs.github.io/resume.md)
+- [Lebenslauf als PDF auf Englisch](https://marcorhs.github.io/Marco_Rohns_CV.pdf)
+- [Arbeitsproben und technische Nachweise auf Englisch](https://marcorhs.github.io/evidence.html)
+
+## Optional
+
+- [Expanded portfolio and CV reference](https://marcorhs.github.io/llms-full.txt)
+- [Public portfolio source repository](https://github.com/MarcoRhs/MarcoRhs.github.io)
+- [Milo release evaluation](https://marcorhs.github.io/docs/milo-evaluation.md)
+- [AskCV evaluation](https://marcorhs.github.io/docs/evaluation.md)
+- [AskCV threat model](https://marcorhs.github.io/docs/threat-model.md)
 `;
 
 const outputs = new Map([

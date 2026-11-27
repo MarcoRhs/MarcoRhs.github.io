@@ -25,16 +25,98 @@
 <link rel="icon" href="assets/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="canonical" href="https://marcorhs.github.io/">
+<link rel="alternate" hreflang="en" href="https://marcorhs.github.io/">
+<link rel="alternate" hreflang="de" href="https://marcorhs.github.io/de/">
+<link rel="alternate" hreflang="x-default" href="https://marcorhs.github.io/">
 <link rel="alternate" type="text/markdown" href="resume.md" title="CV as Markdown">
 <link rel="alternate" type="text/plain" href="llms.txt" title="Profile for AI readers">
 <link rel="alternate" type="text/plain" href="llms-full.txt" title="Detailed profile for AI readers">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"WebSite","@id":"https://marcorhs.github.io/#website","url":"https://marcorhs.github.io/","name":"Marco Rohns — AI Implementation & Customer Success","inLanguage":"en"},
-{"@type":"ProfilePage","@id":"https://marcorhs.github.io/#profile","url":"https://marcorhs.github.io/","mainEntity":{"@id":"https://marcorhs.github.io/#marco-rohns"},"isPartOf":{"@id":"https://marcorhs.github.io/#website"}},
-{"@type":"Person","@id":"https://marcorhs.github.io/#marco-rohns","name":"Marco Rohns","url":"https://marcorhs.github.io/","image":"https://marcorhs.github.io/photo.jpg","jobTitle":"Founder, ManeMap","description":"Customer-facing implementation and customer success professional with experience at Ryte and e-bot7 and hands-on AI product development at ManeMap. Managed approximately €3 million ARR across around 90 accounts at Ryte.","address":{"@type":"PostalAddress","addressLocality":"Uplengen","addressCountry":"DE"},"email":"mailto:marco.rohns12@gmail.com","sameAs":["https://www.linkedin.com/in/marco-rohns"],"knowsLanguage":["German","Spanish","English"],"knowsAbout":["Retrieval-Augmented Generation","Large Language Models","Kotlin","Compose Multiplatform","Supabase","PostgreSQL","Enterprise Customer Success","AI adoption"],"worksFor":{"@type":"Organization","name":"The Rohns UG","url":"https://manemap.app"},"subjectOf":[{"@type":"WebPage","name":"ManeMap and Milo technical architecture","url":"https://marcorhs.github.io/architecture.html"},{"@type":"DigitalDocument","name":"Machine-readable CV","url":"https://marcorhs.github.io/resume.md"}]},
-{"@type":"SoftwareApplication","@id":"https://manemap.app/#software","name":"ManeMap","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","creator":{"@id":"https://marcorhs.github.io/#marco-rohns"},"url":"https://manemap.app","description":"AI-powered horse-care app with a grounded assistant, live on iOS and Android."}
-]}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://marcorhs.github.io/#website",
+      "url": "https://marcorhs.github.io/",
+      "name": "Marco Rohns — AI Implementation & Customer Success",
+      "inLanguage": ["en", "de"],
+      "publisher": {
+        "@id": "https://marcorhs.github.io/#marco-rohns"
+      }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://marcorhs.github.io/#profile",
+      "url": "https://marcorhs.github.io/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://marcorhs.github.io/#website"
+      },
+      "mainEntity": {
+        "@id": "https://marcorhs.github.io/#marco-rohns"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://marcorhs.github.io/#marco-rohns",
+      "name": "Marco Rohns",
+      "url": "https://marcorhs.github.io/",
+      "image": "https://marcorhs.github.io/photo.jpg",
+      "jobTitle": "Founder, ManeMap",
+      "description": "Customer-facing AI implementation, enterprise customer success and technical delivery, with experience at Ryte, e-bot7 and ManeMap.",
+      "sameAs": [
+        "https://www.linkedin.com/in/marco-rohns"
+      ],
+      "knowsLanguage": [
+        "German",
+        "English",
+        "Spanish"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://www.manemap.app/#organization",
+        "name": "The Rohns UG (haftungsbeschränkt)",
+        "url": "https://www.manemap.app/"
+      },
+      "subjectOf": [
+        {
+          "@type": "DigitalDocument",
+          "name": "Marco Rohns — Curriculum Vitae",
+          "url": "https://marcorhs.github.io/resume.md",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://marcorhs.github.io/architecture.html#article"
+        },
+        {
+          "@type": "TechArticle",
+          "@id": "https://marcorhs.github.io/askcv.html#article"
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://marcorhs.github.io/evidence.html#webpage"
+        }
+      ]
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://www.manemap.app/#app",
+      "name": "ManeMap",
+      "url": "https://www.manemap.app/",
+      "operatingSystem": [
+        "iOS",
+        "iPadOS",
+        "Android"
+      ],
+      "applicationCategory": "LifestyleApplication",
+      "publisher": {
+        "@id": "https://www.manemap.app/#organization"
+      }
+    }
+  ]
+}
 </script>
 <link rel="preload" href="assets/marco-hero.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="style.css?v=26">
@@ -55,6 +137,7 @@
         <a class="nav-link" href="evidence.html">Evidence</a>
         <a class="nav-link" href="#askzone">Ask my CV</a>
       </div>
+      <a class="nav-link language-link" href="de/" hreflang="de" lang="de" data-lang="de">Deutsch</a>
       <a class="nav-cta" href="Marco_Rohns_CV.pdf?v=20261127-green" download>Download CV</a>
       <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu">
         <span></span><span></span><span></span>
